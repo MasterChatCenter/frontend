@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -32,11 +32,26 @@ small {
 }
 `;
 
+const theme = {
+  primary: '#00695C',
+  primaryDark: '#003D33',
+  primaryLight: '#439889',
+  secondary: '#80CBC4',
+  secondaryDark: '#4F9A94',
+  secondaryLight: '#B2FEF7',
+  booleanGreen: '#42B72A',
+  booleanRed: '#FA3E3E',
+  background: "#FFF",
+  text: '#000',
+};
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }
