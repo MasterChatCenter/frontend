@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-text-align: center
+text-align: center;
+color: ${props => props.theme.primary}
 `;
 
 const Index = () => (
