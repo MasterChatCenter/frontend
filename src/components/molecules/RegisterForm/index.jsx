@@ -1,7 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
+
+import Input from '@/atoms/Input';
+import ButtonLarge from '@/atoms/ButtonLarge';
+
+const CSSForm = styled.form`
+width: 100%;
+div {
+  padding-bottom: 20px;
+}
+`;
 
 const RegisterForm = ({ handleSubmit }) => (
-  <form onSubmit={handleSubmit}>
+  <CSSForm onSubmit={handleSubmit}>
     <Input
       typeInput="text"
       title="Correo electronico:"
@@ -18,7 +29,7 @@ const RegisterForm = ({ handleSubmit }) => (
       placeholder="Repite tu contraseña"
       />
     <ButtonLarge>Continuar</ButtonLarge>
-  </form>
+  </CSSForm>
 );
 
 export default RegisterForm;
