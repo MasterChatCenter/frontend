@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const InputStyle = styled.input`
+  width: 100%;
   max-width: 500px;
   background-color: transparent;
   border-left: 0px;
@@ -17,4 +18,5 @@ export const InputStyle = styled.input`
 
 export const TextStyle = styled.p`
    font-size: 14px;
+   font-weight: bold;
 `;

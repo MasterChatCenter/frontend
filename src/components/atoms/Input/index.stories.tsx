@@ -5,4 +5,10 @@ import Input from './index';
 
 
 storiesOf('atoms / Inputs', module)
-  .add('InputText', () => (<Input title="Usuario" typeInput="Text" placeholder="Escribe tu Email" />));
+  .add('InputText', () => (
+    <Input
+      title="Usuario"
+      typeInput="Text"
+      placeholder="Escribe tu Email"
+  />));
+
