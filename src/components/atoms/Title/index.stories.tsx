@@ -4,5 +4,5 @@ import { storiesOf } from '@storybook/react';
 import { Title } from './index';
 
 
-storiesOf('atoms / title / Title', module)
-  .add('Normal', () => (<Title title="Carlos" />));
+storiesOf('atoms / Texts', module)
+  .add('Title', () => (<Title title="Carlos" />));
