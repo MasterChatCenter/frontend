@@ -7,12 +7,12 @@ const Input: React.FC<{ typeInput: string, placeholder: string, title: string }>
   title
 }) => {
   return (
-    <>
+    <div>
       <TextStyle >
         {title}
       </TextStyle>
       <InputStyle type={typeInput} placeholder={placeholder} />
-    </>
+    </div>
   )
 }
 export default Input

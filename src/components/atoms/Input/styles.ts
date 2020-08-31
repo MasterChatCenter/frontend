@@ -17,4 +17,5 @@ export const InputStyle = styled.input`
 
 export const TextStyle = styled.p`
    font-size: 14px;
+   font-weight: bold;
 `;
