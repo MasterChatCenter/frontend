@@ -11,8 +11,8 @@ div {
 }
 `;
 
-const RegisterForm = ({ handleSubmit }) => (
-  <CSSForm onSubmit={handleSubmit}>
+const RegisterForm = () => (
+  <CSSForm>
     <Input
       typeInput="text"
       title="Correo electronico:"

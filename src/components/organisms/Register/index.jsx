@@ -22,7 +22,6 @@ width: 100%;
 }
 `;
 
-
 const Register = () => (
   <CSSRegister>
     <CardShadow>
