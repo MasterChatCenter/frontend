@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
 import CardShadow from '../../atoms/CardShadow';
@@ -8,13 +8,14 @@ import { CSSContainer } from './styles';
 type props = {
   title: string,
   message: string,
+  icon: ReactNode,
 };
 
-const Message: FC<props> = ({ title, message, children }) => (
+const Message: FC<props> = ({ title, message, icon, children }) => (
   <CSSContainer>
     <CardShadow>
       <h2>{title}</h2>
-      <FaCheck />
+      {icon}
       <p>{message}</p>
       {children}
     </CardShadow>
