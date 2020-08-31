@@ -20,6 +20,10 @@ width: 100%;
     text-align: center;
   }
 }
+
+@media screen and (min-width: 800px) {
+  grid-column: 5 / 9;
+}
 `;
 
 const Register = () => (
