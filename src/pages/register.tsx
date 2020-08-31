@@ -27,24 +27,7 @@ const Register = () => (
     <div>
       <CardShadow>
         <h2>Crear una cuenta</h2>
-        <form>
-          <Input
-            typeInput="text"
-            title="Correo electronico:"
-            placeholder="Escribe un correo"
-            />
-          <Input
-            typeInput="password"
-            title="Contraseña:"
-            placeholder="Escribe una contraseña"
-          />
-          <Input
-            typeInput="password"
-            title="Confirma ontraseña:"
-            placeholder="Repite tu contraseña"
-            />
-          <ButtonLarge>Continuar</ButtonLarge>
-        </form>
+        
       </CardShadow>
     </div>
   </CSSContainer>
