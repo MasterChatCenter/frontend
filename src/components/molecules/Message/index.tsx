@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-import { FaCheck } from 'react-icons/fa';
 
 import CardShadow from '../../atoms/CardShadow';
 

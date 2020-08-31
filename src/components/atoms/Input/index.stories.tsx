@@ -4,5 +4,11 @@ import { storiesOf } from '@storybook/react';
 import Input from './index';
 
 
-storiesOf('atoms / input / Input', module)
-  .add('Normal', () => (<Input title="Usuario:" typeInput="Text" placeholder="Escribe tu Email" />));
+storiesOf('atoms / Inputs', module)
+  .add('InputText', () => (
+    <Input
+      title="Usuario"
+      typeInput="Text"
+      placeholder="Escribe tu Email"
+  />));
+
