@@ -12,11 +12,11 @@ width: 100%;
   justify-content: center;
 
   h2 {
-    margin: 10px 0 20px 0;
+    margin: 10px 0 25px 0;
   }
 
   > p {
-    margin: 20px 0 10px 0;
+    margin: 0px 0 10px 0;
     text-align: center;
   }
 }

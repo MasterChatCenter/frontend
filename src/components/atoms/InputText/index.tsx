@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputStyle, TextStyle } from './styles';
 
-const Input: React.FC<{ typeInput: string, placeholder: string, title: string }> = ({
+const InputText: React.FC<{ typeInput: string, placeholder: string, title: string }> = ({
   typeInput,
   placeholder,
   title
@@ -15,4 +15,4 @@ const Input: React.FC<{ typeInput: string, placeholder: string, title: string }>
     </div>
   )
 }
-export default Input
+export default InputText

@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
 export const CardCenter = styled.div`
 width: 100%;
 
+h2 {
+  margin: 10px 0 25px 0;
+  text-align: center;
+}
+
 @media screen and (min-width: 800px) {
   grid-column: 5 / 9;
 }

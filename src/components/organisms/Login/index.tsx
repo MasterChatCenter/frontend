@@ -1,20 +1,14 @@
 import React from 'react'
-import { Wrapper, CardCenter } from './styles';
-import { Title } from '../../atoms/Title/index';
+import { CardCenter } from './styles';
 import CardShadow from '../../atoms/CardShadow/index';
 import LoginForm from '@/molecules/LoginForm';
 
 
-const Login: React.FC<{}> = ({
-  children
-}) => {
+const Login: React.FC<{}> = () => {
   return (
     <CardCenter>
       <CardShadow>
-        <Wrapper>
-          <Title title="Iniciar Sesión" />
-          {children}
-        </Wrapper>
+        <h2>Iniciar Sesión</h2>
         <LoginForm />
       </CardShadow >
     </CardCenter>

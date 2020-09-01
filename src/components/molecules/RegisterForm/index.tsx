@@ -1,34 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Input from '@/atoms/Input';
+import InputText from '@/atoms/InputText';
 import ButtonLarge from '@/atoms/ButtonLarge';
+import ButtonLink from '@/atoms/ButtonLink';
 
 const CSSForm = styled.form`
 width: 100%;
 div {
   padding-bottom: 20px;
 }
+button:last-child {
+  margin: 20px 0;
+}
 `;
 
 const RegisterForm = () => (
   <CSSForm>
-    <Input
+    <InputText
       typeInput="text"
       title="Correo electronico:"
       placeholder="Escribe un correo"
       />
-    <Input
+    <InputText
       typeInput="password"
       title="Contraseña:"
       placeholder="Escribe una contraseña"
     />
-    <Input
+    <InputText
       typeInput="password"
       title="Confirma ontraseña:"
       placeholder="Repite tu contraseña"
       />
     <ButtonLarge>Continuar</ButtonLarge>
+    <ButtonLink>Registro con facebook</ButtonLink>
   </CSSForm>
 );
 
