@@ -7,10 +7,10 @@ import { CSSContainer } from './styles';
 type props = {
   title: string,
   message: string,
-  icon: ReactNode,
+  icon: ReactNode | boolean,
 };
 
-const Message: FC<props> = ({ title, message, icon, children }) => (
+const Alert: FC<props> = ({ title, message, icon, children }) => (
   <CSSContainer>
     <CardShadow>
       <h2>{title}</h2>
@@ -21,4 +21,8 @@ const Message: FC<props> = ({ title, message, icon, children }) => (
   </CSSContainer>
 );
 
-export default Message;
+Alert.defaultProps = {
+  icon: false,
+};
+
+export default Alert;
