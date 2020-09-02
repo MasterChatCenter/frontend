@@ -1,12 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Input from './index';
+import InputText from './index';
 
 
 storiesOf('atoms / Inputs', module)
   .add('InputText', () => (
-    <Input
+    <InputText
+      name="user"
       title="Usuario"
       typeInput="Text"
       placeholder="Escribe tu Email"

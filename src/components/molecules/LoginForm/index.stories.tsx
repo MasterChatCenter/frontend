@@ -5,5 +5,5 @@ import LoginForm from '.';
 
 storiesOf('molecules / Forms', module)
   .add('LoginForm', () => (
-    <LoginForm />
+    <LoginForm handleSubmit={()=>{}}/>
   ));

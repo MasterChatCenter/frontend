@@ -5,5 +5,5 @@ import RegisterForm from '.';
 
 storiesOf('molecules / Forms', module)
   .add('RegisterForm', () => (
-    <RegisterForm />
+    <RegisterForm handleSubmit={() => {}} />
   ));

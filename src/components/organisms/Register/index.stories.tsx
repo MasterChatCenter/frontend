@@ -5,6 +5,6 @@ import Register from '.';
 
 storiesOf('organisms / Forms', module)
   .add('Register', () => (
-    <Register />
+  <Register>Here go the form</Register>
   ));
 
