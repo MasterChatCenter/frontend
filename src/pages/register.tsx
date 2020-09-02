@@ -1,7 +1,7 @@
 import Register from '@/organisms/Register';
 import RegisterForm from '@/molecules/RegisterForm';
 
-import { CSSContainer } from './styles';
+import { CSSContainer } from 'root/styles';
 
 const RegisterPage = () => {
   const handleSubmit = (e: any) => {

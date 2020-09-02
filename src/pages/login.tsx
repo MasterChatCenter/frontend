@@ -1,7 +1,7 @@
 import Login from '@/organisms/Login';
 import LoginForm from '@/molecules/LoginForm';
 
-import { CSSContainer } from './styles';
+import { CSSContainer } from 'root/styles';
 
 const LoginPage = () => {
   const handleSubmit = (e: any) => {

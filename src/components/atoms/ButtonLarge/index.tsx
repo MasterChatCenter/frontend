@@ -4,7 +4,7 @@ import { CSSButton } from './styles';
 
 type props = {
   children: string,
-  type?: string,
+  type?: 'button' | 'submit' | 'reset',
 };
 
 const ButtonLarge: FC<props> = ({ children, type }) => (

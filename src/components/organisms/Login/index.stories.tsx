@@ -5,4 +5,6 @@ import Login from './index';
 
 
 storiesOf('organism / Login', module)
-  .add('Normal', () => (<Login />));
+  .add('Normal', () => (
+    <Login>Here go the form</Login>
+  ));

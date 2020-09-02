@@ -17,7 +17,7 @@ const Modal: FC<props> = ({ isModalOpen, children }) => {
     <CSSContainer>
       {children}
     </CSSContainer>,
-    document.getElementById('modal')
+    document.getElementById('modal') as any
   );
 }
 
