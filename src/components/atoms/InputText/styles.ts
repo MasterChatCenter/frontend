@@ -8,6 +8,7 @@ export const InputStyle = styled.input`
   border-top: 0px;
   border-right: 0px;
   border-bottom: 1px solid black;
+  padding-bottom: 3px;
   outline: none;
   cursor: pointer;
 
@@ -17,6 +18,7 @@ export const InputStyle = styled.input`
 `;
 
 export const TextStyle = styled.p`
+   margin-bottom: 5px;
    font-size: 14px;
    font-weight: bold;
 `;

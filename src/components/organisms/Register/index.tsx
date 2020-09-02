@@ -1,36 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { FC, ReactNode } from 'react';
 
 import CardShadow from '@/atoms/CardShadow';
-import RegisterForm from '@/molecules/RegisterForm';
 
-const CSSRegister = styled.div`
-width: 100%;
-> div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+import { CSSRegister } from './styles';
 
-  h2 {
-    margin: 10px 0 25px 0;
-  }
+type props = {
+  children: ReactNode,
+};
 
-  > p {
-    margin: 0px 0 10px 0;
-    text-align: center;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  grid-column: 5 / 9;
-}
-`;
-
-const Register = () => (
+const Register: FC<props> = ({ children }) => (
   <CSSRegister>
     <CardShadow>
       <h2>Crear una cuenta</h2>
-      <RegisterForm />
+      {children}
       <p>Al registrarte aceptas Condiciones del Servicio y la Politica de Privacidad de Chontadev</p>
     </CardShadow>
   </CSSRegister>
