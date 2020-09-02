@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-import Login from '@/organisms/Login';
-
-const CSSContainer = styled.div`
+export const CSSContainer = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -17,11 +15,3 @@ background-color: ${props => props.theme.primaryDark};
   gap: 20px;
 }
 `;
-
-const LoginPage = () => (
-  <CSSContainer>
-    <Login />
-  </CSSContainer>
-);
-
-export default LoginPage;

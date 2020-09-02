@@ -1,33 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { FC } from 'react';
 
 import InputText from '@/atoms/InputText';
 import ButtonLarge from '@/atoms/ButtonLarge';
 import ButtonLink from '@/atoms/ButtonLink';
 
-const CSSForm = styled.form`
-width: 100%;
-div {
-  padding-bottom: 20px;
-}
-button:last-child {
-  margin: 20px 0 10px 0;
-}
-`;
+import { CSSForm } from './styles';
 
-const LoginForm = () => (
-  <CSSForm>
+type props = {
+  handleSubmit: (event: any) => any,
+};
+
+const LoginForm: FC<props> = ({ handleSubmit }) => (
+  <CSSForm onSubmit={handleSubmit}>
     <InputText
+      name="email"
       title="Correo Electronico:"
-      typeInput="Text" 
+      typeInput="email"
       placeholder="Escribe tu Email"
     />
     <InputText
+      name="password"
       title="Contraseña:"
-      typeInput="password" 
+      typeInput="password"
       placeholder="Escribe tu Contraseña"
     />
-    <ButtonLarge>Iniciar Sesion</ButtonLarge>
+    <ButtonLarge type="submit">Iniciar Sesion</ButtonLarge>
     <ButtonLink>Continuar con facebook</ButtonLink>
   </CSSForm>
 );

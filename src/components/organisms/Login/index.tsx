@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { CardCenter } from './styles';
 import CardShadow from '../../atoms/CardShadow/index';
-import LoginForm from '@/molecules/LoginForm';
 
+type props = {
+  children: ReactNode
+};
 
-const Login: React.FC<{}> = () => {
+const Login: React.FC<props> = ({ children }) => {
   return (
     <CardCenter>
       <CardShadow>
         <h2>Iniciar Sesión</h2>
-        <LoginForm />
+        {children}
       </CardShadow >
     </CardCenter>
   )
 }
-export default Login
+
+export default Login;
