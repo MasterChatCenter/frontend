@@ -2,10 +2,9 @@ import { combineReducers } from 'redux';
 import { LOGIN } from 'root/actions';
 
 type action = {
-  type: string,
-  payload: object,
+  type: string;
+  payload: any;
 };
-
 
 const userReducer = (state = false, { type, payload }: action) => {
   switch (type) {
@@ -14,7 +13,7 @@ const userReducer = (state = false, { type, payload }: action) => {
     default:
       return state;
   }
-}
+};
 
 const reducers = {
   user: userReducer,

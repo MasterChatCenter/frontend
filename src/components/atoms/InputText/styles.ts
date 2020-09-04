@@ -13,12 +13,12 @@ export const InputStyle = styled.input`
   cursor: pointer;
 
   &::placeholder {
-   color: #C1C1C1;
+    color: #c1c1c1;
   }
 `;
 
 export const TextStyle = styled.p`
-   margin-bottom: 5px;
-   font-size: 14px;
-   font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
 `;

@@ -11,12 +11,12 @@ assignees: ''
 Describe task
 
  # What type of task is it?
-[ ] feature
-[ ] improvement
-[ ] fix
-[ ] docs
-[ ] refactor
-[ ] style
-[ ] test
+- [ ] feature
+- [ ] improvement
+- [ ] fix
+- [ ] docs
+- [ ] refactor
+- [ ] style
+- [ ] test
 
 # Aditional context

@@ -10,11 +10,9 @@ const initStore = (initialState: any) => {
   return createStore(
     reducers,
     initialState,
-    composeWithDevTools(
-      applyMiddleware(thunkMiddleware)
-    )
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
-}
+};
 
 export const initializeStore = (preloadedState: any) => {
   let _store = store ?? initStore(preloadedState);

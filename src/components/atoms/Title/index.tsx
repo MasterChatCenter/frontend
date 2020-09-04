@@ -7,14 +7,11 @@ export const TitleStyle = styled.h1`
   color: black;
 `;
 
-
-export const Title: React.FC<{ title: String }> = ({ title, children }) => {
+export const Title: React.FC<{ title: string }> = ({ title, children }) => {
   return (
     <TitleStyle>
       <h1>{title}</h1>
       {children}
     </TitleStyle>
-
-  )
-}
-
+  );
+};
