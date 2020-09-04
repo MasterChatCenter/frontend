@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { LOGIN } from 'root/actions';
 
 type action = {
   type: string,
@@ -8,7 +9,7 @@ type action = {
 
 const userReducer = (state = false, { type, payload }: action) => {
   switch (type) {
-    case 'SING_UP':
+    case LOGIN:
       return payload;
     default:
       return state;

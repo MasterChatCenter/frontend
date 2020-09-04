@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import { useState } from 'react';
 import { FcCheckmark } from 'react-icons/fc';
+import cookies from 'next-cookies';
 
 import Register from '@/organisms/Register';
 import RegisterForm from '@/molecules/RegisterForm';
@@ -11,6 +12,17 @@ import ButtonLink from '@/atoms/ButtonLink';
 import { singupService } from 'root/services';
 
 import { CSSContainer } from 'root/styles';
+
+export const getServerSideProps = async (context: any) => {
+  const { user } = cookies(context);  
+  if (user) {
+    context.res.writeHead(302, { Location: '/' }).end();
+  }
+
+  return {
+    props: {},
+  }
+}
 
 const RegisterPage = () => {
   const [modal, setModal] = useState(false);
