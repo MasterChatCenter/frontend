@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from 'react';
 import { CardCenter } from './styles';
 import CardShadow from '../../atoms/CardShadow/index';
 
 type props = {
-  children: ReactNode
+  children: ReactNode;
 };
 
 const Login: React.FC<props> = ({ children }) => {
@@ -12,9 +12,9 @@ const Login: React.FC<props> = ({ children }) => {
       <CardShadow>
         <h2>Iniciar Sesión</h2>
         {children}
-      </CardShadow >
+      </CardShadow>
     </CardCenter>
-  )
-}
+  );
+};
 
 export default Login;
