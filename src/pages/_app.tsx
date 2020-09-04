@@ -11,15 +11,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-       <Provider store={store}>
+      <Provider store={store}>
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />
         </ThemeProvider>
-       </Provider>
+      </Provider>
     </>
-  )
-}
+  );
+};
 
 MyApp.getInitialProps = async (context: any) => {
   const { user } = cookies(context.ctx);
@@ -29,10 +29,10 @@ MyApp.getInitialProps = async (context: any) => {
     props.pageProps.initialReduxState = {
       ...props.pageProps.initialReduxState,
       user,
-    }
+    };
   }
 
   return { ...props };
-}
+};
 
 export default MyApp;

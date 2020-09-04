@@ -8,15 +8,15 @@ import { loginAction } from 'root/actions';
 import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps = async (context: any) => {
-  const { user } = cookies(context);  
+  const { user } = cookies(context);
   if (user) {
     context.res.writeHead(302, { Location: '/' }).end();
   }
 
   return {
     props: {},
-  }
-}
+  };
+};
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const LoginPage = () => {
     };
     dispatch(loginAction(formData));
   };
-  
+
   return (
     <CSSContainer>
       <Login>

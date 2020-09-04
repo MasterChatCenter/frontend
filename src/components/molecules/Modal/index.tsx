@@ -5,9 +5,9 @@ import { MdClose } from 'react-icons/md';
 import { CSSContainer, CSSWraper, CSSCloseButton } from './styles';
 
 type props = {
-  isModalOpen: boolean,
-  closeModal: () => any,
-  children: ReactNode,
+  isModalOpen: boolean;
+  closeModal: () => any;
+  children: ReactNode;
 };
 
 const Modal: FC<props> = ({ isModalOpen, closeModal, children }) => {
@@ -26,6 +26,6 @@ const Modal: FC<props> = ({ isModalOpen, closeModal, children }) => {
     </CSSContainer>,
     document.getElementById('modal') as any
   );
-}
+};
 
 export default Modal;

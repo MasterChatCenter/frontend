@@ -5,9 +5,9 @@ import CardShadow from '../../atoms/CardShadow';
 import { CSSContainer } from './styles';
 
 type props = {
-  title: string,
-  message: string,
-  icon: ReactNode | boolean,
+  title: string;
+  message: string;
+  icon: ReactNode | boolean;
 };
 
 const Alert: FC<props> = ({ title, message, icon, children }) => (

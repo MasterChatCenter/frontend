@@ -14,15 +14,15 @@ import { singupService } from 'root/services';
 import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps = async (context: any) => {
-  const { user } = cookies(context);  
+  const { user } = cookies(context);
   if (user) {
     context.res.writeHead(302, { Location: '/' }).end();
   }
 
   return {
     props: {},
-  }
-}
+  };
+};
 
 const RegisterPage = () => {
   const [modal, setModal] = useState(false);
@@ -39,16 +39,16 @@ const RegisterPage = () => {
     };
 
     if (
-      dataForm.password === "" ||
-      dataForm.confirmPassword === "" ||
-      dataForm.email === ""
+      dataForm.password === '' ||
+      dataForm.confirmPassword === '' ||
+      dataForm.email === ''
     ) {
-      setErrors([ 'Profavor completa todos los campos' ]);
+      setErrors(['Profavor completa todos los campos']);
       return false;
     }
 
     if (dataForm.password !== dataForm.confirmPassword) {
-      setErrors([ 'Las contraseñas no conciden' ]);
+      setErrors(['Las contraseñas no conciden']);
       return false;
     }
 
@@ -58,27 +58,27 @@ const RegisterPage = () => {
       })
       .catch((error) => {
         alert(error.message);
-        setErrors([ 'Nuevo error' ]);
+        setErrors(['Nuevo error']);
       });
   };
 
   const closeModal = () => {
     setModal(false);
     Router.push('/login');
-  }
+  };
 
   return (
     <CSSContainer>
       <Register>
-        {
-          errors.map((err, idx) => <p key={idx}>{err}</p>)
-        }
-        <RegisterForm handleSubmit={handleSubmit}/>
+        {errors.map((err, idx) => (
+          <p key={idx}>{err}</p>
+        ))}
+        <RegisterForm handleSubmit={handleSubmit} />
       </Register>
       <Modal isModalOpen={modal} closeModal={closeModal}>
-        <Alert 
+        <Alert
           title="Envio éxitoso"
-          message="Tu registro ha sido exitoso, hemos enviado un mensaje de confirmación de registro a tu correo electronico."    
+          message="Tu registro ha sido exitoso, hemos enviado un mensaje de confirmación de registro a tu correo electronico."
           icon={<FcCheckmark />}
         >
           <p>Revisa tu bandeja o correo no deseado </p>

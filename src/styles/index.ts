@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const theme = {
   primary: '#00695C',
@@ -9,7 +9,7 @@ export const theme = {
   secondaryLight: '#B2FEF7',
   booleanGreen: '#42B72A',
   booleanRed: '#FA3E3E',
-  background: "#FFF",
+  background: '#FFF',
   text: '#000',
 };
 
@@ -45,17 +45,17 @@ small {
 `;
 
 export const CSSContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100vw;
-min-height: 100vh;
-padding: 20px;
-background-color: ${props => props.theme.primaryDark};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: ${(props) => props.theme.primaryDark};
 
-@media screen and (min-width: 800px) {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
-}
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
 `;

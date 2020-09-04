@@ -7,7 +7,7 @@ import ButtonLink from '@/atoms/ButtonLink';
 import { CSSForm } from './styles';
 
 type props = {
-  handleSubmit: (event: any) => any,
+  handleSubmit?: (event: any) => any;
 };
 
 const RegisterForm: FC<props> = ({ handleSubmit }) => (
@@ -17,7 +17,7 @@ const RegisterForm: FC<props> = ({ handleSubmit }) => (
       typeInput="email"
       title="Correo electronico:"
       placeholder="Escribe un correo"
-      />
+    />
     <InputText
       name="password"
       typeInput="password"
@@ -29,7 +29,7 @@ const RegisterForm: FC<props> = ({ handleSubmit }) => (
       typeInput="password"
       title="Confirma ontraseña:"
       placeholder="Repite tu contraseña"
-      />
+    />
     <ButtonLarge type="submit">Continuar</ButtonLarge>
     <ButtonLink>Registro con facebook</ButtonLink>
   </CSSForm>
