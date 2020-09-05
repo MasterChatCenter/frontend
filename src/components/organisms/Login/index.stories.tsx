@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Login from './index';
 
 
-storiesOf('organism / Login', module)
+storiesOf('organisms / Login', module)
   .add('Normal', () => (
     <Login>Here go the form</Login>
   ));
