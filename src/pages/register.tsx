@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import { useState } from 'react';
 import { FcCheckmark } from 'react-icons/fc';
@@ -13,7 +14,7 @@ import { singupService } from 'root/services';
 
 import { CSSContainer } from 'root/styles';
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (user) {
     context.res.writeHead(302, { Location: '/' }).end();
@@ -24,7 +25,7 @@ export const getServerSideProps = async (context: any) => {
   };
 };
 
-const RegisterPage = () => {
+const RegisterPage = (): JSX.Element => {
   const [modal, setModal] = useState(false);
   const [errors, setErrors] = useState([] as string[]);
 

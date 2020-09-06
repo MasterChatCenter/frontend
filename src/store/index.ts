@@ -14,7 +14,7 @@ const initStore = (initialState: any) => {
   );
 };
 
-export const initializeStore = (preloadedState: any) => {
+export const initializeStore = (preloadedState: any): any => {
   let _store = store ?? initStore(preloadedState);
 
   if (preloadedState && store) {
@@ -33,7 +33,7 @@ export const initializeStore = (preloadedState: any) => {
   return _store;
 };
 
-export function useStore(initialState: any) {
+export function useStore(initialState: any): any {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
 }

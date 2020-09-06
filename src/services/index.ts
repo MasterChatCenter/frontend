@@ -6,7 +6,7 @@ type singup = {
   confirmPassword: string;
 };
 
-export const singupService = (data: singup) => {
+export const singupService = (data: singup): Promise<void> => {
   return fetch(`${config.localApi}/singup`, {
     method: 'POST',
     body: JSON.stringify(data),

@@ -6,7 +6,7 @@ import { useStore } from 'root/store';
 
 import { GlobalStyles, theme } from 'root/styles';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   const store = useStore(pageProps.initialReduxState);
 
   return (

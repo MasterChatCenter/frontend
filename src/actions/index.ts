@@ -1,3 +1,5 @@
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 import Router from 'next/router';
 import config from 'root/config';
 
@@ -8,8 +10,10 @@ type login = {
 
 export const LOGIN = 'LOGIN';
 
-export const loginAction = (payload: login) => {
-  return (dispatch: any) => {
+export const loginAction = (
+  payload: login
+): ThunkAction<void, any, unknown, Action<string>> => {
+  return (dispatch) => {
     fetch(`${config.localApi}/login`, {
       method: 'POST',
       body: JSON.stringify(payload),
