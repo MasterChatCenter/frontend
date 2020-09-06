@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+
+:root {
+
+    --background: #e6f9f7 ;
+}
+
+.body {
+    margin: 0px;
+    padding: 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.message {
+
+    width: 335px;
+}
+
+.container1 {
+
+    display: flex;
+    width: 335px;
+    height: 160px;
+    padding-top: 10px;
+    
+}
+
+.container2 {
+   
+    display: grid;
+    width: 335px;
+    height: 160px;
+    
+}
+
+.container__panel {
+   
+    border-radius: 15px;
+    margin-left: 30px;
+    width: 266px;
+    height: 160px;
+    background-color: var(--background);
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+   
+}
+
+.container__panel2 {
+
+    border-radius: 15px;
+    width: 266px;
+    height: 160px;
+    background-color: var(--background);
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    position: relative;
+    bottom: 55px;
+
+}
+
+.container__title {
+    font-weight: bold;
+}
+
+.container__title, .container__description {
+    margin: 10px;
+}
+
+.container__title2, .container__description2 {
+    margin: 10px;
+}
+
+.container__title2 {
+    font-weight: bold;
+}
+
+.date {
+
+    background-color:var(--background);
+   position: relative;
+   left: 65%;
+   top: 30%;
+   border:0px;
+   outline: none;
+   font-family: 'Lato', sans-serif;
+   font-size: 12px;
+
+}
+
+.date {
+    -webkit-appearance: none;
+}
+.date::-webkit-inner-spin-button,
+.date::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.chatbutton__avatar {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 1px solid transparent;
+    cursor: pointer;
+    object-fit: cover;
+    
+}
+
+.chatbutton2 {
+
+    text-align: end;
+    padding-bottom: 10px;
+    
+}
+

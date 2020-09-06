@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+
+body {
+    
+    margin: 0;
+    padding: 10px;
+
+}
+
+.search {
+
+    padding-bottom: 20px;
+
+}
+
+.container__search {
+
+    max-width: 335px;
+    border-radius: 15px;
+    border: 1px solid #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container__search:hover {
+
+    box-shadow: 0 1px 6px 0 #20212447;
+}
+
+.container__search--icon {
+    background-image: url('https://img.icons8.com/ios/24/000000/search--v1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.container__search--input {
+
+    width: 245px;
+    height: 35px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+}
+
+.container__search--filter {
+
+    background-image: url('https://img.icons8.com/ios-filled/24/000000/empty-filter.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+
+}
+
+.chatButton {
+    
+    border: 1px solid #C1C1C1;
+    display: flex;
+    width: 335px;
+    height: 72px;
+    justify-content: center;
+    align-items: center;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.chatButton__container {
+
+    
+    text-align: center;
+
+}
+
+.chatbutton__figure {
+
+    margin: 0;
+    width: 30px;
+    position: relative;
+    align-items: center;
+    display: flex;
+
+}
+
+.chatbutton__avatar {
+
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 1px solid transparent;
+    cursor: pointer;
+    object-fit: cover;
+    position: relative;
+    right: 40px;
+
+}
+
+.conversation {
+
+    font-family: 'Lato', sans-serif;
+
+}
+
+.conversation__title {
+
+    font-weight: bold;
+}
+
+.state {
+    
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    border:  1px solid transparent;
+    background-color: #31a24c;
+    margin: 0;
+    position: relative;
+    left: 50px;
+    bottom: 15px;
+    
+}
