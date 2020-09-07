@@ -13,6 +13,14 @@ export const HeaderContainer = styled.header`
 
 export const AvatarWraper = styled.figure`
   position: relative;
+  div {
+    transform: scale(0);
+    transition: all 0.2s;
+  }
+
+  &:hover div {
+    transform: scale(1);
+  }
 `;
 
 export const Logo = styled.a`
@@ -27,5 +35,19 @@ export const Logo = styled.a`
 
   svg {
     font-size: 34px;
+  }
+`;
+
+export const Menu = styled.div`
+  position: absolute;
+  right: 0;
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  overflow: hidden;
+
+  button {
+    padding: 10px;
   }
 `;
