@@ -39,5 +39,5 @@ export const AvatarUserStyle = styled.img`
 `;
 
 export const CSSDivider = styled.div`
-  margin-left: -80px;
+  margin-left: -50px;
 `;
