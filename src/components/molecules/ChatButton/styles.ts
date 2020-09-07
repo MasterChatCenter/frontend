@@ -22,20 +22,10 @@ export const CSSContainer = styled.div`
 
 export const CSStatus = styled.div`
   margin-top: 10px;
-  height:10px;
+  height: 10px;
   width: 10px;
   border-radius: 50%;
-  background: #42B72A;
-
-`;
-
-export const AvatarUserStyle = styled.img`
-  width: 50px;
-  height: 50px;
-  box-sizing: border-box;
-  border-radius: 100%;
-  border: 1px solid transparent;
-  object-fit: cover;
+  background: #42b72a;
 `;
 
 export const CSSDivider = styled.div`

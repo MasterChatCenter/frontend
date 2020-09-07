@@ -1,18 +1,31 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  max-width: 100%;
-  height: 70px;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #00695c;
   display: flex;
-  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  padding: 0 20px;
+  background-color: #00695c;
   cursor: pointer;
 `;
 
 export const AvatarWraper = styled.figure`
-  width: 50px;
-  height: 50px;
-  margin-right: 20px;
+  position: relative;
+`;
+
+export const Logo = styled.a`
+  display: flex;
+  align-items: center;
+  color: #fff;
+
+  p {
+    margin-left: 10px;
+    font-size: 28px;
+  }
+
+  svg {
+    font-size: 34px;
+  }
 `;
