@@ -9,7 +9,7 @@ export const CSSNavBar = styled.nav`
 
   @media screen and (min-width: 800px) {
     width: 60px;
-    height: 100vh;
+    height: 100%;
   }
 `;
 
