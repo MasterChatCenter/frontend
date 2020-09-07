@@ -1,59 +1,38 @@
-import { AppProps } from 'next/app';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import App, { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import cookies from 'next-cookies';
+import { useStore } from 'root/store';
 
-const GlobalStyles = createGlobalStyle`
-* {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-}
+import { GlobalStyles, theme } from 'root/styles';
 
-h1 {
-  font-size: 50px;
-  font-weight: bold;
-}
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+  const store = useStore(pageProps.initialReduxState);
 
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 14px;
-  font-weight: bold;
-}
-small {
-  font-size: 10px;
-  font-weight: normal;
-}
-`;
-
-const theme = {
-  primary: '#00695C',
-  primaryDark: '#003D33',
-  primaryLight: '#439889',
-  secondary: '#80CBC4',
-  secondaryDark: '#4F9A94',
-  secondaryLight: '#B2FEF7',
-  booleanGreen: '#42B72A',
-  booleanRed: '#FA3E3E',
-  background: "#FFF",
-  text: '#000',
-};
-
-const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <GlobalStyles />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <GlobalStyles />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     </>
-  )
-}
+  );
+};
+
+MyApp.getInitialProps = async (context: any) => {
+  const { user } = cookies(context.ctx);
+
+  const props = await App.getInitialProps(context);
+  if (user) {
+    props.pageProps.initialReduxState = {
+      ...props.pageProps.initialReduxState,
+      user,
+    };
+  }
+
+  return { ...props };
+};
 
 export default MyApp;
