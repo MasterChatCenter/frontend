@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+    
+    margin: 0px;
+    padding: 10px;
+
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+}
+
+.input {
+
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 31px;
+    width: 71px;
+    border: 1px solid #EEEEEE;  
+    border-radius: 15px;  
+} 
+
+.input__select {
+
+    border-color: white;
+    border-right: 0px;
+    border-left: 0px;
+    border-top: 0x;
+    border-bottom: 0px;
+}
