@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from 'react';
+import Link from 'next/link';
 
 import CardShadow from '@/atoms/CardShadow';
 
@@ -16,6 +17,12 @@ const Register: FC<props> = ({ children }) => (
       <p>
         Al registrarte aceptas Condiciones del Servicio y la Politica de
         Privacidad de Chontadev
+      </p>
+      <p>
+        ¿Ya tienes cuenta?
+        <Link href="/login">
+          <a>Inicia sesíon</a>
+        </Link>
       </p>
     </CardShadow>
   </CSSRegister>

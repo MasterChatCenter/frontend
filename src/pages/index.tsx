@@ -1,8 +1,9 @@
 import { GetServerSideProps } from 'next';
 import React from 'react';
 import cookies from 'next-cookies';
-import { Header } from '@/molecules/Header';
-import Navbar from '@/molecules/Navbar';
+
+import Layout from '@/templates/Layout';
+import ChatList from '@/organisms/ChatList';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
@@ -17,10 +18,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const HomePage = (): JSX.Element => {
   return (
-    <div>
-      <Header avatarUrl="" name="" />
-      <Navbar />
-    </div>
+    <Layout>
+      <ChatList />
+    </Layout>
   );
 };
 

@@ -1,7 +1,6 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import Router from 'next/router';
-import config from 'root/config';
+import { loginService } from 'root/services';
 
 type login = {
   username: string;
@@ -14,18 +13,19 @@ export const loginAction = (
   payload: login
 ): ThunkAction<void, any, unknown, Action<string>> => {
   return (dispatch) => {
-    fetch(`${config.localApi}/login`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    })
-      .then((res) => res.json())
+    loginService(payload)
       .then((data) => {
         dispatch({ type: LOGIN, payload: data });
-        document.cookie = `user=${JSON.stringify(data)}`;
-        Router.push('complete');
       })
       .catch(() => {
         // make error
       });
   };
 };
+
+type action = {
+  type: string;
+  payload: boolean;
+};
+export const LOGOUT = 'LOGOUT';
+export const logoutAction = (): action => ({ type: LOGOUT, payload: false });

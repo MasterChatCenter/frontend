@@ -27,7 +27,7 @@ const RegisterForm: FC<props> = ({ handleSubmit }) => (
     <InputText
       name="confirmPassword"
       typeInput="password"
-      title="Confirma ontraseña:"
+      title="Confirma contraseña:"
       placeholder="Repite tu contraseña"
     />
     <ButtonLarge type="submit">Continuar</ButtonLarge>

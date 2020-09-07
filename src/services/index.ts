@@ -12,3 +12,14 @@ export const singupService = (data: singup): Promise<void> => {
     body: JSON.stringify(data),
   }).then((res) => res.json());
 };
+
+type login = {
+  username: string;
+  password: string;
+};
+export const loginService = (data: login): Promise<void> => {
+  return fetch(`${config.localApi}/login`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+};
