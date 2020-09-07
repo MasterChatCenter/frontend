@@ -1,5 +1,4 @@
 import React from 'react';
-import InputText from '@/atoms/InputText';
 import { WraperCardBorder } from './styles';
 
 

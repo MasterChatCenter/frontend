@@ -10,7 +10,6 @@ body {
 }
 
 .container__search {
-
     width: 335px;
     border-radius: 15px;
     border: 1px solid #e4e4e4;
@@ -45,7 +44,6 @@ body {
 }
 
 .container__search--filter {
-
     background-image: url('https://img.icons8.com/ios-filled/24/000000/empty-filter.png');
     background-repeat: no-repeat;
     background-position: center;
