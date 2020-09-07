@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
 export const CSSContainer = styled.div`
-max-width: 335px;
-text-align: center;
+  max-width: 335px;
+  text-align: center;
 
-svg {
-  font-size: 76px;
-}
+  h2,
+  svg,
+  p {
+    margin-bottom: 20px;
+  }
+
+  svg {
+    font-size: 71px;
+  }
 `;

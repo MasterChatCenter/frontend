@@ -3,7 +3,4 @@ import { storiesOf } from '@storybook/react';
 
 import LoginForm from '.';
 
-storiesOf('molecules / Forms', module)
-  .add('LoginForm', () => (
-    <LoginForm handleSubmit={()=>{}}/>
-  ));
+storiesOf('molecules / Forms', module).add('LoginForm', () => <LoginForm />);

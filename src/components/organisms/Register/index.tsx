@@ -5,7 +5,7 @@ import CardShadow from '@/atoms/CardShadow';
 import { CSSRegister } from './styles';
 
 type props = {
-  children: ReactNode,
+  children: ReactNode;
 };
 
 const Register: FC<props> = ({ children }) => (
@@ -13,7 +13,10 @@ const Register: FC<props> = ({ children }) => (
     <CardShadow>
       <h2>Crear una cuenta</h2>
       {children}
-      <p>Al registrarte aceptas Condiciones del Servicio y la Politica de Privacidad de Chontadev</p>
+      <p>
+        Al registrarte aceptas Condiciones del Servicio y la Politica de
+        Privacidad de Chontadev
+      </p>
     </CardShadow>
   </CSSRegister>
 );

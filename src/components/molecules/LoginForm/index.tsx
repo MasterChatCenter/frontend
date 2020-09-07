@@ -7,7 +7,7 @@ import ButtonLink from '@/atoms/ButtonLink';
 import { CSSForm } from './styles';
 
 type props = {
-  handleSubmit: (event: any) => any,
+  handleSubmit?: (event: any) => any;
 };
 
 const LoginForm: FC<props> = ({ handleSubmit }) => (
