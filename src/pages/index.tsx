@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 import cookies from 'next-cookies';
@@ -11,7 +12,7 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (!user) {
     context.res.writeHead(302, { Location: '/login' }).end();
@@ -22,7 +23,7 @@ export const getServerSideProps = async (context: any) => {
   };
 };
 
-const HomePage = () => {
+const HomePage = (): JSX.Element => {
   return (
     <Wrapper>
       <div>

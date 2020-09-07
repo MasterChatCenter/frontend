@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { useDispatch } from 'react-redux';
 import cookies from 'next-cookies';
 
@@ -7,7 +8,7 @@ import { loginAction } from 'root/actions';
 
 import { CSSContainer } from 'root/styles';
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (user) {
     context.res.writeHead(302, { Location: '/' }).end();
@@ -18,7 +19,7 @@ export const getServerSideProps = async (context: any) => {
   };
 };
 
-const LoginPage = () => {
+const LoginPage = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e: any) => {
