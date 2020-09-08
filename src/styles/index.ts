@@ -59,3 +59,17 @@ export const CSSContainer = styled.div`
     gap: 20px;
   }
 `;
+
+export const ContainerChat = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 300%;
+  margin-left: 0%;
+
+  @media screen and (min-width: 800px) {
+    grid-template-columns: repeat(11, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-left: 0%;
+  }
+`;

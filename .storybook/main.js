@@ -7,7 +7,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src/components/'),
-      'root': path.resolve(__dirname, '../src/'),
+      root: path.resolve(__dirname, '../src/'),
     };
 
     return config;

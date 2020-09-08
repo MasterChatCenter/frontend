@@ -3,13 +3,7 @@ import React, { FC } from 'react';
 import CardBorder from '@/atoms/CardBorder';
 import AvatarUser from '@/atoms/AvatarUser';
 
-import {
-  CSSAvatar,
-  CSSNickName,
-  CSSContainer,
-  CSStatus,
-  CSSDivider,
-} from './styles';
+import { CSSNickName, CSSContainer, CSStatus, CSSDivider } from './styles';
 
 type props = {
   avatarUrl: string;
@@ -27,12 +21,12 @@ const ChatButton: FC<props> = ({
 }) => (
   <CardBorder>
     <CSSContainer>
-      <CSSAvatar>
-        <AvatarUser avatarurl={avatarUrl} name={name} />
-      </CSSAvatar>
       <CSSDivider>
-        <CSSNickName>{nickName}</CSSNickName>
-        <p>{slug}</p>
+        <AvatarUser avatarurl={avatarUrl} name={name} />
+        <div>
+          <CSSNickName>{nickName}</CSSNickName>
+          <p>{slug}</p>
+        </div>
       </CSSDivider>
       <CSStatus />
       {children}
