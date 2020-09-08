@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
 export const Label = styled.label`
+  display: block;
+  width: 100px;
+  height: 100px;
   input[type='file'] {
     display: none;
   }
 `;
 
 export const Figure = styled.figure`
+  width: 100%;
+  height: 100%;
   position: relative;
-  width: 100px;
-  height: 100px;
   border-radius: 100%;
   border: 1px solid transparent;
   overflow: hidden;
