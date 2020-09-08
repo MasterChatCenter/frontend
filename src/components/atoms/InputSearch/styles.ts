@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CSSChatBar = styled.div`
-  width: 335px;
   border-radius: 15px;
   border: 1px solid #e4e4e4;
   display: flex;

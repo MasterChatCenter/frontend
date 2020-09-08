@@ -5,6 +5,10 @@ export const Container = styled.div`
   grid-template-rows: 70px 1fr 60px;
   height: 100vh;
 
+  main {
+    overflow: hidden;
+  }
+
   @media screen and (min-width: 800px) {
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 70px 1fr;
