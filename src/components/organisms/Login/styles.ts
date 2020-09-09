@@ -12,6 +12,17 @@ export const CardCenter = styled.div`
     text-align: center;
   }
 
+  p:last-child {
+    text-align: center;
+    margin: 20px 0 10px 0;
+    a {
+      margin-left: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #003d33;
+    }
+  }
+
   @media screen and (min-width: 800px) {
     grid-column: 5 / 9;
   }

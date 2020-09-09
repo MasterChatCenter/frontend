@@ -9,11 +9,14 @@ export const CSSContainer = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding: 0 20px;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const CSSWraper = styled.div`
   position: relative;
+  width: 100%;
+  max-width: 335px;
 `;
 
 export const CSSCloseButton = styled.button`
