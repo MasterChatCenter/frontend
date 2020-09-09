@@ -6,6 +6,7 @@ export const CSSAvatar = styled.div`
 
 export const CSSNickName = styled.h2`
   margin-top: 0;
+  margin-bottom: 10px;
   font-family: Lato;
   font-style: normal;
   font-weight: bold;
@@ -29,5 +30,9 @@ export const CSStatus = styled.div`
 `;
 
 export const CSSDivider = styled.div`
-  margin-left: -50px;
+  display: flex;
+
+  img {
+    margin-right: 15px;
+  }
 `;

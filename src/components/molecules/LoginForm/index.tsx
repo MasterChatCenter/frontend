@@ -14,17 +14,17 @@ const LoginForm: FC<props> = ({ handleSubmit }) => (
   <CSSForm onSubmit={handleSubmit}>
     <InputText
       name="email"
-      title="Correo Electronico:"
+      title="Correo electronico:"
       typeInput="email"
-      placeholder="Escribe tu Email"
+      placeholder="Escribe tu email"
     />
     <InputText
       name="password"
       title="Contraseña:"
       typeInput="password"
-      placeholder="Escribe tu Contraseña"
+      placeholder="Escribe tu contraseña"
     />
-    <ButtonLarge type="submit">Iniciar Sesion</ButtonLarge>
+    <ButtonLarge type="submit">Iniciar Sesión</ButtonLarge>
     <ButtonLink>Continuar con facebook</ButtonLink>
   </CSSForm>
 );
