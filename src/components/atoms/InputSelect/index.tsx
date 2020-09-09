@@ -6,12 +6,11 @@ type props = {
   icon: ReactChild;
 };
 
-const  InputSelect: FC<props> = ({ label, icon }) => (
+const InputSelect: FC<props> = ({ label, icon }) => (
   <CSSInputSelect>
     <p>{label}</p>
     {icon}
   </CSSInputSelect>
 );
 
-export default  InputSelect;
-
+export default InputSelect;
