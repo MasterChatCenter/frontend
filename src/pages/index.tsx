@@ -23,15 +23,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const HomePage = (): JSX.Element => {
   const [margin, setMargin] = useState('0');
 
-  const changeMobilePage = () => {
-    setMargin('-100%');
+  const changeMobilePage = (width: string) => {
+    const x = window.matchMedia('(min-width: 800px)');
+
+    if (x.matches) {
+      setMargin(width);
+    }
   };
 
   return (
     <Layout>
       <ContainerChat style={{ marginLeft: margin }}>
         <ChatList changePage={changeMobilePage} />
-        <Conversation />
+        <Conversation changePage={changeMobilePage} />
         <Costumer />
       </ContainerChat>
     </Layout>

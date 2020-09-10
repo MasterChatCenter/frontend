@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import InputSearch from '../../atoms/InputSearch/index';
 import ChatButton from '../../molecules/ChatButton/index';
 import { CSSChatContainer, CSSWrapperSearch } from './styles';
@@ -11,18 +11,29 @@ type props = {
 };
 
 const ChatList: FC<props> = ({ changePage }) => {
+  const [users, setUsers] = useState([1, 2, 3, 4, 5, 6]);
+  const [search] = useState([1, 2, 3, 4, 5, 6]);
+
+  const handleChange = (event: any) => {
+    const finded = search.filter(
+      (num: any) => num === Number(event.target.value)
+    );
+    setUsers(finded);
+  };
+
   return (
-    <CSSChatContainer onClick={changePage}>
+    <CSSChatContainer>
       <CSSWrapperSearch>
-        <InputSearch />
+        <InputSearch handleChange={handleChange} />
       </CSSWrapperSearch>
-      {[1, 2, 3, 4, 5, 6].map((num) => (
+      {users.map((num) => (
         <ChatButton
           key={num}
           avatarUrl={IMAGEN}
           name="Darrell Steward"
           nickName="Darrell Steward"
           slug="Amet minim mollit non deserunt..."
+          onClick={changePage}
         />
       ))}
     </CSSChatContainer>

@@ -12,5 +12,6 @@ storiesOf('molecules / Buttons', module).add('ChatButton', () => (
     name="Darrell Steward"
     nickName="Darrell Steward"
     slug="Amet minim mollit non deserunt..."
+    onClick={() => alert('clicked')}
   />
 ));

@@ -11,6 +11,7 @@ storiesOf('atoms / Cards', module).add('AgentCard', () => (
     avatarUrl={IMAGEN}
     name="Darrell Steward"
     nickName="Darrell Steward"
-    type=""
+    handleEdit={() => alert('Hello')}
+    handleDelete={() => alert('Hello')}
   />
 ));

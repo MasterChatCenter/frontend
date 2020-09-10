@@ -8,7 +8,7 @@ import { CSSNavBar, NavBarContainer } from './styles';
 const Navbar: FC = () => (
   <CSSNavBar>
     <NavBarContainer>
-      <NavItem to="/chat" icon={<FaCommentAlt />} label="Chat" />
+      <NavItem to="/" icon={<FaCommentAlt />} label="Chat" />
       <NavItem to="/settings" icon={<FaUserCog />} label="Settings" />
     </NavBarContainer>
   </CSSNavBar>
