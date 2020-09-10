@@ -6,6 +6,6 @@ export const CSSForm = styled.form`
     padding-bottom: 20px;
   }
   button:last-child {
-    margin: 10px 0 10px 0;
+    margin: 20px 0 10px 0;
   }
 `;

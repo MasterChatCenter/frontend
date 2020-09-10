@@ -31,10 +31,10 @@ const RegisterPage = (): JSX.Element => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
     const form = e.currentTarget;
+
     const dataForm = {
-      email: form.email.value,
+      username: form.email.value,
       password: form.password.value,
       confirmPassword: form.confirmPassword.value,
     };
@@ -42,7 +42,7 @@ const RegisterPage = (): JSX.Element => {
     if (
       dataForm.password === '' ||
       dataForm.confirmPassword === '' ||
-      dataForm.email === ''
+      dataForm.username === ''
     ) {
       setErrors(['Profavor completa todos los campos']);
       return false;
@@ -54,8 +54,12 @@ const RegisterPage = (): JSX.Element => {
     }
 
     singupService(dataForm)
-      .then(() => {
-        setModal(true);
+      .then((res: any) => {
+        if (res.error) {
+          setErrors([res.error.message]);
+        } else {
+          setModal(true);
+        }
       })
       .catch((error) => {
         alert(error.message);

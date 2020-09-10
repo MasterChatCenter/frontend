@@ -1,15 +1,14 @@
-import React, { FC, ReactChild } from 'react';
+import React, { FC } from 'react';
 import { CSSInputSelect } from './styles';
 
-type props = {
-  label: string;
-  icon: ReactChild;
-};
-
-const InputSelect: FC<props> = ({ label, icon }) => (
+const InputSelect: FC = () => (
   <CSSInputSelect>
-    <p>{label}</p>
-    {icon}
+    <select id="category" name="category">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
   </CSSInputSelect>
 );
 

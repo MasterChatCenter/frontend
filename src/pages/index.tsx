@@ -4,6 +4,8 @@ import cookies from 'next-cookies';
 
 import Layout from '@/templates/Layout';
 import ChatList from '@/organisms/ChatList';
+import Conversation from '@/organisms/Conversation';
+import Costumer from '@/organisms/Costumer';
 
 import { ContainerChat } from 'root/styles';
 
@@ -29,8 +31,8 @@ const HomePage = (): JSX.Element => {
     <Layout>
       <ContainerChat style={{ marginLeft: margin }}>
         <ChatList changePage={changeMobilePage} />
-        <div>2</div>
-        <div>3</div>
+        <Conversation />
+        <Costumer />
       </ContainerChat>
     </Layout>
   );
