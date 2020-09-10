@@ -5,11 +5,22 @@ import { CSSConversation, CSSMessage, CSSInputChat } from './styles';
 
 type props = {
   children?: any;
+  changePage?: any;
 };
 
 const Conversation: FC<props> = ({ children }) => {
+  const handleMove = (event: any) => {
+    if (event.movementX > 5) {
+      // changePage('0%');
+    }
+
+    if (event.movementX > -5) {
+      // changePage('-200%');
+    }
+  };
+
   return (
-    <CSSConversation>
+    <CSSConversation draggable={true} onDrag={handleMove}>
       <div>
         {[1, 2, 3, 4, 5, 6].map((num) => (
           <CSSMessage key={num}>

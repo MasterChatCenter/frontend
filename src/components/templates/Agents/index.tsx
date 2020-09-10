@@ -7,12 +7,13 @@ import { Div, Button } from './styles';
 type props = {
   children: ReactNode;
   openModal: () => void;
+  handleChange?: any;
 };
 
-const Agents: FC<props> = ({ openModal, children }) => (
+const Agents: FC<props> = ({ openModal, children, handleChange }) => (
   <Div>
     <div>
-      <InputSearch />
+      <InputSearch handleChange={handleChange} />
       <Button onClick={openModal}>
         <MdAdd />
         <p>Nuevo</p>

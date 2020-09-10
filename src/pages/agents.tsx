@@ -13,11 +13,13 @@ const AgentsPage = (): JSX.Element => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [userLoaded, setUserLoaded] = useState(false as any);
   const [users, setUsers] = useState([]);
+  const [serchUsers, setSerchUsers] = useState([]);
 
   useEffect(() => {
     if (!modal || !deleteModal) {
       getUsersService().then((res: any) => {
         setUsers(res.data.users);
+        setSerchUsers(res.data.users);
       });
     }
   }, [modal, deleteModal]);
@@ -37,6 +39,14 @@ const AgentsPage = (): JSX.Element => {
       setUserLoaded(false);
     });
   };
+
+  const handleFind = (event: any) => {
+    const finded = serchUsers.filter(
+      ({ name }: any) => name.indexOf(event.target.value) > -1
+    );
+    setUsers(finded);
+  };
+
   return (
     <Layout>
       <Modal isModalOpen={modal} closeModal={() => setModal(false)}>
@@ -48,7 +58,7 @@ const AgentsPage = (): JSX.Element => {
           onDelete={deleteAgent}
         />
       </Modal>
-      <Agents openModal={() => setModal(true)}>
+      <Agents openModal={() => setModal(true)} handleChange={handleFind}>
         <AgentsList users={users} onEdit={handleEdit} onDelete={handleDelete} />
       </Agents>
     </Layout>

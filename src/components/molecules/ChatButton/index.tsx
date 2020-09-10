@@ -10,6 +10,7 @@ type props = {
   name: string;
   nickName: string;
   slug: string;
+  onClick: any;
 };
 
 const ChatButton: FC<props> = ({
@@ -18,9 +19,10 @@ const ChatButton: FC<props> = ({
   nickName,
   slug,
   children,
+  onClick,
 }) => (
   <CardBorder>
-    <CSSContainer>
+    <CSSContainer onClick={() => onClick('-100%')}>
       <CSSDivider>
         <AvatarUser avatarurl={avatarUrl} name={name} />
         <div>

@@ -3,4 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import InputSearch from '.';
 
-storiesOf('atoms / Inputs', module).add('InputSearch', () => <InputSearch />);
+storiesOf('atoms / Inputs', module).add('InputSearch', () => (
+  <InputSearch handleChange={() => alert('Changed')} />
+));
