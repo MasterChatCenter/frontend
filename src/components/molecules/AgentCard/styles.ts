@@ -5,33 +5,36 @@ export const CSSAvatar = styled.div`
 `;
 
 export const CSSNickName = styled.h2`
+  position: relative;
   margin-top: 0;
   margin-bottom: 10px;
-  font-family: Lato;
   font-style: normal;
-  font-weight: bold;
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-`;
 
-export const CSSContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-`;
+  &:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background-color: ${(props) => props.theme.booleanGreen};
+  }
 
-export const CSStatus = styled.div`
-  margin-top: 10px;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  background: #42b72a;
+  @media screen and (min-width: 800px) {
+    margin-bottom: 0px;
+
+    &:before {
+      right: 50px;
+    }
+  }
 `;
 
 export const CSSDivider = styled.div`
   display: flex;
-
   img {
     margin-right: 15px;
   }
@@ -39,18 +42,23 @@ export const CSSDivider = styled.div`
 
 export const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
-  height: 20px;
   width: 100%;
 
   button {
+    width: auto;
     margin-top: 0;
-    margin-right: 110px;
   }
 `;
 
 export const Wrapper = styled.div`
-  height: 70px;
-  width: 220px;
+  width: 100%;
+
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+  }
 `;

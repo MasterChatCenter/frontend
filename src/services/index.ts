@@ -74,3 +74,7 @@ export const createUserService = (data: user): Promise<void> => {
 export const getUsersService = (): Promise<void> => {
   return fetch(`${config.localApi}/users`).then((res: any) => res.json());
 };
+
+export const deleteUserService = (id: number): Promise<void> => {
+  return mutation(`${config.localApi}/users/${id}`, 'DELETE', {});
+};

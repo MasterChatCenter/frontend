@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const NotAgents = styled.div`
-  margin-top: 120px;
-  text-align: center;
-  svg {
-    margin-top: 10px;
-    font-size: 50px;
-  }
-`;
-
 export const Button = styled.div`
   position: absolute;
   right: 20px;
@@ -53,6 +44,7 @@ export const Button = styled.div`
 export const Div = styled.div`
   padding: 20px;
   height: 100%;
+  overflow-y: auto;
 
   @media screen and (min-width: 800px) {
     display: grid;
@@ -61,7 +53,7 @@ export const Div = styled.div`
     gap: 20px;
     padding: 0;
 
-    div:first-child {
+    > div:first-child {
       grid-column: 2 / 8;
       grid-row: 2 / 3;
       display: flex;
@@ -69,7 +61,7 @@ export const Div = styled.div`
       align-items: center;
     }
 
-    div:last-child {
+    > div:last-child {
       grid-column: 2 / 8;
       grid-row: 3 / 4;
     }
