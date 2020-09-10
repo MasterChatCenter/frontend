@@ -10,11 +10,13 @@ type props = {
 const Conversation: FC<props> = ({ children }) => {
   return (
     <CSSConversation>
-      {[1, 2, 3, 4, 5, 6].map((num) => (
-        <CSSMessage key={num}>
-          <Message type="sender" />
-        </CSSMessage>
-      ))}
+      <div>
+        {[1, 2, 3, 4, 5, 6].map((num) => (
+          <CSSMessage key={num}>
+            <Message type="sender" />
+          </CSSMessage>
+        ))}
+      </div>
       <CSSInputChat>
         <InputChat />
       </CSSInputChat>
