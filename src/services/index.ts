@@ -59,3 +59,18 @@ export const completeProfileService = (
     }
   );
 };
+
+type user = {
+  username: string;
+  password: string;
+  name: string;
+  lastname: string;
+  image: string;
+};
+export const createUserService = (data: user): Promise<void> => {
+  return mutation(`${config.localApi}/users`, 'POST', { ...data, role_id: 2 });
+};
+
+export const getUsersService = (): Promise<void> => {
+  return fetch(`${config.localApi}/users`).then((res: any) => res.json());
+};

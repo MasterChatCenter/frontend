@@ -4,11 +4,12 @@ import CardShadow from '@/atoms/CardShadow';
 import AvatarChange from '@/atoms/AvatarChange';
 import ButtonLink from '@/atoms/ButtonLink';
 import AgentFrom from '@/molecules/AgentForm';
+import { createUserService } from 'root/services';
 
 import { Container } from './styles';
 
 type props = {
-  closeModal?: () => void;
+  closeModal: () => void;
 };
 
 const NewAgent: FC<props> = ({ closeModal }) => {
@@ -28,11 +29,12 @@ const NewAgent: FC<props> = ({ closeModal }) => {
       password: form.password.value,
       name: form.name.value,
       lastname: form.lastName.value,
-      image: '',
+      image: 'my-logo',
     };
-    if (formData) {
-      return false;
-    }
+
+    createUserService(formData).then(() => {
+      closeModal();
+    });
   };
 
   return (
