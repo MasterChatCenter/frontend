@@ -9,10 +9,9 @@ export const CardCenter = styled.div`
     text-align: center;
   }
 
-  label {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 25px 0;
+  div > label {
+    margin: auto;
+    margin-bottom: 25px;
   }
 
   @media screen and (min-width: 800px) {

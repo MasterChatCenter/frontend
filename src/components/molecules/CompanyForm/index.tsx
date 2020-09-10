@@ -1,6 +1,4 @@
 import React, { FC } from 'react';
-import { RiArrowDownSLine } from 'react-icons/ri';
-
 import AvatarChange from '@/atoms/AvatarChange';
 import InputEdit from '@/atoms/InputEdit';
 import InputSelect from '@/atoms/InputSelect';
@@ -16,7 +14,7 @@ const CompanyForm: FC = () => (
       placeholder="Escribe un nombre"
       value=""
     />
-    <InputSelect label="Categoria" icon={<RiArrowDownSLine />} />
+    <InputSelect />
   </Container>
 );
 

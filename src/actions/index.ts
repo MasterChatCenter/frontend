@@ -17,8 +17,10 @@ export const loginAction = (
       .then((data) => {
         dispatch({ type: LOGIN, payload: data });
       })
-      .catch(() => {
-        // make error
+      .catch((err) => {
+        if (err) {
+          return false;
+        }
       });
   };
 };
