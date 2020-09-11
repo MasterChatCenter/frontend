@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { loginService } from 'root/services';
+import { loginService, getUserService } from 'root/services';
 
 type login = {
   username: string;
@@ -41,3 +41,13 @@ export const loadCurrentConversation = (payload: string): action => ({
   type: 'LOAD_CURRENT_CONVERSATION',
   payload,
 });
+export const UPDATE_USER = 'UPDATE_USER';
+export const updateUserState = (
+  id: string
+): ThunkAction<void, any, unknown, Action<string>> => {
+  return (dispatch) => {
+    getUserService(id).then((res: any) => {
+      dispatch({ type: UPDATE_USER, payload: res.data.user });
+    });
+  };
+};

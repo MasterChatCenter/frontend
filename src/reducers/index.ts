@@ -6,6 +6,7 @@ import {
   LOGOUT,
   ADD_MESSAGE,
   LOAD_CURRENT_CONVERSATION,
+  UPDATE_USER,
 } from 'root/actions';
 
 type action = {
@@ -15,6 +16,10 @@ type action = {
 
 const userReducer = (state = false, { type, payload }: action) => {
   switch (type) {
+    case UPDATE_USER:
+      const updatedUser = { token: (state as any).token, ...payload };
+      document.cookie = `user=${JSON.stringify(updatedUser)}`;
+      return { token: (state as any).token, ...updatedUser };
     case LOGIN:
       document.cookie = `user=${JSON.stringify(payload)}`;
       if (payload.role.name === 'agent') {

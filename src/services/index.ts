@@ -25,10 +25,17 @@ type login = {
 };
 export const loginService = (data: login): Promise<void> => {
   return mutation(`${config.localApi}/login`, 'POST', data).then((res: any) => {
-    return fetch(`${config.localApi}/users/${res.data.user_id}`)
-      .then((response: any) => response.json())
-      .then((json) => ({ token: res.data.token, ...json.data.user }));
+    return getUserService(res.data.user_id).then((json: any) => ({
+      token: res.data.token,
+      ...json.data.user,
+    }));
   });
+};
+
+export const getUserService = (id: string): Promise<void> => {
+  return fetch(`${config.localApi}/users/${id}`).then((response: any) =>
+    response.json()
+  );
 };
 
 type complete = {
@@ -78,8 +85,10 @@ export const createUserService = (data: user): Promise<void> => {
   return mutation(`${config.localApi}/users`, 'POST', data);
 };
 
-export const getUsersService = (): Promise<void> => {
-  return fetch(`${config.localApi}/users`).then((res: any) => res.json());
+export const getUsersService = (id: string): Promise<void> => {
+  return mutation(`${config.localApi}/users/filter`, 'POST', {
+    company_id: id,
+  }).then((res: any) => res.json());
 };
 
 export const deleteUserService = (id: number): Promise<void> => {

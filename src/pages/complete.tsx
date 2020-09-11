@@ -3,7 +3,7 @@ import Router from 'next/router';
 import cookies from 'next-cookies';
 import { useState } from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Complete from '@/organisms/Complete';
 import AvatarChange from '@/atoms/AvatarChange';
@@ -11,6 +11,7 @@ import CompleteForm from '@/molecules/CompleteForm';
 import ButtonLink from '@/atoms/ButtonLink';
 import config from 'root/config';
 import { completeProfileService } from 'root/services';
+import { updateUserState } from 'root/actions';
 
 import { CSSContainer } from 'root/styles';
 
@@ -34,6 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const CompletePage = (): JSX.Element => {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({} as any);
   const user = useSelector((state: any) => state.user);
 
@@ -88,6 +90,7 @@ const CompletePage = (): JSX.Element => {
 
     completeProfileService(form, user.id)
       .then(() => {
+        dispatch(updateUserState(user.id));
         Router.push('/agents');
       })
       .catch((error: any) => {
