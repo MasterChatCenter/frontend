@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import InputChat from '../../atoms/InputChat/index';
 import Message from '../../molecules/Message/index';
@@ -10,19 +10,14 @@ type props = {
   changePage?: any;
 };
 
-const Conversation: FC<props> = ({ children }) => {
-  const conversation = useSelector((store: any) => store.conversations.current);
+const Conversation: FC<props> = () => {
+  const current = useSelector((store: any) => store.conversations.current);
+  const [conversation, setConversation] = useState(current);
   const [message, setMessage] = useState('');
 
-  const handleMove = (event: any) => {
-    if (event.movementX > 5) {
-      // changePage('0%');
-    }
-
-    if (event.movementX > -5) {
-      // changePage('-200%');
-    }
-  };
+  useEffect(() => {
+    setConversation(current);
+  }, [current]);
 
   const handleClick = (event: any) => {
     if (event.type === 'keyup' && event.keyCode !== 13) {
@@ -50,19 +45,26 @@ const Conversation: FC<props> = ({ children }) => {
     });
   };
 
+  if (!conversation) {
+    return (
+      <CSSConversation>
+        <h1>HOLAAAAA!</h1>
+      </CSSConversation>
+    );
+  }
+
   return (
-    <CSSConversation onDrag={handleMove}>
+    <CSSConversation>
       <div>
-        {conversation.messages.map((num: number) => (
-          <CSSMessage key={num}>
-            <Message type="sender" />
+        {conversation.messages.map(({ username, text }: any, idx: number) => (
+          <CSSMessage key={idx}>
+            <Message type="sender" username={username} text={text} />
           </CSSMessage>
         ))}
       </div>
       <CSSInputChat>
         <InputChat handleClick={handleClick} />
       </CSSInputChat>
-      {children}
     </CSSConversation>
   );
 };

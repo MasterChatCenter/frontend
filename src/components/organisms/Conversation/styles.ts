@@ -14,7 +14,7 @@ export const CSSConversation = styled.div`
   }
 
   @media screen and (min-width: 800px) {
-    grid-column: 4 / 9;
+    grid-column: 1 / 6;
     padding: 0;
   }
 `;

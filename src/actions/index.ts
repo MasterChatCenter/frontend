@@ -27,7 +27,17 @@ export const loginAction = (
 
 type action = {
   type: string;
-  payload: boolean;
+  payload: any;
 };
 export const LOGOUT = 'LOGOUT';
 export const logoutAction = (): action => ({ type: LOGOUT, payload: false });
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const addMessageAction = (payload: any): action => ({
+  type: 'ADD_MESSAGE',
+  payload,
+});
+export const LOAD_CURRENT_CONVERSATION = 'LOAD_CURRENT_CONVERSATION';
+export const loadCurrentConversation = (payload: string): action => ({
+  type: 'LOAD_CURRENT_CONVERSATION',
+  payload,
+});

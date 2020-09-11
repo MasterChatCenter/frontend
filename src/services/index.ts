@@ -24,7 +24,11 @@ type login = {
   password: string;
 };
 export const loginService = (data: login): Promise<void> => {
-  return mutation(`${config.localApi}/login`, 'GET', data);
+  return mutation(`${config.localApi}/login`, 'POST', data).then((res: any) => {
+    return fetch(`${config.localApi}/users/${res.data.user_id}`)
+      .then((response: any) => response.json())
+      .then((json) => ({ token: res.data.token, ...json.data.user }));
+  });
 };
 
 type complete = {

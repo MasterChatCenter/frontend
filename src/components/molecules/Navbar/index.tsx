@@ -8,6 +8,9 @@ import { CSSNavBar, NavBarContainer } from './styles';
 
 const Navbar: FC = () => {
   const user = useSelector((store: any) => store.user);
+  if (!user) {
+    return null;
+  }
   const type = user.role.name;
   return (
     <CSSNavBar>

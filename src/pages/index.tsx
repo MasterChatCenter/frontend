@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cookies from 'next-cookies';
 import io from 'socket.io-client';
 
@@ -8,8 +8,10 @@ import Layout from '@/templates/Layout';
 import ChatList from '@/organisms/ChatList';
 import Conversation from '@/organisms/Conversation';
 import Costumer from '@/organisms/Costumer';
+import PanelChat from '@/molecules/PanelChat';
+import { addMessageAction } from 'root/actions';
 
-import { ContainerChat } from 'root/styles';
+import { ContainerChat, LoadedChat } from 'root/styles';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
@@ -32,8 +34,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 let socket: any;
 const HomePage = (): JSX.Element => {
   const [margin, setMargin] = useState('0');
+  const user = useSelector((store: any) => store.user);
   const dispatch = useDispatch();
-
   const changeMobilePage = (width: string) => {
     const x = window.matchMedia('(min-width: 800px)');
     if (!x.matches) {
@@ -43,6 +45,11 @@ const HomePage = (): JSX.Element => {
 
   useEffect(() => {
     socket = io('https://ws.chatcenter.hyfi.dev/');
+    socket.emit('client', `${user.token}`, (error: any) => {
+      if (error) {
+        return false;
+      }
+    });
     socket.emit('join', { username: 'test1@mail.com' }, (error: any) => {
       if (error) {
         return false;
@@ -52,7 +59,7 @@ const HomePage = (): JSX.Element => {
 
   useEffect(() => {
     socket.on('answer', (message: any) => {
-      dispatch({ type: 'ADD_MESSAGE', payload: message });
+      dispatch(addMessageAction(message));
     });
   }, []);
 
@@ -60,8 +67,13 @@ const HomePage = (): JSX.Element => {
     <Layout>
       <ContainerChat style={{ marginLeft: margin }}>
         <ChatList changePage={changeMobilePage} />
-        <Conversation changePage={changeMobilePage} />
-        <Costumer />
+        <LoadedChat>
+          <PanelChat label="test1@mail.com" />
+          <div>
+            <Conversation changePage={changeMobilePage} />
+            <Costumer />
+          </div>
+        </LoadedChat>
       </ContainerChat>
     </Layout>
   );
