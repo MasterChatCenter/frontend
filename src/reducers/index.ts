@@ -22,7 +22,12 @@ const userReducer = (state = false, { type, payload }: action) => {
   }
 };
 
-const conversationsReducer = (state = false, { type }: action) => {
+const defaultState = {
+  all: [1, 2, 3, 4, 5, 6],
+  current: { messages: [1, 2, 3, 4, 5, 6] },
+};
+
+const conversationsReducer = (state = defaultState, { type }: action) => {
   switch (type) {
     default:
       return state;

@@ -36,8 +36,7 @@ const HomePage = (): JSX.Element => {
 
   const changeMobilePage = (width: string) => {
     const x = window.matchMedia('(min-width: 800px)');
-
-    if (x.matches) {
+    if (!x.matches) {
       setMargin(width);
     }
   };

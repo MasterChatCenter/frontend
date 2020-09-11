@@ -81,3 +81,7 @@ export const getUsersService = (): Promise<void> => {
 export const deleteUserService = (id: number): Promise<void> => {
   return mutation(`${config.localApi}/users/${id}`, 'DELETE', {});
 };
+
+export const sendMessageService = (data: any): Promise<void> => {
+  return mutation(`${config.localApi}/messages`, 'POST', data);
+};

@@ -10,6 +10,7 @@ export const CSSConversation = styled.div`
     height: 100%;
     padding: 0 20px;
     overflow-y: auto;
+    background-color: #f2f2f2;
   }
 
   @media screen and (min-width: 800px) {

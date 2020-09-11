@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import InputSearch from '../../atoms/InputSearch/index';
 import ChatButton from '../../molecules/ChatButton/index';
 import { CSSChatContainer, CSSWrapperSearch } from './styles';
@@ -11,14 +12,25 @@ type props = {
 };
 
 const ChatList: FC<props> = ({ changePage }) => {
-  const [users, setUsers] = useState([1, 2, 3, 4, 5, 6]);
-  const [search] = useState([1, 2, 3, 4, 5, 6]);
+  const dispatch = useDispatch();
+  const users = useSelector((store: any) => store.conversations.all);
+  const [usersFiltered, setUsersFiltered] = useState(users);
 
   const handleChange = (event: any) => {
-    const finded = search.filter(
+    if (event.target.value === '') {
+      setUsersFiltered(users);
+      return false;
+    }
+
+    const finded = users.filter(
       (num: any) => num === Number(event.target.value)
     );
-    setUsers(finded);
+    setUsersFiltered(finded);
+  };
+
+  const handleClick = (num: number) => {
+    changePage('-100%');
+    dispatch({ type: 'LOAD_CURRENT_CONVERSATION', payload: num });
   };
 
   return (
@@ -26,14 +38,14 @@ const ChatList: FC<props> = ({ changePage }) => {
       <CSSWrapperSearch>
         <InputSearch handleChange={handleChange} />
       </CSSWrapperSearch>
-      {users.map((num) => (
+      {usersFiltered.map((num: any) => (
         <ChatButton
           key={num}
           avatarUrl={IMAGEN}
           name="Darrell Steward"
           nickName="Darrell Steward"
           slug="Amet minim mollit non deserunt..."
-          onClick={changePage}
+          onClick={() => handleClick(num)}
         />
       ))}
     </CSSChatContainer>
