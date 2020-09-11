@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+.body {
+
+    margin: 0px;
+    padding: 10px;
+   
+}
+
+.tikets {
+    display: flex;
+    align-items: center;
+    width: 270px;
+    height: 40px;
+    border: 1px solid #EEEEEE;
+    background-color:#EEEEEE;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;;
+    
+}
+
+.tikets__date::-webkit-inner-spin-button,
+.tikets__date::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.tikets__date {
+    border: none;
+    background-color: #EEEEEE;
+    outline: none;
+}
+
+.tikets_user {
+    width: 270px;
+    display: flex;
+    justify-content:space-between;
+    margin: 10px;
+}
+
+.tikets__title {
+    font-weight: bold;
+}

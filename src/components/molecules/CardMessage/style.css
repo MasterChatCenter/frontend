@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+.body {
+
+    margin: 0px;
+    padding: 10px;
+   
+}
+
+.notes {
+
+    width: 270px;
+    height: 150px;
+    border: 1px solid #EEEEEE;
+    background-color:#EEEEEE;
+    border-radius: 15px;
+    padding: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;;
+    
+}
+
+.notes_text {
+    margin: 10px;
+}
+
+.notes__title {
+    font-weight: bold;
+}
