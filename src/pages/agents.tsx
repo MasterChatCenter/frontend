@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { GetServerSideProps } from 'next';
+import cookies from 'next-cookies';
 
 import Layout from '@/templates/Layout';
 import Modal from '@/molecules/Modal';
@@ -7,6 +9,21 @@ import AgentsList from '@/organisms/AgentsList';
 import NewAgent from '@/organisms/NewAgent';
 import DeleteAgent from '@/molecules/DeleteAgent';
 import { getUsersService, deleteUserService } from 'root/services';
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { user } = cookies(context as any);
+  if (!user) {
+    context.res.writeHead(302, { Location: '/login' }).end();
+  }
+
+  if ((user as any).role.name !== 'admin') {
+    context.res.writeHead(302, { Location: '/' }).end();
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const AgentsPage = (): JSX.Element => {
   const [modal, setModal] = useState(false);
@@ -42,7 +59,9 @@ const AgentsPage = (): JSX.Element => {
 
   const handleFind = (event: any) => {
     const finded = serchUsers.filter(
-      ({ name }: any) => name.indexOf(event.target.value) > -1
+      ({ name, lastname }: any) =>
+        name.indexOf(event.target.value) > -1 ||
+        lastname.indexOf(event.target.value) > -1
     );
     setUsers(finded);
   };

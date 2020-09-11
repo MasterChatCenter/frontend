@@ -11,7 +11,10 @@ type props = {
 
 const Layout: FC<props> = ({ children }): JSX.Element => (
   <Container>
-    <Header avatarUrl="" name="" />
+    <Header
+      avatarUrl="https://res.cloudinary.com/dwapbqqbo/image/upload/v1599370329/default.jpg"
+      name="default"
+    />
     <main>{children}</main>
     <Navbar />
   </Container>

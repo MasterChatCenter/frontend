@@ -22,8 +22,16 @@ const userReducer = (state = false, { type, payload }: action) => {
   }
 };
 
+const conversationsReducer = (state = false, { type }: action) => {
+  switch (type) {
+    default:
+      return state;
+  }
+};
+
 const reducers = {
   user: userReducer,
+  conversations: conversationsReducer,
 };
 
 export default combineReducers(reducers);

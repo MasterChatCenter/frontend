@@ -25,8 +25,8 @@ const AgentsList: FC<props> = ({ users, onEdit, onDelete }) => {
         <AgentCard
           key={idx}
           avatarUrl="https://www.tibs.org.tw/images/default.jpg"
-          name={user.name + '' + user.lastname}
-          nickName={user.name + '' + user.lastname}
+          name={`${user.name} ${user.lastname}`}
+          nickName={`${user.name} ${user.lastname}`}
           handleEdit={() => onEdit(user)}
           handleDelete={() => onDelete(user)}
         />
