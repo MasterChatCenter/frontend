@@ -8,6 +8,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (!user) {
     context.res.writeHead(302, { Location: '/login' }).end();
+    return {
+      props: {},
+    };
   }
 
   if ((user as any).role.name !== 'admin') {
