@@ -1,10 +1,9 @@
-import React, { FC, ReactChild } from 'react';
+import React, { FC } from 'react';
 import { CSSPanelChat } from './styles';
 import { FaEllipsisH, FaRegStickyNote } from 'react-icons/fa';
 
 type props = {
   label: string;
-  icon: ReactChild;
 };
 
 const PanelChat: FC<props> = ({ label }) => (

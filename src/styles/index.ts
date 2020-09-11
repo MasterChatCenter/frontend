@@ -69,9 +69,30 @@ export const ContainerChat = styled.div`
 
   @media screen and (min-width: 800px) {
     grid-template-columns: repeat(11, 1fr);
-    gap: 20px;
     width: 100%;
-    padding-top: 10px;
     margin-left: 0%;
+  }
+`;
+
+export const LoadedChat = styled.div`
+  grid-column: 4 /12;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 65px 1fr;
+  height: 100%;
+  overflow: hidden;
+
+  > div:first-child {
+    grid-column: 1 / 9;
+    grid-row: 1 / 2;
+  }
+
+  > div:last-child {
+    grid-column: 1 / 9;
+    grid-row: 2 / 3;
+    display: inherit;
+    grid-template-columns: repeat(8, 1fr);
+    height: 100%;
+    overflow: hidden;
   }
 `;

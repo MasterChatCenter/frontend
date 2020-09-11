@@ -9,7 +9,6 @@ export const CSSPanelChat = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 375px;
   height: 65px;
   border-right: 0px;
   border-left: 0px;

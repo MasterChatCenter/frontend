@@ -1,7 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import InputSearch from '../../atoms/InputSearch/index';
 import ChatButton from '../../molecules/ChatButton/index';
+import { loadCurrentConversation } from 'root/actions';
 import { CSSChatContainer, CSSWrapperSearch } from './styles';
 
 const IMAGEN =
@@ -16,6 +17,10 @@ const ChatList: FC<props> = ({ changePage }) => {
   const users = useSelector((store: any) => store.conversations.all);
   const [usersFiltered, setUsersFiltered] = useState(users);
 
+  useEffect(() => {
+    setUsersFiltered(users);
+  }, [users]);
+
   const handleChange = (event: any) => {
     if (event.target.value === '') {
       setUsersFiltered(users);
@@ -28,9 +33,9 @@ const ChatList: FC<props> = ({ changePage }) => {
     setUsersFiltered(finded);
   };
 
-  const handleClick = (num: number) => {
-    changePage('-100%');
-    dispatch({ type: 'LOAD_CURRENT_CONVERSATION', payload: num });
+  const handleClick = (senderId: string) => {
+    changePage('0');
+    dispatch(loadCurrentConversation(senderId));
   };
 
   return (
@@ -38,14 +43,14 @@ const ChatList: FC<props> = ({ changePage }) => {
       <CSSWrapperSearch>
         <InputSearch handleChange={handleChange} />
       </CSSWrapperSearch>
-      {usersFiltered.map((num: any) => (
+      {usersFiltered.map(({ username, text, senderId }: any, idx: number) => (
         <ChatButton
-          key={num}
+          key={idx}
           avatarUrl={IMAGEN}
-          name="Darrell Steward"
-          nickName="Darrell Steward"
-          slug="Amet minim mollit non deserunt..."
-          onClick={() => handleClick(num)}
+          name={username}
+          nickName={username}
+          slug={text}
+          onClick={() => handleClick(senderId)}
         />
       ))}
     </CSSChatContainer>

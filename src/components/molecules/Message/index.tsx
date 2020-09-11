@@ -5,21 +5,19 @@ import { CSSPanel, CSSWrapper } from './styles';
 
 type props = {
   type?: any;
+  username: string;
+  text: string;
 };
 
-const Message: FC<props> = ({ type }): JSX.Element => (
+const Message: FC<props> = ({ type, username, text }): JSX.Element => (
   <CSSWrapper typeMessage={type}>
     <AvatarUser
-      name="Gustavo"
+      name={username}
       avatarurl="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383_960_720.jpg"
     />
     <CSSPanel>
-      <p>Theresa Webb</p>
-      <p>
-        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-        sint. Velit officia consequat duis enim velit mollit. Exercitation
-        veniam consequat sunt nostrud amet.
-      </p>
+      <p>{username}</p>
+      <p>{text}</p>
       <p>06/09/2020</p>
     </CSSPanel>
   </CSSWrapper>

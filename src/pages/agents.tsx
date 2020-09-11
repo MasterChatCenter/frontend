@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import cookies from 'next-cookies';
+import { useSelector } from 'react-redux';
 
 import Layout from '@/templates/Layout';
 import Modal from '@/molecules/Modal';
@@ -29,6 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const AgentsPage = (): JSX.Element => {
+  const user = useSelector((state: any) => state.user);
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [userLoaded, setUserLoaded] = useState(false as any);
@@ -37,10 +39,14 @@ const AgentsPage = (): JSX.Element => {
 
   useEffect(() => {
     if (!modal || !deleteModal) {
-      getUsersService().then((res: any) => {
-        setUsers(res.data.users);
-        setSerchUsers(res.data.users);
-      });
+      getUsersService(user.company_id)
+        .then((res: any) => {
+          setUsers(res.data.users);
+          setSerchUsers(res.data.users);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
     }
   }, [modal, deleteModal]);
 
