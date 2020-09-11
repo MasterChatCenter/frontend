@@ -37,13 +37,14 @@ type complete = {
   image: string;
 };
 export const completeProfileService = (
-  data: complete
+  data: complete,
+  id: number
 ): Promise<[void, void]> => {
   const dataCompany = {
     name: data.company,
-    logo: 'my-logo',
-    facebook_id: data.facebookId,
-    token_facebook: data.tokenFacebook,
+    logo: '',
+    facebookId: data.facebookId,
+    tokenFacebook: data.tokenFacebook,
     category: data.category,
   };
 
@@ -52,10 +53,10 @@ export const completeProfileService = (
       const dataUser = {
         name: data.name,
         lastname: data.lastname,
-        image: data.image,
+        image: '',
         company_id: res.data.user.id,
       };
-      return mutation(`${config.localApi}/users/2`, 'PATCH', dataUser);
+      return mutation(`${config.localApi}/users/${id}`, 'PATCH', dataUser);
     }
   );
 };
@@ -66,9 +67,11 @@ type user = {
   name: string;
   lastname: string;
   image: string;
+  company_id: number;
+  role_id: number;
 };
 export const createUserService = (data: user): Promise<void> => {
-  return mutation(`${config.localApi}/users`, 'POST', { ...data, role_id: 2 });
+  return mutation(`${config.localApi}/users`, 'POST', data);
 };
 
 export const getUsersService = (): Promise<void> => {
@@ -77,4 +80,8 @@ export const getUsersService = (): Promise<void> => {
 
 export const deleteUserService = (id: number): Promise<void> => {
   return mutation(`${config.localApi}/users/${id}`, 'DELETE', {});
+};
+
+export const sendMessageService = (data: any): Promise<void> => {
+  return mutation(`${config.localApi}/messages`, 'POST', data);
 };

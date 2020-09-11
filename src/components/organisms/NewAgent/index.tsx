@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 
 import CardShadow from '@/atoms/CardShadow';
 import AvatarChange from '@/atoms/AvatarChange';
@@ -13,6 +14,7 @@ type props = {
 };
 
 const NewAgent: FC<props> = ({ closeModal }) => {
+  const user = useSelector((store: any) => store.user);
   const handleChange = (event: any) => {
     const file = event.target.files[0];
 
@@ -30,6 +32,8 @@ const NewAgent: FC<props> = ({ closeModal }) => {
       name: form.name.value,
       lastname: form.lastName.value,
       image: 'my-logo',
+      company_id: user.company.id,
+      role_id: 2,
     };
 
     createUserService(formData).then(() => {

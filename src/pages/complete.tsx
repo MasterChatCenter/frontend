@@ -3,6 +3,7 @@ import Router from 'next/router';
 import cookies from 'next-cookies';
 import { useState } from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import { useSelector } from 'react-redux';
 
 import Complete from '@/organisms/Complete';
 import AvatarChange from '@/atoms/AvatarChange';
@@ -17,8 +18,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (!user) {
     context.res.writeHead(302, { Location: '/login' }).end();
+    return {
+      props: {},
+    };
   }
-
+  if ((user as any).role.name !== 'admin') {
+    context.res.writeHead(302, { Location: '/' }).end();
+  }
+  if (typeof (user as any).company_id === 'number') {
+    context.res.writeHead(302, { Location: '/agents' }).end();
+  }
   return {
     props: {},
   };
@@ -26,6 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const CompletePage = (): JSX.Element => {
   const [form, setForm] = useState({} as any);
+  const user = useSelector((state: any) => state.user);
 
   const responseFacebook = (data: any) => {
     setForm({
@@ -76,7 +86,7 @@ const CompletePage = (): JSX.Element => {
       return false;
     }
 
-    completeProfileService(form)
+    completeProfileService(form, user.id)
       .then(() => {
         Router.push('/agents');
       })

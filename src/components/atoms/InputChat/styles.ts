@@ -2,19 +2,21 @@ import styled from 'styled-components';
 
 export const CSSChatBar = styled.div`
   width: 100%;
-  border-radius: 15px;
+  border-radius: 10px;
+  padding: 0 10px;
   border: 1px solid #e4e4e4;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #eee;
 `;
 
 export const CSSInput = styled.input`
   width: 100%;
-  height: 35px;
-  border-radius: 15px;
+  padding: 10px 0;
   border: none;
   outline: none;
+  background-color: transparent;
 `;
 
 export const CSSChatAction = styled.button`
@@ -28,7 +30,7 @@ export const CSSChatAction = styled.button`
   margin: 3px;
   background-color: transparent;
   cursor: pointer;
-
+  outline: none;
   svg {
     font-size: 15px;
   }

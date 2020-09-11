@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import cookies from 'next-cookies';
+import io from 'socket.io-client';
 
 import Layout from '@/templates/Layout';
 import ChatList from '@/organisms/ChatList';
@@ -13,6 +15,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (!user) {
     context.res.writeHead(302, { Location: '/login' }).end();
+    return {
+      props: {},
+    };
+  }
+
+  if ((user as any).role.name !== 'agent') {
+    context.res.writeHead(302, { Location: '/agents' }).end();
   }
 
   return {
@@ -20,16 +29,32 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
+let socket: any;
 const HomePage = (): JSX.Element => {
   const [margin, setMargin] = useState('0');
+  const dispatch = useDispatch();
 
   const changeMobilePage = (width: string) => {
     const x = window.matchMedia('(min-width: 800px)');
-
-    if (x.matches) {
+    if (!x.matches) {
       setMargin(width);
     }
   };
+
+  useEffect(() => {
+    socket = io('https://ws.chatcenter.hyfi.dev/');
+    socket.emit('join', { username: 'test1@mail.com' }, (error: any) => {
+      if (error) {
+        return false;
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    socket.on('answer', (message: any) => {
+      dispatch({ type: 'ADD_MESSAGE', payload: message });
+    });
+  }, []);
 
   return (
     <Layout>

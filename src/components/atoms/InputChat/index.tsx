@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { MdInsertEmoticon, MdAttachFile, MdSend } from 'react-icons/md';
 
 import { CSSChatBar, CSSChatAction, CSSInput } from './styles';
 
-const InputChat = (): JSX.Element => (
+type props = {
+  handleClick: any;
+};
+
+const InputChat: FC<props> = ({ handleClick }): JSX.Element => (
   <CSSChatBar>
-    <CSSInput placeholder="Escribe un mensaje" />
+    <CSSInput placeholder="Escribe un mensaje" onKeyUp={handleClick} />
     <CSSChatAction>
       <MdInsertEmoticon />
     </CSSChatAction>
     <CSSChatAction>
       <MdAttachFile />
     </CSSChatAction>
-    <CSSChatAction>
+    <CSSChatAction onClick={handleClick}>
       <MdSend />
     </CSSChatAction>
   </CSSChatBar>
