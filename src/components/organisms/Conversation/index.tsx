@@ -11,13 +11,13 @@ type props = {
 };
 
 const Conversation: FC<props> = () => {
-  const current = useSelector((store: any) => store.conversations.current);
-  const [conversation, setConversation] = useState(current);
+  const conversationCurrent = useSelector((store: any) => store.conversations);
+  const [conversation, setConversation] = useState(conversationCurrent.current);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    setConversation(current);
-  }, [current]);
+    setConversation(conversationCurrent.current);
+  }, [conversationCurrent]);
 
   const handleClick = (event: any) => {
     if (event.type === 'keyup' && event.keyCode !== 13) {

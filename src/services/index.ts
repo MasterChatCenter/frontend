@@ -88,7 +88,7 @@ export const createUserService = (data: user): Promise<void> => {
 export const getUsersService = (id: string): Promise<void> => {
   return mutation(`${config.localApi}/users/filter`, 'POST', {
     company_id: id,
-  }).then((res: any) => res.json());
+  });
 };
 
 export const deleteUserService = (id: number): Promise<void> => {
@@ -97,4 +97,30 @@ export const deleteUserService = (id: number): Promise<void> => {
 
 export const sendMessageService = (data: any): Promise<void> => {
   return mutation(`${config.localApi}/messages`, 'POST', data);
+};
+
+type updateCompany = {
+  name?: string;
+  category?: string;
+  logo?: string;
+};
+export const updateCompanyService = (
+  data: updateCompany,
+  id: string
+): Promise<void> => {
+  return mutation(`${config.localApi}/companies/${id}`, 'PATCH', data);
+};
+
+export const updateUserService = (
+  data: updateCompany,
+  id: string
+): Promise<void> => {
+  return mutation(`${config.localApi}/users/${id}`, 'PATCH', data);
+};
+
+export const updateCostumerService = (
+  data: updateCompany,
+  id: string
+): Promise<void> => {
+  return mutation(`${config.localApi}/costumers/${id}`, 'PATCH', data);
 };

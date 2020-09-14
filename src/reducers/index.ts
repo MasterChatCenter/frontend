@@ -1,42 +1,11 @@
 /* eslint-disable no-case-declarations */
-import Router from 'next/router';
 import { combineReducers } from 'redux';
-import {
-  LOGIN,
-  LOGOUT,
-  ADD_MESSAGE,
-  LOAD_CURRENT_CONVERSATION,
-  UPDATE_USER,
-} from 'root/actions';
+import userReducer from './userReducer';
+import { ADD_MESSAGE, LOAD_CURRENT_CONVERSATION } from 'root/actions';
 
 type action = {
   type: string;
   payload: any;
-};
-
-const userReducer = (state = false, { type, payload }: action) => {
-  switch (type) {
-    case UPDATE_USER:
-      const updatedUser = { token: (state as any).token, ...payload };
-      document.cookie = `user=${JSON.stringify(updatedUser)}`;
-      return { token: (state as any).token, ...updatedUser };
-    case LOGIN:
-      document.cookie = `user=${JSON.stringify(payload)}`;
-      if (payload.role.name === 'agent') {
-        Router.push('/');
-      } else if (typeof payload.company_id === 'number') {
-        Router.push('/agents');
-      } else {
-        Router.push('/complete');
-      }
-      return payload;
-    case LOGOUT:
-      document.cookie = 'user=';
-      Router.push('/login');
-      return payload;
-    default:
-      return state;
-  }
 };
 
 const defaultState = {
