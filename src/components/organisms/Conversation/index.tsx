@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import InputChat from '../../atoms/InputChat/index';
 import Message from '../../molecules/Message/index';
-import { sendMessageService } from 'root/services';
+import { sendMessage } from 'root/actions';
 import { CSSConversation, CSSMessage, CSSInputChat } from './styles';
 
 type props = {
@@ -11,7 +11,9 @@ type props = {
 };
 
 const Conversation: FC<props> = () => {
+  const dispatch = useDispatch();
   const conversationCurrent = useSelector((store: any) => store.conversations);
+  const user = useSelector((store: any) => store.user);
   const [conversation, setConversation] = useState(conversationCurrent.current);
   const [message, setMessage] = useState('');
 
@@ -33,16 +35,16 @@ const Conversation: FC<props> = () => {
     }
 
     const dataForm = {
-      text: message,
-      sendDate: '',
-      senderId: '',
-      conversation_id: 1,
+      messageData: {
+        text: message,
+        sendDate: '02-Sep-2020',
+        senderId: conversation.senderId,
+      },
+      senderId: conversation.senderId,
+      tokenFacebook: user.company.tokenFacebook,
     };
 
-    sendMessageService(dataForm).then(() => {
-      setMessage('');
-      alert('Enviando el mensaje');
-    });
+    dispatch(sendMessage(dataForm, `${user.name} ${user.lastname}`));
   };
 
   if (!conversation) {
@@ -56,11 +58,17 @@ const Conversation: FC<props> = () => {
   return (
     <CSSConversation>
       <div>
-        {conversation.messages.map(({ username, text }: any, idx: number) => (
-          <CSSMessage key={idx}>
-            <Message type="sender" username={username} text={text} />
-          </CSSMessage>
-        ))}
+        {conversation.messages.map(
+          ({ username, text, type }: any, idx: number) => (
+            <CSSMessage key={idx}>
+              <Message
+                type={type ? type : 'recipient'}
+                username={username}
+                text={text}
+              />
+            </CSSMessage>
+          )
+        )}
       </div>
       <CSSInputChat>
         <InputChat handleClick={handleClick} />

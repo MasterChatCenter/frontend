@@ -1,6 +1,10 @@
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { loginService, getUserService } from 'root/services';
+import {
+  loginService,
+  getUserService,
+  sendMessageService,
+} from 'root/services';
 
 type login = {
   username: string;
@@ -63,3 +67,20 @@ export const updateLocalUser = (payload: {
   name: string;
   value: string;
 }): action => ({ type: UPDATE_LOCAL_USER, payload });
+
+export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const sendMessage = (
+  data: any,
+  username: string
+): ThunkAction<void, any, unknown, Action<string>> => {
+  return (dispatch) => {
+    sendMessageService(data)
+      .then(() => {
+        dispatch({
+          type: SEND_MESSAGE,
+          payload: { type: 'sender', text: data.messageData.text, username },
+        });
+      })
+      .catch();
+  };
+};

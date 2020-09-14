@@ -21,6 +21,7 @@ export const CSSWrapper: StyledComponent<
 `;
 
 export const CSSPanel = styled.div`
+  width: 100%;
   border-radius: 10px;
   background-color: #e6f9f7;
 

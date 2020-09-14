@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const CSSPanelChat = styled.div`
   p {
-    padding-left: 10px;
     font-weight: bold;
   }
 
@@ -13,11 +12,8 @@ export const CSSPanelChat = styled.div`
   border-right: 0px;
   border-left: 0px;
   border-bottom: 1px solid #4f4f4f;
-  font-size: 14px;
-  font-family: 'Lato', sans-serif;
-
+  padding: 0 20px;
   figure {
-    margin-right: 10px;
   }
 
   button {
@@ -25,10 +21,26 @@ export const CSSPanelChat = styled.div`
     background-color: white;
     outline: none;
     cursor: pointer;
+    svg {
+      font-size: 16px;
+    }
   }
 
   button:last-child {
-    position: relative;
-    bottom: 1px;
+    margin-left: 10px;
+  }
+`;
+
+export const NewNote = styled.div`
+  padding-top: 20px;
+  textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    resize: none;
+    outline: none;
+    background-color: #eee;
   }
 `;

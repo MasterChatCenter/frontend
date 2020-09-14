@@ -4,7 +4,6 @@ import cookies from 'next-cookies';
 import { useState } from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { useSelector, useDispatch } from 'react-redux';
-
 import Complete from '@/organisms/Complete';
 import AvatarChange from '@/atoms/AvatarChange';
 import CompleteForm from '@/molecules/CompleteForm';
@@ -40,12 +39,19 @@ const CompletePage = (): JSX.Element => {
   const user = useSelector((state: any) => state.user);
 
   const responseFacebook = (data: any) => {
-    setForm({
-      ...form,
-      facebookId: data.id,
-      tokenFacebook: data.accessToken,
-      image: data.picture.data.url,
-    });
+    fetch(`/api/getfacebookdata?token=${data.accessToken}&id=${data.id}`)
+      .then((res: any) => res.json())
+      .then((json) => {
+        setForm({
+          ...form,
+          facebookId: json.id,
+          tokenFacebook: json.token,
+          image: data.picture.data.url,
+        });
+      })
+      .catch((err: any) => {
+        alert(err.message);
+      });
   };
 
   const handleAvatar = (event: any) => {
@@ -85,6 +91,7 @@ const CompletePage = (): JSX.Element => {
       !form.tokenFacebook ||
       form.tokenFacebook === ''
     ) {
+      alert('Completa todos los campos y conecta con facebook');
       return false;
     }
 
