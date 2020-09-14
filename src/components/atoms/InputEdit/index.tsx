@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { FaPen, FaSave } from 'react-icons/fa';
 
 import { Container, Input } from './styles';
@@ -8,6 +8,8 @@ type props = {
   type: string;
   placeholder: string;
   value: string;
+  onSave: any;
+  name: string;
 };
 
 const InputEdit: FC<props> = ({
@@ -15,15 +17,21 @@ const InputEdit: FC<props> = ({
   type,
   placeholder,
   value,
+  onSave,
+  name,
 }): JSX.Element => {
   const [isEditable, setEditable] = useState(false);
   const [currentValue, setCurrentValue] = useState(value);
 
-  const handleClick = () => {
-    setEditable(!isEditable);
+  useEffect(() => {
+    setCurrentValue(value);
+  }, [value]);
 
+  const handleClick = () => {
     if (isEditable) {
-      alert('Guardando');
+      onSave(currentValue, name, setCurrentValue, setEditable);
+    } else {
+      setEditable(!isEditable);
     }
   };
 
@@ -36,6 +44,7 @@ const InputEdit: FC<props> = ({
         value={currentValue}
         onChange={(e) => setCurrentValue(e.target.value)}
         disabled={!isEditable}
+        name={name}
       />
       <button type="button" onClick={handleClick}>
         {!isEditable ? <FaPen /> : <FaSave />}

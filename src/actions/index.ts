@@ -51,3 +51,15 @@ export const updateUserState = (
     });
   };
 };
+
+export const UPDATE_LOCAL_COMPANY = 'UPDATE_LOCAL_COMPANY';
+export const updateLocalCompany = (payload: {
+  name: string;
+  value: string;
+}): action => ({ type: UPDATE_LOCAL_COMPANY, payload });
+
+export const UPDATE_LOCAL_USER = 'UPDATE_LOCAL_USER';
+export const updateLocalUser = (payload: {
+  name: string;
+  value: string;
+}): action => ({ type: UPDATE_LOCAL_USER, payload });

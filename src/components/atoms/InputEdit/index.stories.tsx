@@ -9,5 +9,7 @@ storiesOf('atoms / Inputs', module).add('Input Edit', () => (
     label="Nombre de la empresa"
     placeholder="Nombre de la empresa"
     value="Patito VC"
+    name="any"
+    onSave={() => alert('Saved')}
   />
 ));

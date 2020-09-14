@@ -9,6 +9,7 @@ export const CSSConversation = styled.div`
   > div:first-child {
     height: 100%;
     padding: 0 20px;
+    padding-bottom: 80px;
     overflow-y: auto;
     background-color: #f2f2f2;
   }
