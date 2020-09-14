@@ -76,7 +76,9 @@ const RegisterPage = (): JSX.Element => {
     <CSSContainer>
       <Register>
         {errors.map((err, idx) => (
-          <p key={idx}>{err}</p>
+          <p key={idx} style={{ width: '100%' }}>
+            {err}
+          </p>
         ))}
         <RegisterForm handleSubmit={handleSubmit} />
       </Register>

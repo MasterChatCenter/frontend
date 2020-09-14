@@ -1,56 +1,18 @@
-/* eslint-disable no-case-declarations */
 import { combineReducers } from 'redux';
 import userReducer from './userReducer';
-import { ADD_MESSAGE, LOAD_CURRENT_CONVERSATION } from 'root/actions';
+import {
+  ADD_MESSAGE,
+  LOAD_CURRENT_CONVERSATION,
+  SEND_MESSAGE,
+} from 'root/actions';
 
 type action = {
   type: string;
   payload: any;
 };
 
-const defaultState = {
-  all: [
-    {
-      messages: [
-        {
-          pageId: '116313523496135',
-          senderId: '3805880279428853',
-          text: 'Jdflhdjl',
-          username: 'Usuario 2',
-        },
-        {
-          pageId: '116313523496135',
-          senderId: '3805880279428853',
-          text: 'Hfjñkghk',
-          username: 'Usuario 2',
-        },
-      ],
-      pageId: '1234567',
-      senderId: '1234567',
-      text: 'Jdflhdjl',
-      username: 'Morty Smith',
-    },
-    {
-      messages: [
-        {
-          pageId: '116313523496135',
-          senderId: '3805880279428853',
-          text: 'Jdflhdjl',
-          username: 'Morty Smith',
-        },
-        {
-          pageId: '116313523496135',
-          senderId: '3805880279428853',
-          text: 'Hfjñkghk',
-          username: 'Morty Smith',
-        },
-      ],
-      pageId: '116313523496135',
-      senderId: '3805880279428853',
-      text: 'Jdflhdjl',
-      username: 'Usuario 2',
-    },
-  ],
+const defaultState: any = {
+  all: [],
   current: false,
 };
 
@@ -59,7 +21,12 @@ const conversationsReducer = (
   { type, payload }: action
 ) => {
   switch (type) {
-    case ADD_MESSAGE:
+    case SEND_MESSAGE: {
+      const newState = { ...state.current };
+      newState.messages.push(payload);
+      return { ...state, current: newState };
+    }
+    case ADD_MESSAGE: {
       const existsUser = state.all.find((user: any) => {
         return user.senderId === payload.senderId;
       });
@@ -76,11 +43,13 @@ const conversationsReducer = (
       existsUser.messages.push(payload as any);
 
       return { ...state };
-    case LOAD_CURRENT_CONVERSATION:
+    }
+    case LOAD_CURRENT_CONVERSATION: {
       const exists = state.all.find((user: any) => {
         return user.senderId === payload;
       });
       return { ...state, current: exists };
+    }
     default:
       return state;
   }

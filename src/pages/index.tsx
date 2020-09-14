@@ -68,7 +68,7 @@ const HomePage = (): JSX.Element => {
       <ContainerChat style={{ marginLeft: margin }}>
         <ChatList changePage={changeMobilePage} />
         <LoadedChat>
-          <PanelChat label="test1@mail.com" />
+          <PanelChat />
           <div>
             <Conversation changePage={changeMobilePage} />
             <Costumer />
