@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import InputChat from '../../atoms/InputChat/index';
 import Message from '../../molecules/Message/index';
 import { sendMessage } from 'root/actions';
-import { CSSConversation, CSSMessage, CSSInputChat } from './styles';
+import { CSSConversation, CSSMessage, CSSInputChat, H1 } from './styles';
 
 type props = {
   children?: any;
@@ -48,11 +48,7 @@ const Conversation: FC<props> = () => {
   };
 
   if (!conversation) {
-    return (
-      <CSSConversation>
-        <h1>HOLAAAAA!</h1>
-      </CSSConversation>
-    );
+    return <H1>No has seleccionado ni una conversación</H1>;
   }
 
   return (
