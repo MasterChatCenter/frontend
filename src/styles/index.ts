@@ -42,6 +42,19 @@ small {
   font-size: 10px;
   font-weight: normal;
 }
+.my-node-enter {
+    opacity: 0;
+  }
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+}
 `;
 
 export const CSSContainer = styled.div`

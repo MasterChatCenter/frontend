@@ -1,11 +1,10 @@
-import { GetServerSideProps } from 'next';
 import { useState, useEffect } from 'react';
-import cookies from 'next-cookies';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import styled from 'styled-components';
 
-import Layout from '@/templates/Layout';
 import Settings from '@/organisms/Settings';
+
+import Layout from '@/templates/Layout';
 
 const DIV = styled.div`
   .my-node-enter {
@@ -23,25 +22,7 @@ const DIV = styled.div`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { user } = cookies(context);
-  if (!user) {
-    context.res.writeHead(302, { Location: '/login' }).end();
-    return {
-      props: {},
-    };
-  }
-
-  if ((user as any).role.name !== 'admin') {
-    context.res.writeHead(302, { Location: '/' }).end();
-  }
-
-  return {
-    props: {},
-  };
-};
-
-const SettingsPage = (): JSX.Element => {
+const Conversations = () => {
   const [inProp, setInProp] = useState(false);
   useEffect(() => {
     setTimeout(() => setInProp(true), 200);
@@ -56,4 +37,4 @@ const SettingsPage = (): JSX.Element => {
   );
 };
 
-export default SettingsPage;
+export default Conversations;

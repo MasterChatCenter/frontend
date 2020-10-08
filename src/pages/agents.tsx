@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import cookies from 'next-cookies';
 import { useSelector } from 'react-redux';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import styled from 'styled-components';
 
 import Layout from '@/templates/Layout';
 import Modal from '@/molecules/Modal';
@@ -10,6 +12,22 @@ import AgentsList from '@/organisms/AgentsList';
 import NewAgent from '@/organisms/NewAgent';
 import DeleteAgent from '@/molecules/DeleteAgent';
 import { getUsersService, deleteUserService } from 'root/services';
+
+const DIV = styled.div`
+  .my-node-enter {
+    opacity: 0;
+  }
+  .my-node-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+  .my-node-exit {
+    opacity: 1;
+  }
+  .my-node-exit-active {
+    opacity: 0;
+  }
+`;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context as any);
@@ -36,6 +54,10 @@ const AgentsPage = (): JSX.Element => {
   const [userLoaded, setUserLoaded] = useState(false as any);
   const [users, setUsers] = useState([]);
   const [serchUsers, setSerchUsers] = useState([]);
+  const [inProp, setInProp] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setInProp(true), 200);
+  }, []);
 
   useEffect(() => {
     if (!modal || !deleteModal) {
@@ -86,9 +108,19 @@ const AgentsPage = (): JSX.Element => {
           onDelete={deleteAgent}
         />
       </Modal>
-      <Agents openModal={() => setModal(true)} handleChange={handleFind}>
-        <AgentsList users={users} onEdit={handleEdit} onDelete={handleDelete} />
-      </Agents>
+      <TransitionGroup component={DIV}>
+        <Agents
+          inProp={inProp}
+          openModal={() => setModal(true)}
+          handleChange={handleFind}
+        >
+          <AgentsList
+            users={users}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+        </Agents>
+      </TransitionGroup>
     </Layout>
   );
 };
