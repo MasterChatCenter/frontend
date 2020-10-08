@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
-import userReducer from './userReducer';
-import {
-  ADD_MESSAGE,
-  LOAD_CURRENT_CONVERSATION,
-  SEND_MESSAGE,
-} from 'root/actions';
+import userReducer from './user';
+import conversationsReducer from './conversations';
 
+const reducers = {
+  user: userReducer,
+  conversations: conversationsReducer,
+};
+
+export default combineReducers(reducers);
+
+/*
 type action = {
   type: string;
   payload: any;
@@ -54,10 +58,4 @@ const conversationsReducer = (
       return state;
   }
 };
-
-const reducers = {
-  user: userReducer,
-  conversations: conversationsReducer,
-};
-
-export default combineReducers(reducers);
+*/
