@@ -1,6 +1,7 @@
 import config from 'root/config';
+export { default as AgentsService } from './agents';
 
-const mutation = (url: string, method: string, data: any) => {
+export const mutation = (url: string, method: string, data: any) => {
   return fetch(url, {
     method,
     headers: {

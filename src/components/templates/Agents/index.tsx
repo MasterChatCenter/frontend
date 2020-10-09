@@ -1,32 +1,55 @@
-import React, { FC, ReactNode } from 'react';
+import Link from 'next/link';
+import { useState, FC } from 'react';
 import { MdAdd } from 'react-icons/md';
-import InputSearch from '@/atoms/InputSearch';
-import { CSSTransition /*TransitionGroup*/ } from 'react-transition-group';
+import { AgentCard, List } from '@/molecules';
+import { InputSearch } from '@/atoms';
 
-import { Div, Button } from './styles';
+import { Button, Container, Header } from './styles';
 
 type props = {
-  children: ReactNode;
-  openModal: () => void;
-  handleChange?: any;
-  inProp: any;
+  agents: never[];
 };
 
-const Agents: FC<props> = ({ openModal, children, handleChange, inProp }) => {
-  if (!inProp) return null;
+const Agents: FC<props> = ({ agents }): JSX.Element => {
+  const [data, setData] = useState([...agents]);
+
+  const handleChange = (event: any) => {
+    const finded = agents.filter(
+      ({ name, lastname }: any) =>
+        name.indexOf(event.target.value) > -1 ||
+        lastname.indexOf(event.target.value) > -1
+    );
+    setData(finded);
+  };
+
+  if (!agents) return <h1>Cargando</h1>;
   return (
-    <CSSTransition in={inProp} timeout={400} classNames="my-node">
-      <Div>
-        <div>
-          <InputSearch handleChange={handleChange} />
-          <Button onClick={openModal}>
-            <MdAdd />
-            <p>Nuevo</p>
-          </Button>
-        </div>
-        {children}
-      </Div>
-    </CSSTransition>
+    <Container>
+      <Header>
+        <InputSearch handleChange={handleChange} />
+        <Button>
+          <Link href="agents/new">
+            <>
+              <MdAdd />
+              <p>Nuevo</p>
+            </>
+          </Link>
+        </Button>
+      </Header>
+      <List
+        data={data}
+        render={({ id, image, name, lastname, username }: any) => (
+          <AgentCard
+            key={id}
+            uuid={id}
+            avatar={image}
+            name={name}
+            lastname={lastname}
+            username={username}
+          />
+        )}
+      />
+    </Container>
   );
 };
 

@@ -57,6 +57,19 @@ small {
 }
 `;
 
+export const Grid = styled.div`
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 20px;
+    padding: 0;
+  }
+`;
+
 export const CSSContainer = styled.div`
   display: flex;
   justify-content: center;

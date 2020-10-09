@@ -1,39 +1,28 @@
+import Link from 'next/link';
 import React, { FC } from 'react';
+import { CardBorder, AvatarUser } from '@/atoms';
 
-import CardBorder from '../../atoms/CardBorder/index';
-import AvatarUser from '../../atoms/AvatarUser/index';
-import ButtonLarge from '../../atoms/ButtonLarge';
-import ButtonLink from '../../atoms/ButtonLink';
-
-import { CSSNickName, CSSDivider, Container, Wrapper } from './styles';
+import { Wrapper, P } from './styles';
 
 type props = {
-  avatarUrl: string;
+  uuid: string;
+  avatar: string;
   name: string;
-  nickName: string;
-  handleEdit: any;
-  handleDelete: any;
+  lastname: string;
+  username: string;
 };
 
-const AgentCard: FC<props> = ({
-  avatarUrl,
-  name,
-  nickName,
-  handleEdit,
-  handleDelete,
-}) => {
+const AgentCard: FC<props> = ({ uuid, avatar, name, lastname, username }) => {
   return (
     <CardBorder>
-      <CSSDivider>
-        <AvatarUser avatarurl={avatarUrl} name={name} />
-        <Wrapper>
-          <CSSNickName>{nickName}</CSSNickName>
-          <Container>
-            <ButtonLarge handleClick={handleEdit}>Editar</ButtonLarge>
-            <ButtonLink handleClick={handleDelete}>Eliminar</ButtonLink>
-          </Container>
-        </Wrapper>
-      </CSSDivider>
+      <Wrapper>
+        <AvatarUser avatarurl={avatar} name={name} />
+        <P>{`${name} ${lastname}`}</P>
+        <P>{username}</P>
+        <a>
+          <Link href={`agents/edit/${uuid}`}>Editar</Link>
+        </a>
+      </Wrapper>
     </CardBorder>
   );
 };

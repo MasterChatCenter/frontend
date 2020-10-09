@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.div`
+export const Button = styled.a`
   position: absolute;
   right: 20px;
   bottom: 90px;
@@ -12,6 +12,7 @@ export const Button = styled.div`
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #80cbc4;
+  text-decoration: none;
   cursor: pointer;
 
   p {
@@ -41,29 +42,14 @@ export const Button = styled.div`
   }
 `;
 
-export const Div = styled.div`
-  padding: 20px;
-  height: 100%;
-  overflow-y: auto;
+export const Container = styled.div`
+  padding-top: 50px;
+  grid-column: 2 / 9;
+`;
 
-  @media screen and (min-width: 800px) {
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: 30px 50px 1fr;
-    gap: 20px;
-    padding: 0;
-
-    > div:first-child {
-      grid-column: 2 / 8;
-      grid-row: 2 / 3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    > div:last-child {
-      grid-column: 2 / 8;
-      grid-row: 3 / 4;
-    }
-  }
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
 `;
