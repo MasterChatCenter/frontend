@@ -1,7 +1,7 @@
 import { Layout, Agent } from '@/templates';
 import { Grid } from 'root/styles';
 
-const NewAgentPage = () => {
+const NewAgentPage = (): JSX.Element => {
   const data = {
     name: '',
     lastname: '',

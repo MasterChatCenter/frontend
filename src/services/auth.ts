@@ -1,8 +1,13 @@
 import config from 'root/config';
 import { mutation } from '.';
 
-const register = async (data: any): Promise<void> => {
-  const res = await mutation(`${config.localApi}/users`, 'POST', {
+type Register = {
+  username: string;
+  password: string;
+  confirmPassword: string;
+};
+const register = async (data: Register): Promise<void> => {
+  const res: any = await mutation(`${config.localApi}/users`, 'POST', {
     ...data,
     role_id: 1,
   });
@@ -11,17 +16,78 @@ const register = async (data: any): Promise<void> => {
   }
   return res;
 };
-/*
-const login = (data: login): Promise<void> => {
-  return mutation(`${config.localApi}/login`, 'POST', data).then((res: any) => {
-    return getUserService(res.data.user_id).then((json: any) => ({
-      token: res.data.token,
-      ...json.data.user,
-    }));
-  });
+
+type Login = {
+  username: string;
+  password: string;
 };
-*/
+const login = async (data: Login): Promise<void> => {
+  const res: any = await mutation(`${config.localApi}/login`, 'POST', data);
+  if (res.error) {
+    throw new Error('Error al crear usuario');
+  }
+  return res.data;
+};
+
+const getUser = async (id: string | number): Promise<any> => {
+  const req = await fetch(`${config.localApi}/users/${id}`);
+  const res = await req.json();
+  const data = res.data.user;
+
+  return {
+    id: data.id,
+    username: data.username,
+    name: data.name,
+    lastname: data.lastname,
+    image: data.image,
+    company: data.company,
+    role: data.role,
+  };
+};
+
+type UpdateUser = {
+  category: string;
+  company: string;
+  facebookId: string;
+  name: string;
+  image: string;
+  lastname: string;
+  accessToken: string;
+};
+const updateUser = async (data: UpdateUser, userId: string): Promise<void> => {
+  const req = await fetch(
+    `/api/getfacebookdata?token=${data.accessToken}&id=${data.facebookId}`
+  );
+  const fb = await req.json();
+  const dataCompany = {
+    name: data.company,
+    logo: data.image,
+    facebookId: fb.facebookId,
+    tokenFacebook: fb.tokenFacebook,
+    category: data.category,
+  };
+  const company = await mutation(
+    `${config.localApi}/companies`,
+    'POST',
+    dataCompany
+  );
+  const dataUser = {
+    name: data.name,
+    lastname: data.lastname,
+    image: data.image,
+    company_id: (company as any).data.user.id,
+  };
+  const updatedUser = await mutation(
+    `${config.localApi}/users/${userId}`,
+    'PATCH',
+    dataUser
+  );
+  return updatedUser;
+};
+
 export default {
   register,
-  // login,
+  login,
+  getUser,
+  updateUser,
 };

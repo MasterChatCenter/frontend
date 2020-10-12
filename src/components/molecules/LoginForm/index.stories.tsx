@@ -3,4 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import LoginForm from '.';
 
-storiesOf('molecules / Forms', module).add('LoginForm', () => <LoginForm />);
+storiesOf('molecules / Forms', module).add('LoginForm', () => (
+  <LoginForm onSave={() => alert('Guardar')} />
+));

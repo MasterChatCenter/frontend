@@ -22,7 +22,7 @@ const DIV = styled.div`
   }
 `;
 
-const Conversations = () => {
+const Conversations = (): JSX.Element => {
   const [inProp, setInProp] = useState(false);
   useEffect(() => {
     setTimeout(() => setInProp(true), 200);

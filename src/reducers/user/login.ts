@@ -1,14 +1,13 @@
 import Router from 'next/router';
-import { UserState, User } from 'root/types';
 
-const login = (payload: User): UserState => {
+const login = (payload: any): any => {
   document.cookie = `user=${JSON.stringify(payload)}`;
   if (payload.role.name === 'agent') {
     Router.push('/');
-  } else if (typeof payload.company_id === 'number') {
-    Router.push('/agents');
-  } else {
+  } else if (payload.company === null) {
     Router.push('/complete');
+  } else {
+    Router.push('/agents');
   }
   return payload;
 };

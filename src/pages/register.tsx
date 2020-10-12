@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import { useState } from 'react';
-import { FcCheckmark } from 'react-icons/fc';
+import { FcCheckmark, FcCancel } from 'react-icons/fc';
 import cookies from 'next-cookies';
 
 import { Register } from '@/organisms';
@@ -68,7 +68,7 @@ const RegisterPage = (): JSX.Element => {
       </Register>
       <Modal isModalOpen={modal} closeModal={closeModal}>
         {alertError !== '' ? (
-          <Alert title="Error" message={alertError} icon={<FcCheckmark />} />
+          <Alert title="Error" message={alertError} icon={<FcCancel />} />
         ) : (
           <Alert
             title="Envio éxitoso"

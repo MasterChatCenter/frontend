@@ -2,7 +2,11 @@ import config from 'root/config';
 export { default as AgentsService } from './agents';
 export { default as AuthService } from './auth';
 
-export const mutation = (url: string, method: string, data: any) => {
+export const mutation = (
+  url: string,
+  method: string,
+  data: any
+): Promise<void> => {
   return fetch(url, {
     method,
     headers: {
@@ -37,40 +41,6 @@ export const loginService = (data: login): Promise<void> => {
 export const getUserService = (id: string): Promise<void> => {
   return fetch(`${config.localApi}/users/${id}`).then((response: any) =>
     response.json()
-  );
-};
-
-type complete = {
-  company: string;
-  facebookId: string;
-  tokenFacebook: string;
-  category: string;
-  name: string;
-  lastname: string;
-  image: string;
-};
-export const completeProfileService = (
-  data: complete,
-  id: number
-): Promise<[void, void]> => {
-  const dataCompany = {
-    name: data.company,
-    logo: '',
-    facebookId: data.facebookId,
-    tokenFacebook: data.tokenFacebook,
-    category: data.category,
-  };
-
-  return mutation(`${config.localApi}/companies`, 'POST', dataCompany).then(
-    (res: any) => {
-      const dataUser = {
-        name: data.name,
-        lastname: data.lastname,
-        image: '',
-        company_id: res.data.user.id,
-      };
-      return mutation(`${config.localApi}/users/${id}`, 'PATCH', dataUser);
-    }
   );
 };
 

@@ -45,7 +45,7 @@ const NewAgent: FC<props> = ({ closeModal }) => {
     <Container>
       <CardShadow>
         <AvatarChange url="" alt="" handleChange={handleChange} />
-        <AgentFrom handleSubmit={handleSubmit}>
+        <AgentFrom data={[{}]} handleChange={handleSubmit}>
           <ButtonLink handleClick={closeModal}>Cancelar</ButtonLink>
         </AgentFrom>
       </CardShadow>

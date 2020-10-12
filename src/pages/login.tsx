@@ -1,11 +1,13 @@
 import { GetServerSideProps } from 'next';
+import { useState } from 'react';
+import { FcCancel } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
 import cookies from 'next-cookies';
 
-import Login from '@/organisms/Login';
-import LoginForm from '@/molecules/LoginForm';
+import { Login } from '@/organisms';
+import { LoginForm, Modal, Alert } from '@/molecules';
+import { AuthService } from 'root/services';
 import { loginAction } from 'root/actions';
-
 import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -21,22 +23,39 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const LoginPage = (): JSX.Element => {
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
+  const [alertError, setAlertError] = useState('');
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = {
-      username: form.email.value,
-      password: form.password.value,
-    };
-    dispatch(loginAction(formData));
+  const onSave = (data: any) => {
+    if (data.username === '' || data.password === '') {
+      setModal(true);
+      setAlertError('Porfavor complete todos los campos');
+    }
+
+    AuthService.login(data)
+      .then((res: any) => {
+        const { token, user_id: id } = res;
+        dispatch(loginAction({ token, id }));
+      })
+      .catch(() => {
+        setModal(true);
+        setAlertError('Error al iniciar sessión');
+      });
+  };
+
+  const closeModal = () => {
+    setModal(false);
+    setAlertError('');
   };
 
   return (
     <CSSContainer>
       <Login>
-        <LoginForm handleSubmit={handleSubmit} />
+        <LoginForm onSave={onSave} />
       </Login>
+      <Modal isModalOpen={modal} closeModal={closeModal}>
+        <Alert title="Error" message={alertError} icon={<FcCancel />} />
+      </Modal>
     </CSSContainer>
   );
 };

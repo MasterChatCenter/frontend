@@ -8,6 +8,8 @@ storiesOf('atoms / Inputs', module).add('InputText', () => (
     name="user"
     title="Usuario"
     typeInput="Text"
+    value="texto"
     placeholder="Escribe tu Email"
+    handleChange={() => alert('Changing')}
   />
 ));

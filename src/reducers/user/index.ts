@@ -13,7 +13,7 @@ import logout from './logout';
 import { Action, UserState } from 'root/types';
 
 const userReducer = (
-  state: UserState | boolean = false,
+  state: any = false,
   action: Action
 ): UserState | boolean => {
   const { type, payload } = action;
