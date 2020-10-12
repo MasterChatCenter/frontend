@@ -9,19 +9,19 @@ type props = {
 const fields = [
   {
     type: 'text',
-    title: 'Nombres',
+    label: 'Nombres',
     placeholder: 'Escribe los nombres',
     name: 'name',
   },
   {
     type: 'text',
-    title: 'Apellidos',
+    label: 'Apellidos',
     placeholder: 'Escribe los apellidos',
     name: 'lastname',
   },
   {
     type: 'email',
-    title: 'Correo electronico',
+    label: 'Correo electronico',
     placeholder: 'Escribe un correo',
     name: 'username',
   },
@@ -32,11 +32,11 @@ const AgentForm: FC<props> = ({ data, handleChange }) => (
     <AvatarChange handleChange={handleChange} />
     <div>
       <h2>General</h2>
-      {fields.map(({ type, title, placeholder, name }) => (
+      {fields.map(({ type, label, placeholder, name }) => (
         <InputText
           key={name}
           type={type}
-          label={title}
+          label={label}
           placeholder={placeholder}
           name={name}
           value={data[name]}

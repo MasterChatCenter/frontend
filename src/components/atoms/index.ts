@@ -6,3 +6,4 @@ export { default as InputEdit } from './InputEdit';
 export { default as InputText } from './InputText';
 export { default as InputSelect } from './InputSelect';
 export { default as ButtonLarge } from './ButtonLarge';
+export { default as ButtonLink } from './ButtonLink';

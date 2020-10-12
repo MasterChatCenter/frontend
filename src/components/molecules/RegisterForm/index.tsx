@@ -1,35 +1,66 @@
-import React, { FC } from 'react';
+import React, { useState, FC } from 'react';
 
-import InputText from '@/atoms/InputText';
-import ButtonLarge from '@/atoms/ButtonLarge';
+import { InputText, ButtonLarge } from '@/atoms';
 
 import { CSSForm } from './styles';
 
 type props = {
-  handleSubmit?: (event: any) => any;
+  onSave: (data: any) => any;
 };
 
-const RegisterForm: FC<props> = ({ handleSubmit }) => {
+const fields = [
+  {
+    type: 'email',
+    label: 'Correo electronico:',
+    placeholder: 'Escribe un correo',
+    name: 'username',
+  },
+  {
+    type: 'password',
+    label: 'Contraseña:',
+    placeholder: 'Escribe una contraseña',
+    name: 'password',
+  },
+  {
+    type: 'password',
+    label: 'Confirma contraseña:',
+    placeholder: 'Repite contraseña',
+    name: 'confirmPassword',
+  },
+];
+
+const RegisterForm: FC<props> = ({ onSave }) => {
+  const [form, setForm] = useState({
+    username: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleChange = (event: any) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    onSave(form);
+  };
+
   return (
     <CSSForm onSubmit={handleSubmit}>
-      <InputText
-        name="email"
-        typeInput="email"
-        title="Correo electronico:"
-        placeholder="Escribe un correo"
-      />
-      <InputText
-        name="password"
-        typeInput="password"
-        title="Contraseña:"
-        placeholder="Escribe una contraseña"
-      />
-      <InputText
-        name="confirmPassword"
-        typeInput="password"
-        title="Confirma contraseña:"
-        placeholder="Repite tu contraseña"
-      />
+      {fields.map(({ type, label, placeholder, name }) => (
+        <InputText
+          key={name}
+          name={name}
+          type={type}
+          label={label}
+          placeholder={placeholder}
+          value={form[name]}
+          handleChange={handleChange}
+        />
+      ))}
       <ButtonLarge type="submit">Continuar</ButtonLarge>
     </CSSForm>
   );
