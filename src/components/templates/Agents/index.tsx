@@ -27,14 +27,12 @@ const Agents: FC<props> = ({ agents }): JSX.Element => {
     <Container>
       <Header>
         <InputSearch handleChange={handleChange} />
-        <Button>
-          <Link href="agents/new">
-            <>
-              <MdAdd />
-              <p>Nuevo</p>
-            </>
-          </Link>
-        </Button>
+        <Link href="/agents/new">
+          <Button>
+            <MdAdd />
+            <p>Nuevo</p>
+          </Button>
+        </Link>
       </Header>
       <List
         data={data}

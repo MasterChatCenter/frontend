@@ -1,13 +1,20 @@
 import React, { FC } from 'react';
 import { CSSInputSelect } from './styles';
 
-const InputSelect: FC = () => (
+type props = {
+  name: string;
+  options: Array<{ value: string; label: string }>;
+  handleChange: any;
+};
+
+const InputSelect: FC<props> = ({ name, options, handleChange }) => (
   <CSSInputSelect>
-    <select id="category" name="category">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
+    <select id={name} name={name} onChange={handleChange}>
+      {options.map(({ value, label }) => (
+        <option key={value} value={value}>
+          {label}
+        </option>
+      ))}
     </select>
   </CSSInputSelect>
 );

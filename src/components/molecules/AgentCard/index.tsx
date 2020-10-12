@@ -19,9 +19,9 @@ const AgentCard: FC<props> = ({ uuid, avatar, name, lastname, username }) => {
         <AvatarUser avatarurl={avatar} name={name} />
         <P>{`${name} ${lastname}`}</P>
         <P>{username}</P>
-        <a>
-          <Link href={`agents/edit/${uuid}`}>Editar</Link>
-        </a>
+        <Link href={`/agents/${encodeURIComponent(uuid)}`}>
+          <a>Editar</a>
+        </Link>
       </Wrapper>
     </CardBorder>
   );

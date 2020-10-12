@@ -1,46 +1,60 @@
-import React, { FC, ReactNode } from 'react';
-
-import InputText from '@/atoms/InputText';
-import ButtonLarge from '@/atoms/ButtonLarge';
-
-import { Form } from './styles';
+import React, { FC } from 'react';
+import { InputText, InputSelect, ButtonLarge, AvatarChange } from '@/atoms';
 
 type props = {
-  handleSubmit?: (event: any) => void;
-  children?: ReactNode;
+  data: [any];
+  handleChange: (event: any) => void;
 };
 
-const AgentForm: FC<props> = ({ handleSubmit, children }) => (
-  <Form onSubmit={handleSubmit}>
-    <InputText
-      typeInput="email"
-      title="Correo electronico:"
-      placeholder="Escribe un correo"
-      name="email"
-    />
-    <InputText
-      typeInput="password"
-      title="Contraseña:"
-      placeholder="Escribe una contraseña"
-      name="password"
-    />
-    <InputText
-      typeInput="text"
-      title="Nombres:"
-      placeholder="Escribe los nombres"
-      name="name"
-    />
-    <InputText
-      typeInput="text"
-      title="Apellidos:"
-      placeholder="Escribe los apellidos"
-      name="lastName"
-    />
+const fields = [
+  {
+    type: 'text',
+    title: 'Nombres',
+    placeholder: 'Escribe los nombres',
+    name: 'name',
+  },
+  {
+    type: 'text',
+    title: 'Apellidos',
+    placeholder: 'Escribe los apellidos',
+    name: 'lastname',
+  },
+  {
+    type: 'email',
+    title: 'Correo electronico',
+    placeholder: 'Escribe un correo',
+    name: 'username',
+  },
+];
+
+const AgentForm: FC<props> = ({ data, handleChange }) => (
+  <>
+    <AvatarChange handleChange={handleChange} />
     <div>
-      {children}
+      <h2>General</h2>
+      {fields.map(({ type, title, placeholder, name }) => (
+        <InputText
+          key={name}
+          type={type}
+          label={title}
+          placeholder={placeholder}
+          name={name}
+          value={data[name]}
+          handleChange={handleChange}
+        />
+      ))}
+      <InputSelect
+        name="role"
+        handleChange={handleChange}
+        options={[
+          { value: 'agent', label: 'Agente' },
+          { value: 'admin', label: 'Administrador' },
+        ]}
+      />
       <ButtonLarge type="submit">Guardar</ButtonLarge>
     </div>
-  </Form>
+    <div></div>
+  </>
 );
 
 export default AgentForm;

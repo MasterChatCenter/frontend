@@ -11,7 +11,7 @@ type props = {
 const AvatarUser: FC<props> = ({ url, alt, handleChange }) => {
   return (
     <Label>
-      <input type="file" onChange={handleChange} />
+      <input type="file" name="image" onChange={handleChange} />
       <Figure>
         <img src={url} alt={alt} />
         <Figcation>

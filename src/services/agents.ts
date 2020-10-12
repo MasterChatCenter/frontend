@@ -17,6 +17,21 @@ const getAll = async (id: string): Promise<void> => {
   return data;
 };
 
+const getOne = async (id: string): Promise<any> => {
+  const req = await fetch(`${config.localApi}/users/${id}`);
+  const res = await req.json();
+  const data = res.data.user;
+
+  return {
+    name: data.name,
+    lastname: data.lastname,
+    image: data.image,
+    username: data.username,
+    role: data.role.id,
+  };
+};
+
 export default {
   getAll,
+  getOne,
 };
