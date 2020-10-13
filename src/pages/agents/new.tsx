@@ -6,13 +6,14 @@ const NewAgentPage = (): JSX.Element => {
     name: '',
     lastname: '',
     username: '',
-    role: 1,
+    role_id: '2',
+    password: '123456',
   };
 
   return (
     <Layout>
       <Grid>
-        <Agent agent={data} />
+        <Agent data={data} />
       </Grid>
     </Layout>
   );

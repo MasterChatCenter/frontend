@@ -19,11 +19,6 @@ const Navbar: FC = () => {
           <>
             <NavItem to="/agents" icon={<FaHeadset />} label="Agents" />
             <NavItem to="/settings" icon={<FaUserCog />} label="Settings" />
-            <NavItem
-              to="/conversations"
-              icon={<FaUserCog />}
-              label="Settings"
-            />
           </>
         ) : (
           <NavItem to="/" icon={<FaCommentAlt />} label="Chat" />

@@ -1,30 +1,41 @@
 import { useState, FC } from 'react';
-import { Container } from './styles';
+import { useSelector } from 'react-redux';
+import { AgentsService } from 'root/services';
 
-import { AgentForm } from '@/molecules';
+import { AgentForm, Modal, Alert } from '@/molecules';
 
 type props = {
-  agent: any;
+  data: any;
+  id?: string;
 };
 
-const Agent: FC<props> = ({ agent }) => {
-  const [form, setForm] = useState(agent);
+const Agent: FC<props> = ({ data, id }) => {
+  const user = useSelector((state: any) => state.user);
+  const [modal, setModal] = useState(false);
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
+  const onSave = (data: any) => {
+    AgentsService.save(data, id)
+      .then(() => {
+        setModal(true);
+      })
+      .catch(() => {
+        setModal(true);
+      });
   };
 
-  const handleChange = (event: any) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+  const closeModal = () => {
+    setModal(false);
   };
-
   return (
-    <Container onSubmit={handleSubmit}>
-      <AgentForm data={form} handleChange={handleChange} />
-    </Container>
+    <>
+      <AgentForm
+        data={{ ...data, company_id: user.company.id }}
+        onSave={onSave}
+      />
+      <Modal isModalOpen={modal} closeModal={closeModal}>
+        <Alert title="Todo ok" message="HOLA" />
+      </Modal>
+    </>
   );
 };
 

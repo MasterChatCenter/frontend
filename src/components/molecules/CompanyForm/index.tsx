@@ -38,7 +38,7 @@ const CompanyForm: FC = () => {
         value={user.company.name}
         onSave={handleSave}
       />
-      <InputSelect />
+      <InputSelect options={[]} />
     </Container>
   );
 };

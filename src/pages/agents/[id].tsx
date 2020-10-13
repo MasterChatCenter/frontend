@@ -23,7 +23,7 @@ const EditAgentPage = (): JSX.Element => {
         <h1>Cargando</h1>
       ) : (
         <Grid>
-          <Agent agent={data} />
+          <Agent data={data} id={id as string} />
         </Grid>
       )}
     </Layout>

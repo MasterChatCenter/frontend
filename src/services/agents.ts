@@ -31,7 +31,36 @@ const getOne = async (id: string): Promise<any> => {
   };
 };
 
+const save = (data: any, id?: number | string): Promise<void> => {
+  if (!id) {
+    return create(data);
+  } else {
+    return update(data, id);
+  }
+};
+
+const create = async (data: any): Promise<void> => {
+  const res: any = await mutation(`${config.localApi}/users`, 'POST', data);
+  if (res.error) {
+    throw new Error('Error al crear agente');
+  }
+  return res;
+};
+
+const update = async (data: any, id: number | string): Promise<void> => {
+  const res: any = await mutation(
+    `${config.localApi}/users/${id}`,
+    'PATCH',
+    data
+  );
+  if (res.error) {
+    throw new Error('Error al actualizar');
+  }
+  return res;
+};
+
 export default {
   getAll,
   getOne,
+  save,
 };
