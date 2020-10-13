@@ -1,27 +1,9 @@
 import { GetServerSideProps } from 'next';
-import { useState, useEffect } from 'react';
 import cookies from 'next-cookies';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-import styled from 'styled-components';
-
+import { CSSTransition } from 'react-transition-group';
+import { useAnimate } from 'root/hooks';
 import Layout from '@/templates/Layout';
 import Settings from '@/organisms/Settings';
-
-const DIV = styled.div`
-  .my-node-enter {
-    opacity: 0;
-  }
-  .my-node-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
-  }
-  .my-node-exit {
-    opacity: 1;
-  }
-  .my-node-exit-active {
-    opacity: 0;
-  }
-`;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
@@ -42,16 +24,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const SettingsPage = (): JSX.Element => {
-  const [inProp, setInProp] = useState(false);
-  useEffect(() => {
-    setTimeout(() => setInProp(true), 200);
-  }, []);
+  const animate = useAnimate();
 
   return (
     <Layout>
-      <TransitionGroup component={DIV}>
-        <Settings inProp={inProp} />
-      </TransitionGroup>
+      {animate ? (
+        <CSSTransition in={animate} timeout={400} classNames="my-node">
+          <Settings />
+        </CSSTransition>
+      ) : null}
     </Layout>
   );
 };

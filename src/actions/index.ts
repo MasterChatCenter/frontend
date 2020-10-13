@@ -6,6 +6,7 @@ export {
   logoutAction,
   updateUserAction,
 } from './auth';
+export {} from './conversations';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { sendMessageService } from 'root/services';

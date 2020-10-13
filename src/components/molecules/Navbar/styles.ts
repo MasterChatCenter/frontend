@@ -17,5 +17,9 @@ export const NavBarContainer = styled.div`
   display: flex;
   @media screen and (min-width: 800px) {
     display: block;
+    padding-top: 20px;
+    a {
+      margin-bottom: 20px;
+    }
   }
 `;

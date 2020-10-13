@@ -11,7 +11,7 @@ export const CSSNavItem = styled.a`
   cursor: pointer;
 
   svg {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 5px;
   }
 `;

@@ -1,39 +1,34 @@
 import React, { FC } from 'react';
 import { FaCheck } from 'react-icons/fa';
-import { CSSTransition } from 'react-transition-group';
-
 import CompanyForm from '@/molecules/CompanyForm';
 import AdminForm from '@/molecules/AdminForm';
 
 import { Container, Section, Title, ConnectFacebook } from './styles';
 
-const Settings: FC<{ inProp: boolean }> = ({ inProp }) => {
-  if (!inProp) return null;
+const Settings: FC = () => {
   return (
-    <CSSTransition in={inProp} timeout={400} classNames="my-node">
-      <Container>
-        <Section>
-          <Title>Empresa</Title>
-          <CompanyForm />
-        </Section>
-        <Section>
-          <Title>Servicios conectados</Title>
-          <div>
-            <p>Facebook</p>
-            <ConnectFacebook>
-              <p>Mi pagina de facebook</p>
-              <p>
-                <FaCheck />
-              </p>
-            </ConnectFacebook>
-          </div>
-        </Section>
-        <Section>
-          <Title>Administrador</Title>
-          <AdminForm />
-        </Section>
-      </Container>
-    </CSSTransition>
+    <Container>
+      <Section>
+        <Title>Empresa</Title>
+        <CompanyForm />
+      </Section>
+      <Section>
+        <Title>Servicios conectados</Title>
+        <div>
+          <p>Facebook</p>
+          <ConnectFacebook>
+            <p>Mi pagina de facebook</p>
+            <p>
+              <FaCheck />
+            </p>
+          </ConnectFacebook>
+        </div>
+      </Section>
+      <Section>
+        <Title>Administrador</Title>
+        <AdminForm />
+      </Section>
+    </Container>
   );
 };
 

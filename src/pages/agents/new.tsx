@@ -1,7 +1,10 @@
+import { CSSTransition } from 'react-transition-group';
 import { Layout, Agent } from '@/templates';
+import { useAnimate } from 'root/hooks';
 import { Grid } from 'root/styles';
 
 const NewAgentPage = (): JSX.Element => {
+  const animate = useAnimate();
   const data = {
     name: '',
     lastname: '',
@@ -12,9 +15,13 @@ const NewAgentPage = (): JSX.Element => {
 
   return (
     <Layout>
-      <Grid>
-        <Agent data={data} />
-      </Grid>
+      {animate ? (
+        <CSSTransition in={animate} timeout={400} classNames="my-node">
+          <Grid>
+            <Agent data={data} />
+          </Grid>
+        </CSSTransition>
+      ) : null}
     </Layout>
   );
 };

@@ -5,8 +5,9 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 70px;
+  height: 50px;
   padding: 0 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   background-color: #00695c;
   cursor: pointer;
 `;
@@ -30,11 +31,11 @@ export const Logo = styled.a`
 
   p {
     margin-left: 10px;
-    font-size: 28px;
+    font-size: 20px;
   }
 
   svg {
-    font-size: 34px;
+    font-size: 30px;
   }
 `;
 

@@ -13,7 +13,7 @@ type HeaderProps = {
   name: string;
 };
 
-export const Header = ({ avatarUrl, name }: HeaderProps): JSX.Element => {
+const Header = ({ avatarUrl, name }: HeaderProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const logout = () => {
@@ -37,3 +37,5 @@ export const Header = ({ avatarUrl, name }: HeaderProps): JSX.Element => {
     </HeaderContainer>
   );
 };
+
+export default Header;

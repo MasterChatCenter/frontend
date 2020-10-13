@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { CSSTransition } from 'react-transition-group';
 import { AgentsService } from 'root/services';
+import { Loading } from '@/atoms';
 import { Layout, Agent } from '@/templates';
 import { Grid } from 'root/styles';
 
@@ -20,11 +22,13 @@ const EditAgentPage = (): JSX.Element => {
   return (
     <Layout>
       {!loaded ? (
-        <h1>Cargando</h1>
+        <Loading />
       ) : (
-        <Grid>
-          <Agent data={data} id={id as string} />
-        </Grid>
+        <CSSTransition in={loaded} timeout={400} classNames="my-node">
+          <Grid>
+            <Agent data={data} id={id as string} />
+          </Grid>
+        </CSSTransition>
       )}
     </Layout>
   );

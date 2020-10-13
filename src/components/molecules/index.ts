@@ -6,3 +6,5 @@ export { default as Alert } from './Alert';
 export { default as RegisterForm } from './RegisterForm';
 export { default as LoginForm } from './LoginForm';
 export { default as CompleteForm } from './CompleteForm';
+export { default as Navbar } from './Navbar';
+export { default as Header } from './Header';
