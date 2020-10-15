@@ -5,32 +5,33 @@ import ChatButton from '../../molecules/ChatButton/index';
 import { loadCurrentConversation } from 'root/actions';
 import { CSSChatContainer, CSSWrapperSearch } from './styles';
 
+import { List } from '@/molecules';
+
 const IMAGEN =
   'https://res.cloudinary.com/dwapbqqbo/image/upload/v1599370329/default.jpg';
 
 const ChatList: FC = () => {
+  const allConverations = useSelector((store: any) => store.conversations.all);
+  const [conversations, setConversations] = useState(allConverations);
   const dispatch = useDispatch();
-  const users = useSelector((store: any) => store.conversations.all);
-  const [usersFiltered, setUsersFiltered] = useState(users);
 
   useEffect(() => {
-    setUsersFiltered(users);
-  }, [users]);
+    setConversations(allConverations);
+  }, [allConverations]);
 
   const handleChange = (event: any) => {
     if (event.target.value === '') {
-      setUsersFiltered(users);
+      setConversations(allConverations);
       return false;
     }
 
-    const finded = users.filter(
+    const finded = allConverations.filter(
       (num: any) => num === Number(event.target.value)
     );
-    setUsersFiltered(finded);
+    setConversations(finded);
   };
 
   const handleClick = (senderId: string) => {
-    changePage('0');
     dispatch(loadCurrentConversation(senderId));
   };
 
@@ -39,16 +40,19 @@ const ChatList: FC = () => {
       <CSSWrapperSearch>
         <InputSearch handleChange={handleChange} />
       </CSSWrapperSearch>
-      {usersFiltered.map(({ username, text, senderId }: any, idx: number) => (
-        <ChatButton
-          key={idx}
-          avatarUrl={IMAGEN}
-          name={username}
-          nickName={username}
-          slug={text}
-          onClick={() => handleClick(senderId)}
-        />
-      ))}
+      <List
+        data={conversations}
+        render={({ username, text, senderId }: any, idx: number) => (
+          <ChatButton
+            key={idx}
+            avatarUrl={IMAGEN}
+            name={username}
+            nickName={username}
+            slug={text}
+            onClick={() => handleClick(senderId)}
+          />
+        )}
+      />
     </CSSChatContainer>
   );
 };

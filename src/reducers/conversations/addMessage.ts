@@ -1,4 +1,4 @@
-const addMessage = (state, payload) => {
+const addMessage = (state: any, payload: any) => {
   const existsUser = state.all.find((user: any) => {
     return user.senderId === payload.senderId;
   });

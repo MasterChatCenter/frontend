@@ -38,7 +38,15 @@ const CompanyForm: FC = () => {
         value={user.company.name}
         onSave={handleSave}
       />
-      <InputSelect options={[]} />
+      <InputSelect
+        name="category"
+        handleChange={() => alert('Camniando')}
+        value="1"
+        options={[
+          { value: '1', label: 'Economia' },
+          { value: '2', label: 'Tienda  ' },
+        ]}
+      />
     </Container>
   );
 };

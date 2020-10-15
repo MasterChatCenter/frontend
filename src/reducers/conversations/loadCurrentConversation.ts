@@ -1,4 +1,4 @@
-const loadCurrentConversation = (state, payload) => {
+const loadCurrentConversation = (state: any, payload: any) => {
   const exists = state.all.find((user: any) => {
     return user.senderId === payload;
   });

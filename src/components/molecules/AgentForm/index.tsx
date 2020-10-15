@@ -52,7 +52,11 @@ const AgentForm: FC<props> = ({ data, onSave }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <AvatarChange url={form['image']} handleChange={handleChange} />
+      <AvatarChange
+        url={form['image']}
+        alt={form['name']}
+        handleChange={handleChange}
+      />
       <div>
         <h2>General</h2>
         {fields.map(({ type, label, placeholder, name }) => (

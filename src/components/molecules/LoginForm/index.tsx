@@ -43,7 +43,7 @@ const LoginForm: FC<props> = ({ onSave }) => {
           label={label}
           type={type}
           placeholder={placeholder}
-          value={form[name]}
+          value={form[name as string]}
           handleChange={handleChange}
         />
       ))}

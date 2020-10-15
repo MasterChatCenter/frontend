@@ -33,7 +33,7 @@ const Agent: FC<props> = ({ data, id }) => {
         onSave={onSave}
       />
       <Modal isModalOpen={modal} closeModal={closeModal}>
-        <Alert title="Todo ok" message="HOLA" />
+        <Alert title="Todo ok" message="HOLA" icon={<p>ICONO</p>} />
       </Modal>
     </>
   );

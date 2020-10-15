@@ -91,6 +91,7 @@ const CompleteForm: FC<props> = ({ onSave }) => {
       <InputSelect
         name="category"
         handleChange={handleChange}
+        value="1"
         options={[
           { value: '1', label: 'Economia' },
           { value: '2', label: 'Tienda  ' },
