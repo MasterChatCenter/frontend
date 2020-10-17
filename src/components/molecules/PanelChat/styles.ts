@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CSSPanelChat = styled.div`
+  grid-column: 1 / 9;
   p {
     font-weight: bold;
   }

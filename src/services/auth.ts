@@ -62,8 +62,8 @@ const updateUser = async (data: UpdateUser, userId: string): Promise<void> => {
   const dataCompany = {
     name: data.company,
     logo: data.image,
-    facebookId: fb.facebookId,
-    tokenFacebook: fb.tokenFacebook,
+    facebookId: fb.id,
+    tokenFacebook: fb.token,
     category: data.category,
   };
   const company = await mutation(

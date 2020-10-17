@@ -8,3 +8,5 @@ export { default as LoginForm } from './LoginForm';
 export { default as CompleteForm } from './CompleteForm';
 export { default as Navbar } from './Navbar';
 export { default as Header } from './Header';
+export { default as ChatButton } from './ChatButton';
+export { default as PanelChat } from './PanelChat';

@@ -1,6 +1,7 @@
 import config from 'root/config';
 export { default as AgentsService } from './agents';
 export { default as AuthService } from './auth';
+export { default as MessagesService } from './messages';
 
 export const mutation = (
   url: string,
@@ -25,38 +26,6 @@ export const singupService = (data: singup): Promise<void> => {
   return mutation(`${config.localApi}/users`, 'POST', { ...data, role_id: 1 });
 };
 
-type login = {
-  username: string;
-  password: string;
-};
-export const loginService = (data: login): Promise<void> => {
-  return mutation(`${config.localApi}/login`, 'POST', data).then((res: any) => {
-    return getUserService(res.data.user_id).then((json: any) => ({
-      token: res.data.token,
-      ...json.data.user,
-    }));
-  });
-};
-
-export const getUserService = (id: string): Promise<void> => {
-  return fetch(`${config.localApi}/users/${id}`).then((response: any) =>
-    response.json()
-  );
-};
-
-type user = {
-  username: string;
-  password: string;
-  name: string;
-  lastname: string;
-  image: string;
-  company_id: number;
-  role_id: number;
-};
-export const createUserService = (data: user): Promise<void> => {
-  return mutation(`${config.localApi}/users`, 'POST', data);
-};
-
 export const getUsersService = (id: string): Promise<void> => {
   return mutation(`${config.localApi}/users/filter`, 'POST', {
     company_id: id,
@@ -65,10 +34,6 @@ export const getUsersService = (id: string): Promise<void> => {
 
 export const deleteUserService = (id: number): Promise<void> => {
   return mutation(`${config.localApi}/users/${id}`, 'DELETE', {});
-};
-
-export const sendMessageService = (data: any): Promise<void> => {
-  return mutation(`${config.localApi}/messages`, 'POST', data);
 };
 
 type updateCompany = {

@@ -31,10 +31,3 @@ export const CSSInputChat = styled.div`
   bottom: 20px;
   margin-top: 5px;
 `;
-
-export const H1 = styled.h1`
-  grid-column: 1 / 9;
-  text-align: center;
-  font-size: 28px;
-  padding-top: 100px;
-`;

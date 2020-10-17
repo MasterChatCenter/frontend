@@ -31,7 +31,16 @@ const getOne = async (id: string): Promise<any> => {
   };
 };
 
-const save = (data: any, id?: number | string): Promise<void> => {
+type Agent = {
+  user_id?: string;
+  name: string;
+  lastname: string;
+  username: string;
+  role_id: string;
+  password: string;
+  company_id: string;
+};
+const save = (data: Agent, id?: number | string): Promise<void> => {
   if (!id) {
     return create(data);
   } else {

@@ -1,6 +1,14 @@
 import Router from 'next/router';
-
-const login = (payload: any): any => {
+type Login = {
+  id: string;
+  username: string;
+  name: string;
+  lastname: string;
+  image: string;
+  company: any;
+  role: any;
+};
+const login = (payload: Login): any => {
   document.cookie = `user=${JSON.stringify(payload)}`;
   if (payload.role.name === 'agent') {
     Router.push('/');

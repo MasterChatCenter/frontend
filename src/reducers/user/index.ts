@@ -1,12 +1,4 @@
-import {
-  LOGIN,
-  LOGOUT,
-  UPDATE_USER,
-  UPDATE_LOCAL_COMPANY,
-  UPDATE_LOCAL_USER,
-} from 'root/actions';
-import updateLocalUser from './updateLocalUser';
-import updateLocalCompany from './updateLocalCompany';
+import { LOGIN, LOGOUT, UPDATE_USER } from 'root/actions';
 import updateUser from './updateUser';
 import login from './login';
 import logout from './logout';
@@ -18,10 +10,6 @@ const userReducer = (
 ): UserState | boolean => {
   const { type, payload } = action;
   switch (type) {
-    case UPDATE_LOCAL_USER:
-      return updateLocalUser(state, payload);
-    case UPDATE_LOCAL_COMPANY:
-      return updateLocalCompany(state, payload);
     case UPDATE_USER:
       return updateUser(state, payload);
     case LOGIN:

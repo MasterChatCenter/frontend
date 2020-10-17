@@ -6,32 +6,23 @@ import AvatarUser from '@/atoms/AvatarUser';
 import { CSSNickName, CSSContainer, CSStatus, CSSDivider } from './styles';
 
 type props = {
-  avatarUrl: string;
-  name: string;
-  nickName: string;
-  slug: string;
-  onClick: any;
+  image: string;
+  username: string;
+  message: string;
+  handleClick: any;
 };
 
-const ChatButton: FC<props> = ({
-  avatarUrl,
-  name,
-  nickName,
-  slug,
-  children,
-  onClick,
-}) => (
+const ChatButton: FC<props> = ({ image, username, message, handleClick }) => (
   <CardBorder>
-    <CSSContainer onClick={() => onClick('-100%')}>
+    <CSSContainer onClick={handleClick}>
       <CSSDivider>
-        <AvatarUser avatarurl={avatarUrl} name={name} />
+        <AvatarUser avatarurl={image} name={username} />
         <div>
-          <CSSNickName>{nickName}</CSSNickName>
-          <p>{slug}</p>
+          <CSSNickName>{username}</CSSNickName>
+          <p>{message}</p>
         </div>
       </CSSDivider>
       <CSStatus />
-      {children}
     </CSSContainer>
   </CardBorder>
 );

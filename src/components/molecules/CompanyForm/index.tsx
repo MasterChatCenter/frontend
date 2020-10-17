@@ -1,15 +1,13 @@
 import React, { FC } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AvatarChange from '@/atoms/AvatarChange';
 import InputEdit from '@/atoms/InputEdit';
 import InputSelect from '@/atoms/InputSelect';
 import { updateCompanyService } from 'root/services';
-import { updateLocalCompany } from 'root/actions';
 
 import { Container } from './styles';
 
 const CompanyForm: FC = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
 
   const handleSave = (
@@ -20,7 +18,6 @@ const CompanyForm: FC = () => {
   ) => {
     updateCompanyService({ [name]: value }, user.company_id)
       .then(() => {
-        dispatch(updateLocalCompany({ name, value }));
         set(value);
         setEditable(false);
       })

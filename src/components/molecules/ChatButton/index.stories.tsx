@@ -8,10 +8,9 @@ const IMAGEN =
 
 storiesOf('molecules / Buttons', module).add('ChatButton', () => (
   <ChatButton
-    avatarUrl={IMAGEN}
-    name="Darrell Steward"
-    nickName="Darrell Steward"
-    slug="Amet minim mollit non deserunt..."
-    onClick={() => alert('clicked')}
+    image={IMAGEN}
+    username="Darrell Steward"
+    message="Amet minim mollit non deserunt..."
+    handleClick={() => alert('clicked')}
   />
 ));
