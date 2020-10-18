@@ -2,23 +2,11 @@ import styled from 'styled-components';
 
 export const Section = styled.div`
   margin-bottom: 40px;
-
-  @media screen and (min-width: 800px) {
-    &:first-child {
-      grid-column: 1 / 4;
-    }
-
-    &:nth-child(2) {
-      grid-column: 5 / 7;
-    }
-
-    &:last-child {
-      grid-column: 8 / 11;
-    }
-  }
+  grid-column: 2 / 9;
 `;
 
 export const Container = styled.div`
+  grid-column: 2 / 9;
   height: 100%;
   overflow-y: auto;
   padding: 20px;
@@ -32,11 +20,12 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.p`
-  border-bottom: solid 1px black;
+export const Title = styled.h2`
+  border-bottom: solid 1px ${(props) => props.theme.text};
   padding-bottom: 10px;
   margin-bottom: 30px;
   opacity: 0.5;
+  color: ${(props) => props.theme.text};
 `;
 
 export const ConnectFacebook = styled.button`

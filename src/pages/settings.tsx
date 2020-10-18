@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import cookies from 'next-cookies';
-
+import { CSSTransition } from 'react-transition-group';
+import { useAnimate } from 'root/hooks';
 import Layout from '@/templates/Layout';
 import Settings from '@/organisms/Settings';
 
@@ -23,9 +24,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const SettingsPage = (): JSX.Element => {
+  const animate = useAnimate();
+
   return (
     <Layout>
-      <Settings />
+      {animate ? (
+        <CSSTransition in={animate} timeout={400} classNames="my-node">
+          <Settings />
+        </CSSTransition>
+      ) : null}
     </Layout>
   );
 };

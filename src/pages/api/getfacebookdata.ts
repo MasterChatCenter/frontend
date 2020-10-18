@@ -1,5 +1,5 @@
 const FB = require('fb').default;
-export default async (req: any, res: any) => {
+export default async (req: any, res: any): Promise<void> => {
   try {
     const { token, id } = req.query;
 

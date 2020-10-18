@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
 import InputEdit from '@/atoms/InputEdit';
 import { CSSCostumer, Note, Title, Tiket, Container } from './styles';
 
 const Costumer: FC = () => {
-  const conversation = useSelector((state: any) => state.conversations.current);
   const handleSave = (value: string) => {
     alert(value);
   };
-
-  if (!conversation) return null;
 
   return (
     <CSSCostumer>
@@ -20,7 +16,7 @@ const Costumer: FC = () => {
           label="Nombre"
           name="username"
           placeholder="Escribe un nombre"
-          value={conversation.username}
+          value="Larry"
           onSave={handleSave}
         />
       </Container>

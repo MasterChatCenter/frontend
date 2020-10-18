@@ -5,9 +5,10 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 70px;
+  height: 50px;
   padding: 0 20px;
-  background-color: #00695c;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  background-color: ${(props) => props.theme.primary};
   cursor: pointer;
 `;
 
@@ -30,11 +31,11 @@ export const Logo = styled.a`
 
   p {
     margin-left: 10px;
-    font-size: 28px;
+    font-size: 20px;
   }
 
   svg {
-    font-size: 34px;
+    font-size: 30px;
   }
 `;
 
@@ -44,7 +45,7 @@ export const Menu = styled.div`
   width: 100px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
   overflow: hidden;
 
   button {

@@ -1,21 +1,23 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  margin-top: 20px;
-  max-width: 335px;
-  > div {
-    margin-bottom: 20px;
+  grid-column: 2 / 9;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 50px;
+  padding-top: 50px;
+
+  h2 {
+    border-bottom: solid 1px gray;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    color: ${(props) => props.theme.text};
   }
 
-  > div:last-child {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 0;
-  }
-
-  button {
-    width: auto;
-    margin-top: 10px;
-    margin-left: 10px;
+  div {
+    div {
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
   }
 `;

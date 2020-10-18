@@ -7,7 +7,7 @@ import { CSSContainer } from './styles';
 type props = {
   title: string;
   message: string;
-  icon: ReactNode | boolean;
+  icon: ReactNode;
 };
 
 const Alert: FC<props> = ({ title, message, icon, children }) => (

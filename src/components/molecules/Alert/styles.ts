@@ -8,6 +8,7 @@ export const CSSContainer = styled.div`
   svg,
   p {
     margin-bottom: 20px;
+    color: ${(props) => props.theme.text};
   }
 
   svg {

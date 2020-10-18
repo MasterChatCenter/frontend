@@ -1,9 +1,7 @@
 import React, { FC, ReactNode } from 'react';
-
-import { Header } from '@/molecules/Header';
-import Navbar from '@/molecules/Navbar';
-
-import { Container } from './styles';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import { Header, Navbar } from '@/molecules';
+import { Container, Main } from './styles';
 
 type props = {
   children: ReactNode;
@@ -15,7 +13,9 @@ const Layout: FC<props> = ({ children }): JSX.Element => (
       avatarUrl="https://res.cloudinary.com/dwapbqqbo/image/upload/v1599370329/default.jpg"
       name="default"
     />
-    <main>{children}</main>
+    <TransitionGroup component={Main}>
+      <>{children}</>
+    </TransitionGroup>
     <Navbar />
   </Container>
 );

@@ -1,41 +1,31 @@
 import React, { FC, useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import InputSearch from '../../atoms/InputSearch/index';
-import ChatButton from '../../molecules/ChatButton/index';
-import { loadCurrentConversation } from 'root/actions';
+import { InputSearch } from '@/atoms';
+import { ChatButton, List } from '@/molecules';
 import { CSSChatContainer, CSSWrapperSearch } from './styles';
 
-const IMAGEN =
-  'https://res.cloudinary.com/dwapbqqbo/image/upload/v1599370329/default.jpg';
-
 type props = {
-  changePage?: any;
+  allConversations: any;
+  selectConversation: any;
 };
 
-const ChatList: FC<props> = ({ changePage }) => {
-  const dispatch = useDispatch();
-  const users = useSelector((store: any) => store.conversations.all);
-  const [usersFiltered, setUsersFiltered] = useState(users);
+const ChatList: FC<props> = ({ allConversations, selectConversation }) => {
+  const [conversations, setConversations] = useState([...allConversations]);
 
   useEffect(() => {
-    setUsersFiltered(users);
-  }, [users]);
+    setConversations(allConversations);
+  }, [allConversations]);
 
   const handleChange = (event: any) => {
-    if (event.target.value === '') {
-      setUsersFiltered(users);
-      return false;
-    }
-
-    const finded = users.filter(
-      (num: any) => num === Number(event.target.value)
+    const value = event.target.value;
+    const filter = allConversations.filter(
+      ({ username, text }: any) =>
+        username.indexOf(value) > -1 || text.indexOf(value) > -1
     );
-    setUsersFiltered(finded);
+    setConversations(filter);
   };
 
   const handleClick = (senderId: string) => {
-    changePage('0');
-    dispatch(loadCurrentConversation(senderId));
+    selectConversation(senderId);
   };
 
   return (
@@ -43,22 +33,20 @@ const ChatList: FC<props> = ({ changePage }) => {
       <CSSWrapperSearch>
         <InputSearch handleChange={handleChange} />
       </CSSWrapperSearch>
-      {usersFiltered.map(({ username, text, senderId }: any, idx: number) => (
-        <ChatButton
-          key={idx}
-          avatarUrl={IMAGEN}
-          name={username}
-          nickName={username}
-          slug={text}
-          onClick={() => handleClick(senderId)}
-        />
-      ))}
+      <List
+        data={conversations}
+        render={({ username, text, senderId }: any) => (
+          <ChatButton
+            key={senderId}
+            image="/default-profile.jpg"
+            username={username}
+            message={text}
+            handleClick={() => handleClick(senderId)}
+          />
+        )}
+      />
     </CSSChatContainer>
   );
-};
-
-ChatList.defaultProps = {
-  changePage: null,
 };
 
 export default ChatList;

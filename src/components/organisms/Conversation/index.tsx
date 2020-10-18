@@ -1,73 +1,52 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import InputChat from '../../atoms/InputChat/index';
 import Message from '../../molecules/Message/index';
-import { sendMessage } from 'root/actions';
-import { CSSConversation, CSSMessage, CSSInputChat, H1 } from './styles';
+import { sendMessageAction } from 'root/actions';
+import { CSSConversation, CSSMessage, CSSInputChat } from './styles';
+
+import { List } from '@/molecules';
 
 type props = {
-  children?: any;
-  changePage?: any;
+  messages: any;
+  senderId: string;
 };
 
-const Conversation: FC<props> = () => {
-  const dispatch = useDispatch();
-  const conversationCurrent = useSelector((store: any) => store.conversations);
+const Conversation: FC<props> = ({ messages, senderId }) => {
   const user = useSelector((store: any) => store.user);
-  const [conversation, setConversation] = useState(conversationCurrent.current);
-  const [message, setMessage] = useState('');
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setConversation(conversationCurrent.current);
-  }, [conversationCurrent]);
-
-  const handleClick = (event: any) => {
-    if (event.type === 'keyup' && event.keyCode !== 13) {
-      setMessage(event.target.value);
-      return false;
-    }
-
-    if (event.type === 'click') {
-      event.currentTarget.parentNode.getElementsByTagName('input')[0].value =
-        '';
-    } else {
-      event.target.value = '';
-    }
-
-    const dataForm = {
+  const onSend = (message: string) => {
+    alert(message);
+    const data = {
       messageData: {
         text: message,
         sendDate: '02-Sep-2020',
-        senderId: conversation.senderId,
+        senderId: senderId,
       },
-      senderId: conversation.senderId,
+      senderId: senderId,
       tokenFacebook: user.company.tokenFacebook,
     };
 
-    dispatch(sendMessage(dataForm, `${user.name} ${user.lastname}`));
+    dispatch(sendMessageAction(data, `${user.name} ${user.lastname}`));
   };
-
-  if (!conversation) {
-    return <H1>No has seleccionado ni una conversación</H1>;
-  }
 
   return (
     <CSSConversation>
-      <div>
-        {conversation.messages.map(
-          ({ username, text, type }: any, idx: number) => (
-            <CSSMessage key={idx}>
-              <Message
-                type={type ? type : 'recipient'}
-                username={username}
-                text={text}
-              />
-            </CSSMessage>
-          )
+      <List
+        data={messages}
+        render={({ username, text, type }: any, idx: number) => (
+          <CSSMessage key={idx}>
+            <Message
+              type={type ? type : 'recipient'}
+              username={username}
+              text={text}
+            />
+          </CSSMessage>
         )}
-      </div>
+      />
       <CSSInputChat>
-        <InputChat handleClick={handleClick} />
+        <InputChat onSend={onSend} />
       </CSSInputChat>
     </CSSConversation>
   );

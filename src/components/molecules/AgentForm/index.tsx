@@ -1,46 +1,89 @@
-import React, { FC, ReactNode } from 'react';
-
-import InputText from '@/atoms/InputText';
-import ButtonLarge from '@/atoms/ButtonLarge';
-
+import React, { useState, FC } from 'react';
+import { InputText, InputSelect, ButtonLarge, AvatarChange } from '@/atoms';
 import { Form } from './styles';
 
 type props = {
-  handleSubmit?: (event: any) => void;
-  children?: ReactNode;
+  data: any;
+  onSave: (data: any) => void;
 };
 
-const AgentForm: FC<props> = ({ handleSubmit, children }) => (
-  <Form onSubmit={handleSubmit}>
-    <InputText
-      typeInput="email"
-      title="Correo electronico:"
-      placeholder="Escribe un correo"
-      name="email"
-    />
-    <InputText
-      typeInput="password"
-      title="Contraseña:"
-      placeholder="Escribe una contraseña"
-      name="password"
-    />
-    <InputText
-      typeInput="text"
-      title="Nombres:"
-      placeholder="Escribe los nombres"
-      name="name"
-    />
-    <InputText
-      typeInput="text"
-      title="Apellidos:"
-      placeholder="Escribe los apellidos"
-      name="lastName"
-    />
-    <div>
-      {children}
-      <ButtonLarge type="submit">Guardar</ButtonLarge>
-    </div>
-  </Form>
-);
+const fields = [
+  {
+    type: 'text',
+    label: 'Nombres',
+    placeholder: 'Escribe los nombres',
+    name: 'name',
+  },
+  {
+    type: 'text',
+    label: 'Apellidos',
+    placeholder: 'Escribe los apellidos',
+    name: 'lastname',
+  },
+  {
+    type: 'email',
+    label: 'Correo electronico',
+    placeholder: 'Escribe un correo',
+    name: 'username',
+  },
+];
+
+const AgentForm: FC<props> = ({ data, onSave }) => {
+  const [form, setForm] = useState(data);
+
+  const handleChange = (event: any) => {
+    if (event.target.type === 'file') {
+      setForm({
+        ...form,
+        [event.target.name]: '/default-profile.jpg',
+      });
+    } else {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    onSave(form);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <AvatarChange
+        url={form['image']}
+        alt={form['name']}
+        handleChange={handleChange}
+      />
+      <div>
+        <h2>General</h2>
+        {fields.map(({ type, label, placeholder, name }) => (
+          <InputText
+            key={name}
+            type={type}
+            label={label}
+            placeholder={placeholder}
+            name={name}
+            value={form[name]}
+            handleChange={handleChange}
+          />
+        ))}
+        <InputSelect
+          name="role_id"
+          handleChange={handleChange}
+          value={form.role_id}
+          options={[
+            { value: '2', label: 'Agente' },
+            { value: '1', label: 'Administrador' },
+          ]}
+        />
+        <ButtonLarge type="submit">Guardar</ButtonLarge>
+      </div>
+      <div></div>
+    </Form>
+  );
+};
 
 export default AgentForm;

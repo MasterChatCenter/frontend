@@ -1,26 +1,54 @@
-import React, { FC, ReactNode } from 'react';
+import Link from 'next/link';
+import { useState, FC } from 'react';
 import { MdAdd } from 'react-icons/md';
-import InputSearch from '@/atoms/InputSearch';
+import { AgentCard, List } from '@/molecules';
+import { InputSearch } from '@/atoms';
 
-import { Div, Button } from './styles';
+import { Button, Container, Header } from './styles';
 
 type props = {
-  children: ReactNode;
-  openModal: () => void;
-  handleChange?: any;
+  agents: never[];
 };
 
-const Agents: FC<props> = ({ openModal, children, handleChange }) => (
-  <Div>
-    <div>
-      <InputSearch handleChange={handleChange} />
-      <Button onClick={openModal}>
-        <MdAdd />
-        <p>Nuevo</p>
-      </Button>
-    </div>
-    {children}
-  </Div>
-);
+const Agents: FC<props> = ({ agents }): JSX.Element => {
+  const [data, setData] = useState([...agents]);
+
+  const handleChange = (event: any) => {
+    const finded = agents.filter(
+      ({ name, lastname }: any) =>
+        name.indexOf(event.target.value) > -1 ||
+        lastname.indexOf(event.target.value) > -1
+    );
+    setData(finded);
+  };
+
+  if (!agents) return <h1>Cargando</h1>;
+  return (
+    <Container>
+      <Header>
+        <InputSearch handleChange={handleChange} />
+        <Link href="/agents/new">
+          <Button>
+            <MdAdd />
+            <p>Nuevo</p>
+          </Button>
+        </Link>
+      </Header>
+      <List
+        data={data}
+        render={({ id, image, name, lastname, username }: any) => (
+          <AgentCard
+            key={id}
+            uuid={id}
+            avatar={image}
+            name={name}
+            lastname={lastname}
+            username={username}
+          />
+        )}
+      />
+    </Container>
+  );
+};
 
 export default Agents;

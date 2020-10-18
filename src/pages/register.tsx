@@ -1,17 +1,14 @@
 import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import { useState } from 'react';
-import { FcCheckmark } from 'react-icons/fc';
+import { FcCheckmark, FcCancel } from 'react-icons/fc';
 import cookies from 'next-cookies';
 
-import Register from '@/organisms/Register';
-import RegisterForm from '@/molecules/RegisterForm';
-import Modal from '@/molecules/Modal';
-import Alert from '@/molecules/Alert';
-import ButtonLink from '@/atoms/ButtonLink';
+import { Register } from '@/organisms';
+import { RegisterForm, Modal, Alert } from '@/molecules';
+import { ButtonLink } from '@/atoms';
 
-import { singupService } from 'root/services';
-
+import { AuthService } from 'root/services';
 import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -26,71 +23,62 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const RegisterPage = (): JSX.Element => {
+  const [registered, setRegistered] = useState(false);
   const [modal, setModal] = useState(false);
-  const [errors, setErrors] = useState([] as string[]);
+  const [alertError, setAlertError] = useState('');
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-
-    const dataForm = {
-      username: form.email.value,
-      password: form.password.value,
-      confirmPassword: form.confirmPassword.value,
-    };
-
+  const onSave = (data: any) => {
     if (
-      dataForm.password === '' ||
-      dataForm.confirmPassword === '' ||
-      dataForm.username === ''
+      data.password === '' ||
+      data.confirmPassword === '' ||
+      data.username === ''
     ) {
-      setErrors(['Profavor completa todos los campos']);
+      setModal(true);
+      setAlertError('Porfavor complete todos los campos');
+      return false;
+    }
+    if (data.password !== data.confirmPassword) {
+      setModal(true);
+      setAlertError('Las contraseñas no conciden');
       return false;
     }
 
-    if (dataForm.password !== dataForm.confirmPassword) {
-      setErrors(['Las contraseñas no conciden']);
-      return false;
-    }
-
-    singupService(dataForm)
-      .then((res: any) => {
-        if (res.error) {
-          setErrors([res.error.message]);
-        } else {
-          setModal(true);
-        }
+    AuthService.register(data)
+      .then(() => {
+        setModal(true);
+        setRegistered(true);
       })
-      .catch((error) => {
-        alert(error.message);
-        setErrors(['Nuevo error']);
+      .catch(() => {
+        setAlertError('Nuevo error');
       });
   };
 
   const closeModal = () => {
     setModal(false);
-    Router.push('/login');
+    setAlertError('');
+    if (registered) {
+      Router.push('/login');
+    }
   };
 
   return (
     <CSSContainer>
       <Register>
-        {errors.map((err, idx) => (
-          <p key={idx} style={{ width: '100%' }}>
-            {err}
-          </p>
-        ))}
-        <RegisterForm handleSubmit={handleSubmit} />
+        <RegisterForm onSave={onSave} />
       </Register>
       <Modal isModalOpen={modal} closeModal={closeModal}>
-        <Alert
-          title="Envio éxitoso"
-          message="Tu registro ha sido exitoso, hemos enviado un mensaje de confirmación de registro a tu correo electronico."
-          icon={<FcCheckmark />}
-        >
-          <p>Revisa tu bandeja o correo no deseado </p>
-          <ButtonLink>Reenvia el correo de confirmación </ButtonLink>
-        </Alert>
+        {alertError !== '' ? (
+          <Alert title="Error" message={alertError} icon={<FcCancel />} />
+        ) : (
+          <Alert
+            title="Envio éxitoso"
+            message="Tu registro ha sido exitoso, hemos enviado un mensaje de confirmación de registro a tu correo electronico."
+            icon={<FcCheckmark />}
+          >
+            <p>Revisa tu bandeja o correo no deseado</p>
+            <ButtonLink>Reenvia el correo de confirmación</ButtonLink>
+          </Alert>
+        )}
       </Modal>
     </CSSContainer>
   );

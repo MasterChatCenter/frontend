@@ -13,6 +13,19 @@ export const theme = {
   text: '#000',
 };
 
+export const themeDark = {
+  primary: '#0F2229',
+  primaryDark: '#0F2229',
+  primaryLight: 'yellow',
+  secondary: '#80CBC4',
+  secondaryDark: '#4F9A94',
+  secondaryLight: 'green',
+  booleanGreen: 'gray',
+  booleanRed: '#FA3E3E',
+  background: '#203A43',
+  text: '#FFF',
+};
+
 export const GlobalStyles = createGlobalStyle`
 * {
   border: 0;
@@ -42,6 +55,32 @@ small {
   font-size: 10px;
   font-weight: normal;
 }
+.my-node-enter {
+    opacity: 0;
+  }
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+}
+`;
+
+export const Grid = styled.div`
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+
+  @media screen and (min-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 20px;
+    padding: 0;
+  }
 `;
 
 export const CSSContainer = styled.div`
@@ -95,4 +134,13 @@ export const LoadedChat = styled.div`
     height: 100%;
     overflow: hidden;
   }
+`;
+
+export const MessageError = styled.h1`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: ${(props) => props.theme.text};
 `;

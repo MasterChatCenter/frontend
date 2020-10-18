@@ -1,14 +1,16 @@
 import React, { FC, useState } from 'react';
 import { FaEllipsisH, FaRegStickyNote } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
 import Modal from '@/molecules/Modal';
 import CardShadow from '@/atoms/CardShadow';
 import ButtonLarge from '@/atoms/ButtonLarge';
 import ButtonLink from '@/atoms/ButtonLink';
 import { CSSPanelChat, NewNote } from './styles';
 
-const PanelChat: FC = () => {
-  const state = useSelector((state: any) => state);
+type props = {
+  username: string;
+};
+
+const PanelChat: FC<props> = ({ username }) => {
   const [modal, setModal] = useState(false);
   const [note, setNote] = useState('');
 
@@ -21,7 +23,7 @@ const PanelChat: FC = () => {
 
   return (
     <CSSPanelChat>
-      <p>{state.conversations.current.username}</p>
+      <p>{username}</p>
       <figure>
         <button onClick={() => setModal(true)}>
           <FaRegStickyNote />

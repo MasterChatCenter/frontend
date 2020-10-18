@@ -4,4 +4,6 @@ import { storiesOf } from '@storybook/react';
 
 import PanelChat from '.';
 
-storiesOf('molecules / Header', module).add(' PanelChat', () => <PanelChat />);
+storiesOf('molecules / Header', module).add(' PanelChat', () => (
+  <PanelChat username="Username" />
+));
