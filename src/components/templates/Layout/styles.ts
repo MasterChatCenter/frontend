@@ -20,6 +20,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 50px 1fr 60px;
   height: 100vh;
+  background: ${(props) => props.theme.background};
 
   main {
     overflow: hidden;

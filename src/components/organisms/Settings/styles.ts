@@ -21,10 +21,11 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px ${(props) => props.theme.text};
   padding-bottom: 10px;
   margin-bottom: 30px;
   opacity: 0.5;
+  color: ${(props) => props.theme.text};
 `;
 
 export const ConnectFacebook = styled.button`

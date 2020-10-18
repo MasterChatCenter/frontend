@@ -84,7 +84,7 @@ const CompleteForm: FC<props> = ({ onSave }) => {
           label={label}
           type={type}
           placeholder={placeholder}
-          value={form[name]}
+          value={(form as any)[name]}
           handleChange={handleChange}
         />
       ))}

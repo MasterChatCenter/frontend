@@ -15,6 +15,7 @@ export const CardCenter = styled.div`
   p:last-child {
     text-align: center;
     margin: 20px 0 10px 0;
+    color: ${(props) => props.theme.text};
     a {
       margin-left: 5px;
       text-decoration: none;

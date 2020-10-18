@@ -57,7 +57,7 @@ const RegisterForm: FC<props> = ({ onSave }) => {
           type={type}
           label={label}
           placeholder={placeholder}
-          value={form[name]}
+          value={(form as any)[name]}
           handleChange={handleChange}
         />
       ))}

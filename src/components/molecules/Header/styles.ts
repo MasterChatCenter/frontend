@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   height: 50px;
   padding: 0 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  background-color: #00695c;
+  background-color: ${(props) => props.theme.primary};
   cursor: pointer;
 `;
 
@@ -45,7 +45,7 @@ export const Menu = styled.div`
   width: 100px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  background-color: ${(props) => props.theme.background};
   overflow: hidden;
 
   button {

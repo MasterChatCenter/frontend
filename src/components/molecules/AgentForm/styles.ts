@@ -11,5 +11,13 @@ export const Form = styled.form`
     border-bottom: solid 1px gray;
     padding-bottom: 10px;
     margin-bottom: 30px;
+    color: ${(props) => props.theme.text};
+  }
+
+  div {
+    div {
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
   }
 `;

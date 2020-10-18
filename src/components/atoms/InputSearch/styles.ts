@@ -6,6 +6,7 @@ export const CSSChatBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props.theme.background};
 `;
 
 export const CSSInput = styled.input`
@@ -14,6 +15,8 @@ export const CSSInput = styled.input`
   border-radius: 15px;
   border: none;
   outline: none;
+  background-color: transparent;
+  color: ${(props) => props.theme.text};
 `;
 
 export const CSSChatAction = styled.button`
@@ -30,5 +33,6 @@ export const CSSChatAction = styled.button`
 
   svg {
     font-size: 15px;
+    color: ${(props) => props.theme.text};
   }
 `;

@@ -13,6 +13,19 @@ export const theme = {
   text: '#000',
 };
 
+export const themeDark = {
+  primary: '#0F2229',
+  primaryDark: '#0F2229',
+  primaryLight: 'yellow',
+  secondary: '#80CBC4',
+  secondaryDark: '#4F9A94',
+  secondaryLight: 'green',
+  booleanGreen: 'gray',
+  booleanRed: '#FA3E3E',
+  background: '#203A43',
+  text: '#FFF',
+};
+
 export const GlobalStyles = createGlobalStyle`
 * {
   border: 0;
@@ -121,4 +134,13 @@ export const LoadedChat = styled.div`
     height: 100%;
     overflow: hidden;
   }
+`;
+
+export const MessageError = styled.h1`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: ${(props) => props.theme.text};
 `;

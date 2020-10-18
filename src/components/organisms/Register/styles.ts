@@ -16,6 +16,7 @@ export const CSSRegister = styled.div`
     > p {
       margin: 0px 0 10px 0;
       text-align: center;
+      color: ${(props) => props.theme.text};
     }
 
     p:last-child {
