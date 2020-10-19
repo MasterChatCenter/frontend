@@ -1,9 +1,7 @@
 import React, { FC, useState } from 'react';
 import { FaEllipsisH, FaRegStickyNote } from 'react-icons/fa';
-import Modal from '@/molecules/Modal';
-import CardShadow from '@/atoms/CardShadow';
-import ButtonLarge from '@/atoms/ButtonLarge';
-import ButtonLink from '@/atoms/ButtonLink';
+import { Modal } from '@/molecules';
+import { CardShadow, ButtonLarge, ButtonLink } from '@/atoms';
 import { CSSPanelChat, NewNote } from './styles';
 
 type props = {

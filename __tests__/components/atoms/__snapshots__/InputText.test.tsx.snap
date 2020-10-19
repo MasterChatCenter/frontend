@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`atoms / InputText matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <p
+      class="styles__TextStyle-ep0sxs-1 frmMtP"
+    >
+      Haciendo test
+    </p>
+    <input
+      class="styles__InputStyle-ep0sxs-0 drwWWZ"
+      name="test"
+      placeholder="Este es un test"
+      type="text"
+      value="Test with jest"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -1,8 +1,5 @@
 import React, { FC } from 'react';
-
-import CardBorder from '@/atoms/CardBorder';
-import AvatarUser from '@/atoms/AvatarUser';
-
+import { CardBorder, AvatarUser } from '@/atoms';
 import { CSSNickName, CSSContainer, CSStatus, CSSDivider } from './styles';
 
 type props = {

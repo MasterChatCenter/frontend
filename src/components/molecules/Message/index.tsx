@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import AvatarUser from '@/atoms/AvatarUser';
+import { AvatarUser } from '@/atoms';
 import { CSSPanel, CSSWrapper } from './styles';
 
 type props = {

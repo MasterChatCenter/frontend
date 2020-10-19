@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import InputChat from '../../atoms/InputChat/index';
-import Message from '../../molecules/Message/index';
+import { InputChat } from '@/atoms';
+import { List, Message } from '@/molecules';
 import { sendMessageAction } from 'root/actions';
 import { CSSConversation, CSSMessage, CSSInputChat } from './styles';
-
-import { List } from '@/molecules';
 
 type props = {
   messages: any;

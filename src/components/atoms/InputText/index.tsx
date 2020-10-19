@@ -13,10 +13,8 @@ type props = {
 };
 
 const InputText: React.FC<props> = ({
-  typeInput,
   type,
   placeholder,
-  title,
   label,
   name,
   value,
@@ -24,9 +22,9 @@ const InputText: React.FC<props> = ({
 }) => {
   return (
     <div>
-      <TextStyle>{label || title}</TextStyle>
+      <TextStyle>{label}</TextStyle>
       <InputStyle
-        type={typeInput || type}
+        type={type}
         placeholder={placeholder}
         name={name}
         value={value}

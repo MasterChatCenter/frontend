@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`atoms / CardBorder matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="styles__CSSCardBorder-sc-7hv695-0 kweAYS"
+  >
+    CardBorder Children
+  </div>
+</DocumentFragment>
+`;

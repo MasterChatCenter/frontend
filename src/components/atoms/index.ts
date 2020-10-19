@@ -1,10 +1,13 @@
 export { default as AvatarUser } from './AvatarUser';
 export { default as AvatarChange } from './AvatarChange';
 export { default as CardBorder } from './CardBorder';
+export { default as CardShadow } from './CardShadow';
 export { default as InputSearch } from './InputSearch';
 export { default as InputEdit } from './InputEdit';
 export { default as InputText } from './InputText';
 export { default as InputSelect } from './InputSelect';
+export { default as InputChat } from './InputChat';
 export { default as ButtonLarge } from './ButtonLarge';
 export { default as ButtonLink } from './ButtonLink';
 export { default as Loading } from './Loading';
+export { default as NavItem } from './NavItem';
