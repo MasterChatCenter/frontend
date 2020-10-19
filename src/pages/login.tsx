@@ -30,6 +30,7 @@ const LoginPage = (): JSX.Element => {
     if (data.username === '' || data.password === '') {
       setModal(true);
       setAlertError('Porfavor complete todos los campos');
+      return false;
     }
 
     AuthService.login(data)

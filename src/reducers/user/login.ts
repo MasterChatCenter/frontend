@@ -11,7 +11,7 @@ type Login = {
 const login = (payload: Login): any => {
   document.cookie = `user=${JSON.stringify(payload)}`;
   if (payload.role.name === 'agent') {
-    Router.push('/');
+    Router.push('/conversations');
   } else if (payload.company === null) {
     Router.push('/complete');
   } else {

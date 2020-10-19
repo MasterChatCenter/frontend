@@ -14,10 +14,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  if ((user as any).role.name !== 'admin') {
-    context.res.writeHead(302, { Location: '/' }).end();
-  }
-
   return {
     props: {},
   };

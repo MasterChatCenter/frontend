@@ -1,8 +1,27 @@
+import { GetServerSideProps } from 'next';
+import cookies from 'next-cookies';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import { Layout, Conversations } from '@/templates';
 import { addMessageAction } from 'root/actions';
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { user } = cookies(context);
+  if (!user) {
+    context.res.writeHead(302, { Location: '/login' }).end();
+    return {
+      props: {},
+    };
+  }
+
+  if ((user as any).company === 'admin') {
+    context.res.writeHead(302, { Location: '/agents' }).end();
+  }
+  return {
+    props: {},
+  };
+};
 
 let socket: any;
 
@@ -26,7 +45,7 @@ const ConversationsPage = (): JSX.Element => {
 
   useEffect(() => {
     socket.on('answer', (message: any) => {
-      dispatch(addMessageAction(message));
+      dispatch(addMessageAction({ ...message, type: 'recipient' }));
     });
   }, []);
 

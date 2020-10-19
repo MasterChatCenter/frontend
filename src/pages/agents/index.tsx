@@ -1,3 +1,5 @@
+import { GetServerSideProps } from 'next';
+import cookies from 'next-cookies';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { AgentsService } from 'root/services';
@@ -5,6 +7,24 @@ import { CSSTransition } from 'react-transition-group';
 import { Loading } from '@/atoms';
 import { Layout, Agents } from '@/templates';
 import { Grid, MessageError } from 'root/styles';
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { user } = cookies(context);
+  if (!user) {
+    context.res.writeHead(302, { Location: '/login' }).end();
+    return {
+      props: {},
+    };
+  }
+
+  if ((user as any).role.name === 'agent') {
+    context.res.writeHead(302, { Location: '/conversations' }).end();
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const AgentsPage = (): JSX.Element => {
   const [agents, setAgents] = useState([]);
