@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`atoms / Loading matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="styles__Container-sc-1x8w729-0 kYCmay"
+  >
+    <div
+      class="styles__Ring-sc-1x8w729-1 dlEWCs"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;

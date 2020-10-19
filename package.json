@@ -11,7 +11,9 @@
     "build-storybook": "build-storybook",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint . --ext ts --ext tsx --ext js"
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "test": "jest",
+    "test-all": "npm run lint && npm run type-check && npm run test"
   },
   "husky": {
     "hooks": {
@@ -55,6 +57,8 @@
     "@storybook/addon-essentials": "^6.0.26",
     "@storybook/addon-links": "^6.0.26",
     "@storybook/react": "^6.0.26",
+    "@testing-library/react": "^11.1.0",
+    "@types/jest": "^26.0.14",
     "@types/node": "^14.6.0",
     "@types/react": "^16.9.47",
     "@types/react-dom": "^16.9.8",
@@ -63,14 +67,18 @@
     "@types/react-transition-group": "^4.4.0",
     "@types/socket.io-client": "^1.4.33",
     "@types/styled-components": "^5.1.2",
+    "@types/testing-library__react": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
+    "babel-jest": "^26.5.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-react": "^7.20.6",
     "husky": "^4.2.5",
+    "jest": "^26.5.3",
+    "jest-watch-typeahead": "^0.6.1",
     "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
     "react-is": "^16.13.1",

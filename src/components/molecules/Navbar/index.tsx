@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { FaCommentAlt, FaUserCog, FaHeadset } from 'react-icons/fa';
 
-import NavItem from '@/atoms/NavItem';
+import { NavItem } from '@/atoms';
 
 import { CSSNavBar, NavBarContainer } from './styles';
 

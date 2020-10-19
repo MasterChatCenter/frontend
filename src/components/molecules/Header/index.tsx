@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { FaRocketchat } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import AvatarUser from '../../atoms/AvatarUser';
-import ButtonLink from '@/atoms/ButtonLink';
+import { ButtonLink, AvatarUser } from '@/atoms';
 import { logoutAction } from 'root/actions';
 
 import { HeaderContainer, AvatarWraper, Logo, Menu } from './styles';

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`atoms / ButtonLink matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="styles__CSSButton-sc-1rk5do3-0 fmizld"
+    type="button"
+  >
+    ButtonLink Children
+  </button>
+</DocumentFragment>
+`;

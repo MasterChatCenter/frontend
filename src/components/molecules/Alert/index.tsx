@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
-import CardShadow from '../../atoms/CardShadow';
+import { CardShadow } from '@/atoms';
 
 import { CSSContainer } from './styles';
 
