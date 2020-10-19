@@ -18,8 +18,10 @@ module.exports = {
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/__test__/__mocks__/fileMock.js',
     '^@/atoms$': '<rootDir>/src/components/atoms',
     '^@/molecules$': '<rootDir>/src/components/molecules',
+    '^@/organisms$': '<rootDir>/src/components/organisms',
     '^root/config$': '<rootDir>/src/config',
     '^root/actions$': '<rootDir>/src/actions',
     '^root/services$': '<rootDir>/src/services',
+    '^root/styles$': '<rootDir>/src/styles',
   },
 };

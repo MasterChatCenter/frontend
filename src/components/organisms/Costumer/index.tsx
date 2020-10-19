@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import InputEdit from '@/atoms/InputEdit';
+import { InputEdit } from '@/atoms';
 import { CSSCostumer, Note, Title, Tiket, Container } from './styles';
 
 const Costumer: FC = () => {

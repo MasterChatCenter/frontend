@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import Link from 'next/link';
 
-import CardShadow from '@/atoms/CardShadow';
+import { CardShadow } from '@/atoms';
 
 import { CSSRegister } from './styles';
 
