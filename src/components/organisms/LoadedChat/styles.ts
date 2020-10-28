@@ -8,3 +8,13 @@ export const Container = styled.div`
   height: 100%;
   overflow: hidden;
 `;
+
+export const H1 = styled.h1`
+  grid-column: 1 / 9;
+  grid-row: 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;

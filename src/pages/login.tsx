@@ -12,8 +12,10 @@ import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
-  if (user) {
-    context.res.writeHead(302, { Location: '/' }).end();
+  if (user && (user as any).role.name === 'admin') {
+    context.res.writeHead(302, { Location: '/agents' }).end();
+  } else if (user && (user as any).role.name === 'agent') {
+    context.res.writeHead(302, { Location: '/conversations' }).end();
   }
 
   return {
@@ -30,6 +32,7 @@ const LoginPage = (): JSX.Element => {
     if (data.username === '' || data.password === '') {
       setModal(true);
       setAlertError('Porfavor complete todos los campos');
+      return false;
     }
 
     AuthService.login(data)

@@ -27,7 +27,7 @@ const getOne = async (id: string): Promise<any> => {
     lastname: data.lastname,
     image: data.image,
     username: data.username,
-    role: data.role.id,
+    role_id: data.role.id,
   };
 };
 

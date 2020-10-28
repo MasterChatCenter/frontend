@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {},
     };
   }
-  if ((user as any).role.name !== 'admin') {
+  if ((user as any).role.name.toLowerCase() !== 'admin') {
     context.res.writeHead(302, { Location: '/' }).end();
   }
   if ((user as any).company !== null) {

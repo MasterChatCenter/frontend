@@ -3,5 +3,5 @@ import { storiesOf } from '@storybook/react';
 import CompanyForm from '.';
 
 storiesOf('molecules / Forms', module).add('CompanyForm', () => (
-  <CompanyForm />
+  <CompanyForm data={{}} onSave={() => alert('onSave')} />
 ));

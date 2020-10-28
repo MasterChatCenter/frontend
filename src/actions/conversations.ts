@@ -7,6 +7,7 @@ type AddMessage = {
   senderId: string;
   text: string;
   username: string;
+  type: string;
 };
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const addMessageAction = (payload: AddMessage): any => ({
@@ -22,7 +23,9 @@ export const sendMessageAction = (
   return (dispatch: any) => {
     MessagesService.create(data)
       .then((data) => {
-        dispatch(addMessageAction({ ...data, username, pageId: '' }));
+        dispatch(
+          addMessageAction({ ...data, username, pageId: '', type: 'sender' })
+        );
       })
       .catch();
   };

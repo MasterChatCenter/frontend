@@ -11,3 +11,4 @@ export { default as Header } from './Header';
 export { default as ChatButton } from './ChatButton';
 export { default as PanelChat } from './PanelChat';
 export { default as Message } from './Message';
+export { default as CompanyForm } from './CompanyForm';

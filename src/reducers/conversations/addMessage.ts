@@ -3,6 +3,7 @@ type AddMessage = {
   senderId: string;
   text: string;
   username: string;
+  type: string;
 };
 const addMessage = (state: any, payload: AddMessage): any => {
   const handleState = { ...state };
@@ -10,6 +11,7 @@ const addMessage = (state: any, payload: AddMessage): any => {
     senderId: payload.senderId,
     username: payload.username,
     text: payload.text,
+    type: payload.type,
   };
 
   if (handleState[payload.senderId]) {
