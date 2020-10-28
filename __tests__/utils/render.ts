@@ -14,6 +14,7 @@ const Providers = ({ children }: any) => {
   // )
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const customRender = (ui: any, options = {}): any => {
   return render(ui, { wrapper: Providers, ...options });
 };

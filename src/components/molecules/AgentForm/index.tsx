@@ -81,7 +81,6 @@ const AgentForm: FC<props> = ({ data, onSave }) => {
         />
         <ButtonLarge type="submit">Guardar</ButtonLarge>
       </div>
-      <div></div>
     </Form>
   );
 };

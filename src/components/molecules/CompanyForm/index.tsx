@@ -1,50 +1,59 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
-import AvatarChange from '@/atoms/AvatarChange';
-import InputEdit from '@/atoms/InputEdit';
-import InputSelect from '@/atoms/InputSelect';
-import { updateCompanyService } from 'root/services';
+import React, { useState, FC } from 'react';
+import { InputText, InputSelect, ButtonLarge, AvatarChange } from '@/atoms';
+import { Form } from './styles';
 
-import { Container } from './styles';
+type props = {
+  data: any;
+  onSave: (data: any) => void;
+};
 
-const CompanyForm: FC = () => {
-  const user = useSelector((state: any) => state.user);
+const CompanyForm: FC<props> = ({ data, onSave }) => {
+  const [form, setForm] = useState(data);
 
-  const handleSave = (
-    value: string,
-    name: string,
-    set: any,
-    setEditable: any
-  ) => {
-    updateCompanyService({ [name]: value }, user.company_id)
-      .then(() => {
-        set(value);
-        setEditable(false);
-      })
-      .catch((err: any) => alert(err.message));
+  const handleChange = (event: any) => {
+    if (event.target.type === 'file') {
+      setForm({
+        ...form,
+        [event.target.name]: '/default-profile.jpg',
+      });
+    } else {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    onSave(form);
   };
 
   return (
-    <Container>
-      <AvatarChange url="" alt="" />
-      <InputEdit
-        type="text"
-        label="Nombre de la empresa"
-        name="name"
-        placeholder="Escribe un nombre"
-        value={user.company.name}
-        onSave={handleSave}
-      />
-      <InputSelect
-        name="category"
-        handleChange={() => alert('Camniando')}
-        value="1"
-        options={[
-          { value: '1', label: 'Economia' },
-          { value: '2', label: 'Tienda  ' },
-        ]}
-      />
-    </Container>
+    <Form onSubmit={handleSubmit}>
+      <AvatarChange url={form['logo']} alt={form['name']} />
+      <div>
+        <h2>Empresa</h2>
+        <InputText
+          type="text"
+          label="Nombre:"
+          placeholder="Escribe el nombre de la empresa"
+          name="name"
+          value={form['name']}
+          handleChange={handleChange}
+        />
+        <InputSelect
+          name="role_id"
+          handleChange={handleChange}
+          value={form.role_id}
+          options={[
+            { value: '2', label: 'Agente' },
+            { value: '1', label: 'Administrador' },
+          ]}
+        />
+        <ButtonLarge type="submit">Guardar</ButtonLarge>
+      </div>
+    </Form>
   );
 };
 

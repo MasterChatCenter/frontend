@@ -1,33 +1,75 @@
-import React, { FC } from 'react';
-import { FaCheck } from 'react-icons/fa';
-import CompanyForm from '@/molecules/CompanyForm';
-import AdminForm from '@/molecules/AdminForm';
-
-import { Container, Section, Title, ConnectFacebook } from './styles';
+import React, { FC, useState } from 'react';
+import { FcCheckmark } from 'react-icons/fc';
+import { useSelector, useDispatch } from 'react-redux';
+import { AgentForm, CompanyForm, Alert, Modal } from '@/molecules';
+import { AgentsService, CompaniesService } from 'root/services';
+import { updateAgentAdminAction, updateCompanyAction } from 'root/actions';
+import { Container } from './styles';
 
 const Settings: FC = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
+  const [modal, setModal] = useState(false);
+  const [messageAlert, setMessageAlert] = useState({
+    title: '',
+    message: '',
+    icon: <FcCheckmark />,
+  });
+
+  const data = {
+    image: user.image,
+    name: user.name,
+    lastname: user.lastname,
+    username: user.username,
+    role_id: user.role.id,
+  };
+
+  const company = {
+    logo: user.company.logo,
+    name: user.company.name,
+  };
+
+  const handleSaveCompany = (form: any) => {
+    CompaniesService.save(form, user.company.id)
+      .then(() => {
+        dispatch(updateCompanyAction(form));
+        setMessageAlert({
+          title: 'Empresa guardada',
+          message: 'Los datos de la empresa se guardaron con éxito',
+          icon: <FcCheckmark />,
+        });
+        setModal(true);
+      })
+      .catch();
+  };
+
+  const handleSaveAgent = (form: any) => {
+    AgentsService.save(form, user.id)
+      .then(() => {
+        dispatch(updateAgentAdminAction(form));
+        setMessageAlert({
+          title: 'Perfil guardado',
+          message: 'Los datos de perfil se guardaron con éxito',
+          icon: <FcCheckmark />,
+        });
+        setModal(true);
+      })
+      .catch();
+  };
+
   return (
     <Container>
-      <Section>
-        <Title>Empresa</Title>
-        <CompanyForm />
-      </Section>
-      <Section>
-        <Title>Servicios conectados</Title>
-        <div>
-          <p>Facebook</p>
-          <ConnectFacebook>
-            <p>Mi pagina de facebook</p>
-            <p>
-              <FaCheck />
-            </p>
-          </ConnectFacebook>
-        </div>
-      </Section>
-      <Section>
-        <Title>Administrador</Title>
-        <AdminForm />
-      </Section>
+      <AgentForm onSave={handleSaveAgent} data={data} />
+      {user.role.name.toLowerCase() == 'admin' ? (
+        <CompanyForm onSave={handleSaveCompany} data={company} />
+      ) : null}
+      <Modal isModalOpen={modal} closeModal={() => setModal(false)}>
+        <Alert
+          title={messageAlert.title}
+          message={messageAlert.message}
+          icon={messageAlert.icon}
+        />
+      </Modal>
     </Container>
   );
 };

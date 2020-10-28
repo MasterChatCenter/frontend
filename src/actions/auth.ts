@@ -31,3 +31,24 @@ export const updateUserAction = (
     });
   };
 };
+
+export const UPDATE_AGENT_ADMIN = 'UPDATE_AGENT_ADMIN';
+type AgentAdmin = {
+  image: string;
+  name: string;
+  lastname: string;
+};
+export const updateAgentAdminAction = (payload: AgentAdmin): any => ({
+  type: UPDATE_AGENT_ADMIN,
+  payload,
+});
+
+export const UPDATE_COMPANY = 'UPDATE_COPANY';
+type Company = {
+  logo: string;
+  name: string;
+};
+export const updateCompanyAction = (payload: Company): any => ({
+  type: UPDATE_COMPANY,
+  payload,
+});
