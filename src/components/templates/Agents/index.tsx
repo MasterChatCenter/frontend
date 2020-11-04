@@ -1,17 +1,41 @@
 import Link from 'next/link';
 import { useState, FC } from 'react';
 import { MdAdd } from 'react-icons/md';
-import { AgentCard, List } from '@/molecules';
+import { AgentCard, List, Modal, DeleteAgent } from '@/molecules';
 import { InputSearch } from '@/atoms';
-
+import { AgentsService } from 'root/services';
 import { Button, Container, Header } from './styles';
 
 type props = {
   agents: never[];
+  setLoaded: any;
 };
 
-const Agents: FC<props> = ({ agents }): JSX.Element => {
+const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
   const [data, setData] = useState([...agents]);
+  const [modal, setModal] = useState(false);
+  const [agentId, setAgentId] = useState('' as number | string);
+
+  const closeModal = () => {
+    setAgentId('');
+    setModal(false);
+  };
+  const openModal = (id: number | string) => {
+    setModal(true);
+    setAgentId(id);
+  };
+
+  const handleDelete = (id: number | string) => {
+    AgentsService.destroy(id)
+      .then(() => {
+        closeModal();
+        setLoaded(false);
+      })
+      .catch(() => {
+        alert('Upps! ocurrio un error');
+        closeModal();
+      });
+  };
 
   const handleChange = (event: any) => {
     const finded = agents.filter(
@@ -44,9 +68,16 @@ const Agents: FC<props> = ({ agents }): JSX.Element => {
             name={name}
             lastname={lastname}
             username={username}
+            handleDelete={() => openModal(id)}
           />
         )}
       />
+      <Modal isModalOpen={modal} closeModal={closeModal}>
+        <DeleteAgent
+          closeModal={closeModal}
+          onDelete={() => handleDelete(agentId)}
+        />
+      </Modal>
     </Container>
   );
 };

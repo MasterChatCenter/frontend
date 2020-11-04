@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
-
-import CardShadow from '@/atoms/CardShadow';
-import ButtonLink from '@/atoms/ButtonLink';
-import ButtonLarge from '@/atoms/ButtonLarge';
-
+import { CardShadow, ButtonLink, ButtonLarge } from '@/atoms';
 import { Container } from './styles';
 
 type props = {

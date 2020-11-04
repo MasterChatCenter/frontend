@@ -37,7 +37,7 @@ const AgentsPage = (): JSX.Element => {
         setLoaded(true);
         setError('Error al cargar datos');
       });
-  }, []);
+  }, [loaded]);
 
   return (
     <Layout>
@@ -46,7 +46,7 @@ const AgentsPage = (): JSX.Element => {
       {error === '' && loaded ? (
         <CSSTransition in={loaded} timeout={400} classNames="my-node">
           <Grid>
-            <Agents agents={agents} />
+            <Agents agents={agents} setLoaded={setLoaded} />
           </Grid>
         </CSSTransition>
       ) : null}

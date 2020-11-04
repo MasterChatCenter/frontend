@@ -68,8 +68,14 @@ const update = async (data: any, id: number | string): Promise<void> => {
   return res;
 };
 
+const destroy = async (id: number | string): Promise<boolean> => {
+  await fetch(`${config.localApi}/users/${id}`, { method: 'DELETE' });
+  return true;
+};
+
 export default {
   getAll,
   getOne,
   save,
+  destroy,
 };

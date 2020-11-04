@@ -26,6 +26,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const NewAgentPage = (): JSX.Element => {
   const animate = useAnimate();
   const data = {
+    image: '/default-profile.jpg',
     name: '',
     lastname: '',
     username: '',
