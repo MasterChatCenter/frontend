@@ -15,15 +15,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
   if (!user) {
     context.res.writeHead(302, { Location: '/login' }).end();
-    return {
-      props: {},
-    };
-  }
-  if ((user as any).role.name.toLowerCase() !== 'admin') {
-    context.res.writeHead(302, { Location: '/' }).end();
-  }
-  if ((user as any).company !== null) {
+  } else if (
+    user &&
+    (user as any).role.name.toLowerCase() === 'admin' &&
+    (user as any).company !== null
+  ) {
     context.res.writeHead(302, { Location: '/agents' }).end();
+  } else if (
+    user &&
+    (user as any).role.name.toLowerCase() === 'agent' &&
+    (user as any).company !== null
+  ) {
+    context.res.writeHead(302, { Location: '/conversations' }).end();
   }
   return {
     props: {},

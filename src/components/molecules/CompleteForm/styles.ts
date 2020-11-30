@@ -9,3 +9,8 @@ export const CSSForm = styled.form`
     margin: 20px 0 10px 0;
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;

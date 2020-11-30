@@ -13,8 +13,11 @@ import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
-  if (user) {
-    context.res.writeHead(302, { Location: '/' }).end();
+
+  if (user && (user as any).company === null) {
+    context.res.writeHead(302, { Location: '/complete' }).end();
+  } else if (user && (user as any).company.id) {
+    context.res.writeHead(302, { Location: '/agents' }).end();
   }
 
   return {

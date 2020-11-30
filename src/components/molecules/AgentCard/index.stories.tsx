@@ -10,5 +10,6 @@ storiesOf('atoms / Cards', module).add('AgentCard', () => (
     name="name"
     lastname="lastname"
     username="username"
+    handleDelete={() => alert('Handle Delete')}
   />
 ));

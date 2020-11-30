@@ -12,10 +12,12 @@ import { CSSContainer } from 'root/styles';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
-  if (user && (user as any).role.name === 'admin') {
-    context.res.writeHead(302, { Location: '/agents' }).end();
+  if (user && (user as any).company === null) {
+    context.res.writeHead(302, { Location: '/complete' }).end();
   } else if (user && (user as any).role.name === 'agent') {
     context.res.writeHead(302, { Location: '/conversations' }).end();
+  } else if (user && (user as any).role.name === 'admin') {
+    context.res.writeHead(302, { Location: '/agents' }).end();
   }
 
   return {

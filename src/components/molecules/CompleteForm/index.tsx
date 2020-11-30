@@ -8,7 +8,7 @@ import {
   AvatarChange,
 } from '@/atoms';
 import config from 'root/config';
-import { CSSForm } from './styles';
+import { CSSForm, Wrapper } from './styles';
 
 type props = {
   onSave: (data: any) => any;
@@ -37,7 +37,7 @@ const fields = [
 
 const CompleteForm: FC<props> = ({ onSave }) => {
   const [form, setForm] = useState({
-    image: '',
+    image: '/default-profile.jpg',
     company: '',
     name: '',
     lastname: '',
@@ -50,7 +50,7 @@ const CompleteForm: FC<props> = ({ onSave }) => {
     if (event.target.type === 'file') {
       setForm({
         ...form,
-        image: 'mi-imagen',
+        image: 'default-profile.jpg',
       });
       return false;
     }
@@ -76,7 +76,13 @@ const CompleteForm: FC<props> = ({ onSave }) => {
 
   return (
     <CSSForm onSubmit={handleSubmit} onChange={handleChange}>
-      <AvatarChange url="" alt="" handleChange={handleChange} />
+      <Wrapper>
+        <AvatarChange
+          url={form.image}
+          alt={form.company}
+          handleChange={handleChange}
+        />
+      </Wrapper>
       {fields.map(({ type, label, placeholder, name }) => (
         <InputText
           key={name}
