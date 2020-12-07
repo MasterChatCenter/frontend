@@ -18,6 +18,7 @@ const LoadedChat: FC<props> = ({ conversation }): JSX.Element => {
           <Conversation
             messages={conversation.messages}
             senderId={conversation.senderId}
+            conversationId={conversation.id}
           />
           <Costumer />
         </>

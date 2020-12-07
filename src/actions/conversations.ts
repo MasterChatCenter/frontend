@@ -30,3 +30,16 @@ export const sendMessageAction = (
       .catch();
   };
 };
+
+export const LOAD_CONVERSATIONS = 'LOAD_CONVERSATIONS';
+export const loadConversationsAction = (
+  id: string | number
+): ThunkAction<void, any, unknown, Action<string>> => {
+  return (dispatch: any) => {
+    MessagesService.getConversations(id)
+      .then((data) => {
+        dispatch({ type: LOAD_CONVERSATIONS, payload: data });
+      })
+      .catch();
+  };
+};

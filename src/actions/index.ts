@@ -13,6 +13,8 @@ export {
 export {
   ADD_MESSAGE,
   SEND_MESSAGE,
+  LOAD_CONVERSATIONS,
   addMessageAction,
   sendMessageAction,
+  loadConversationsAction,
 } from './conversations';

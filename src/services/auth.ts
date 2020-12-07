@@ -55,15 +55,15 @@ type UpdateUser = {
   accessToken: string;
 };
 const updateUser = async (data: UpdateUser, userId: string): Promise<void> => {
-  const req = await fetch(
+  /*const req = await fetch(
     `/api/getfacebookdata?token=${data.accessToken}&id=${data.facebookId}`
   );
-  const fb = await req.json();
+  const fb = await req.json();*/
   const dataCompany = {
     name: data.company,
     logo: data.image,
-    facebookId: fb.id,
-    tokenFacebook: fb.token,
+    facebookId: data.facebookId,
+    tokenFacebook: data.accessToken,
     category: data.category,
   };
   const company = await mutation(
@@ -75,7 +75,7 @@ const updateUser = async (data: UpdateUser, userId: string): Promise<void> => {
     name: data.name,
     lastname: data.lastname,
     image: data.image,
-    company_id: (company as any).data.user.id,
+    company_id: (company as any).data.company.id,
   };
   const updatedUser = await mutation(
     `${config.localApi}/users/${userId}`,

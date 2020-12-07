@@ -8,9 +8,10 @@ import { CSSConversation, CSSMessage, CSSInputChat } from './styles';
 type props = {
   messages: any;
   senderId: string;
+  conversationId: string | number;
 };
 
-const Conversation: FC<props> = ({ messages, senderId }) => {
+const Conversation: FC<props> = ({ messages, senderId, conversationId }) => {
   const user = useSelector((store: any) => store.user);
   const dispatch = useDispatch();
 
@@ -21,6 +22,7 @@ const Conversation: FC<props> = ({ messages, senderId }) => {
         text: message,
         sendDate: '02-Sep-2020',
         senderId: senderId,
+        conversation_id: conversationId,
       },
       senderId: senderId,
       tokenFacebook: user.company.tokenFacebook,

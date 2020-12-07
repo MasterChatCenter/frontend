@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import { Layout, Conversations } from '@/templates';
-import { addMessageAction } from 'root/actions';
+import { addMessageAction, loadConversationsAction } from 'root/actions';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
@@ -25,7 +25,8 @@ const ConversationsPage = (): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket = io('https://ws.chatcenter.hyfi.dev/');
+    dispatch(loadConversationsAction(user.id));
+    socket = io('http://localhost:5000/');
     socket.emit('client', `${user.token}`, (error: any) => {
       if (error) {
         return false;
