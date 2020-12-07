@@ -59,7 +59,7 @@ exports[`organisms / ChatList matches snapshot 1`] = `
           class="styles__CSSContainer-sc-1kwkyv1-2 hLOejI"
         >
           <div
-            class="styles__CSSDivider-sc-1kwkyv1-4 eNfbuv"
+            class="styles__CSSDivider-sc-1kwkyv1-5 MbLtO"
           >
             <img
               alt="username"
@@ -78,7 +78,7 @@ exports[`organisms / ChatList matches snapshot 1`] = `
             </div>
           </div>
           <div
-            class="styles__CSStatus-sc-1kwkyv1-3 iLHMPQ"
+            class="styles__CSSStatusRed-sc-1kwkyv1-4 kuSMtD"
           />
         </div>
       </div>
@@ -89,7 +89,7 @@ exports[`organisms / ChatList matches snapshot 1`] = `
           class="styles__CSSContainer-sc-1kwkyv1-2 hLOejI"
         >
           <div
-            class="styles__CSSDivider-sc-1kwkyv1-4 eNfbuv"
+            class="styles__CSSDivider-sc-1kwkyv1-5 MbLtO"
           >
             <img
               alt="username"
@@ -108,7 +108,7 @@ exports[`organisms / ChatList matches snapshot 1`] = `
             </div>
           </div>
           <div
-            class="styles__CSStatus-sc-1kwkyv1-3 iLHMPQ"
+            class="styles__CSSStatusRed-sc-1kwkyv1-4 kuSMtD"
           />
         </div>
       </div>

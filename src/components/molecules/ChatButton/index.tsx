@@ -1,15 +1,28 @@
 import React, { FC } from 'react';
 import { CardBorder, AvatarUser } from '@/atoms';
-import { CSSNickName, CSSContainer, CSStatus, CSSDivider } from './styles';
+import {
+  CSSNickName,
+  CSSContainer,
+  CSSStatusGreen,
+  CSSStatusRed,
+  CSSDivider,
+} from './styles';
 
 type props = {
   image: string;
   username: string;
   message: string;
+  state: string | number;
   handleClick: any;
 };
 
-const ChatButton: FC<props> = ({ image, username, message, handleClick }) => (
+const ChatButton: FC<props> = ({
+  image,
+  username,
+  message,
+  state,
+  handleClick,
+}) => (
   <CardBorder>
     <CSSContainer onClick={handleClick}>
       <CSSDivider>
@@ -19,7 +32,7 @@ const ChatButton: FC<props> = ({ image, username, message, handleClick }) => (
           <p>{message}</p>
         </div>
       </CSSDivider>
-      <CSStatus />
+      {state === 1 ? <CSSStatusGreen /> : <CSSStatusRed />}
     </CSSContainer>
   </CardBorder>
 );

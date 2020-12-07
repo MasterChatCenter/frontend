@@ -8,11 +8,13 @@ describe('organisms / ChatList', () => {
       senderId: '123456',
       username: 'username',
       text: 'Menssage',
+      id: 1,
     },
     {
       senderId: '654321',
       username: 'username',
       text: 'Menssage',
+      id: 2,
     },
   ];
 

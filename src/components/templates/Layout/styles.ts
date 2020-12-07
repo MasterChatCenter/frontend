@@ -28,23 +28,24 @@ export const Container = styled.div`
 
   @media screen and (min-width: 800px) {
     grid-template-columns: 70px repeat(11, 1fr);
-    grid-template-rows: 50px 1fr;
-    gap: 0 20px;
+    grid-template-rows: 60px 1fr;
+    // gap: 0 20px;
 
     header {
-      grid-column: 1 / 13;
+      grid-column: 2 / 13;
       grid-row: 1 / 3;
     }
 
     main {
       grid-column: 2 / 13;
       grid-row: 2 / 3;
+      background-color: rgba(0, 105, 92, 0.1);
     }
 
     nav {
       width: 100%;
       grid-column: 1 / 2;
-      grid-row: 2 / 3;
+      grid-row: 1 / 3;
     }
   }
 `;

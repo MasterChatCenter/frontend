@@ -1,8 +1,10 @@
-import { ADD_MESSAGE } from 'root/actions';
+import { ADD_MESSAGE, LOAD_CONVERSATIONS } from 'root/actions';
 import addMessage from './addMessage';
+import loadConversations from './loadConversations';
 import { Action } from 'root/types';
 
 const defaultState: any = {
+  /*
   '123456': {
     senderId: '123456',
     username: 'Francisco',
@@ -14,7 +16,7 @@ const defaultState: any = {
     username: 'Gustavo',
     text: 'Como puedo tener mas datos',
     messages: [],
-  },
+  },*/
 };
 
 const conversationsReducer = (
@@ -25,6 +27,8 @@ const conversationsReducer = (
   switch (type) {
     case ADD_MESSAGE:
       return addMessage(state, payload);
+    case LOAD_CONVERSATIONS:
+      return loadConversations(payload);
     default:
       return state;
   }

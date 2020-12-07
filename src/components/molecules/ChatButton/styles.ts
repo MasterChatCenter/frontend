@@ -21,12 +21,20 @@ export const CSSContainer = styled.div`
   cursor: pointer;
 `;
 
-export const CSStatus = styled.div`
+export const CSSStatusGreen = styled.div`
   margin-top: 10px;
   height: 10px;
   width: 10px;
   border-radius: 50%;
-  background: #42b72a;
+  background: ${(props) => props.theme.booleanGreen};
+`;
+
+export const CSSStatusRed = styled.div`
+  margin-top: 10px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: ${(props) => props.theme.booleanRed};
 `;
 
 export const CSSDivider = styled.div`

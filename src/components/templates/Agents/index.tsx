@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState, FC } from 'react';
 import { MdAdd } from 'react-icons/md';
-import { AgentCard, List, Modal, DeleteAgent } from '@/molecules';
+import { AgentCard, ListTable, Modal, DeleteAgent } from '@/molecules';
 import { InputSearch } from '@/atoms';
 import { AgentsService } from 'root/services';
 import { Button, Container, Header } from './styles';
@@ -58,9 +58,9 @@ const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
           </Button>
         </Link>
       </Header>
-      <List
+      <ListTable
         data={data}
-        render={({ id, image, name, lastname, username }: any) => (
+        render={({ id, image, name, lastname, username, roleId }: any) => (
           <AgentCard
             key={id}
             uuid={id}
@@ -68,6 +68,7 @@ const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
             name={name}
             lastname={lastname}
             username={username}
+            roleId={roleId}
             handleDelete={() => openModal(id)}
           />
         )}

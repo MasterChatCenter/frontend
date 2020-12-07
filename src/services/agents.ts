@@ -6,12 +6,13 @@ const getAll = async (id: string): Promise<void> => {
     company_id: id,
   });
   const data = res.data.users.map(
-    ({ id, name, lastname, username, image }: any) => ({
+    ({ id, name, lastname, username, image, role_id }: any) => ({
       id,
       name,
       lastname,
       username,
       image,
+      roleId: role_id,
     })
   );
   return data;
