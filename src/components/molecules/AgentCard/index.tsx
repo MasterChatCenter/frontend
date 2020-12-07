@@ -36,7 +36,7 @@ const AgentCard: FC<props> = ({
       </td>
       <td>
         {roleId === 1 ? (
-          <CSSLabel role>Admin</CSSLabel>
+          <CSSLabel role="">Admin</CSSLabel>
         ) : (
           <CSSLabel>Agente</CSSLabel>
         )}
