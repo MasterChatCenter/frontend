@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { FaRocketchat } from 'react-icons/fa';
 
 const HomePage = (): JSX.Element => {
   return (
@@ -8,17 +7,15 @@ const HomePage = (): JSX.Element => {
         <div className="container header-container">
           <Link href="/">
             <a className="logo">
-              <FaRocketchat />
-              <p>Chat-Center</p>
+              <img src="./img/logo.jpeg" alt="chat-center" />
             </a>
           </Link>
           <nav>
             <Link href="register">
-              <a className="sing-up-button">Registrate</a>
+              <a className="sing-up-button">Sign up</a>
             </Link>
-
             <Link href="login">
-              <a className="login-button">Iniciar sesión</a>
+              <a className="login-button">Log in</a>
             </Link>
           </nav>
         </div>
@@ -32,24 +29,20 @@ const HomePage = (): JSX.Element => {
               to customers and suppliers in a fast way and is also a tool for
               promotion and sales.
             </p>
+            <button type="submit" className="main-button">
+              Go to the demonstratión
+            </button>
           </div>
-          <img
-            src="https://cdn.pixabay.com/photo/2016/10/26/16/45/rock-1771916_960_720.jpg"
-            alt="chat-center"
-          />
         </div>
       </main>
       <section className="features">
         <div className="container">
           <h2>Features</h2>
           <div>
-            <img
-              src="https://cdn.pixabay.com/photo/2016/10/26/16/45/rock-1771916_960_720.jpg"
-              alt="chat-center"
-            />
+            <img src="./img/feature.png" alt="chat-center" />
           </div>
           <div className="list-features">
-            <h3>With ChatCenter:</h3>
+            <h3>With schmooze</h3>
             <ul>
               <li>Manage service agents to serve customers.</li>
               <li>
@@ -68,15 +61,161 @@ const HomePage = (): JSX.Element => {
           </div>
         </div>
       </section>
+
+      <section className="experiences">
+        <div className="experiences-container">
+          <h1>The best customer experiences are created with Schmooze</h1>
+          <button type="submit" className="experiences-button">
+            Free Trial
+          </button>
+        </div>
+        <figure className="experiences-images">
+          <img
+            className="img_1"
+            src="./img/clients1.jpg"
+            width="300px"
+            alt="women"
+          />
+        </figure>
+      </section>
+
+      <section className="clients">
+        <h2>Learn from the best: our clients</h2>
+        <div className="clients-1">
+          <figure className="clients-images">
+            <img
+              className="evernote"
+              src="./img/evernote.png"
+              width="300px"
+              alt="image-evernote"
+            />
+            <img
+              className="globant"
+              src="./img/globant.png"
+              width="300px"
+              alt="image-globant"
+            />
+            <img
+              className="trivago"
+              src="./img/trivago.png"
+              width="300px"
+              alt="image-trivago"
+            />
+          </figure>
+        </div>
+        <div className="clients-2">
+          <figure className="clients-images">
+            <img
+              className="nubank"
+              src="./img/nubank.png"
+              width="300px"
+              alt="image-nubank"
+            />
+            <img
+              className="platzi"
+              src="./img/platzi.png"
+              width="300px"
+              alt="image-platzi"
+            />
+            <img
+              className="uber"
+              src="./img/uber.png"
+              width="300px"
+              alt="image-uber"
+            />
+          </figure>
+        </div>
+        <div className="clients-url">
+          <Link href="">
+            <a className="text-url">
+              Here I can read all the stories of our clients
+            </a>
+          </Link>
+        </div>
+      </section>
+      <section className="suscription">
+        <div className="suscription-container">
+          <div className="suscription-title">
+            <h2>Subscribe</h2>
+          </div>
+          <div className="suscription-search">
+            <input
+              className="input"
+              type="text"
+              placeholder="¿What is your email address?"
+            ></input>
+            <button className="suscription-button" type="submit"></button>
+          </div>
+        </div>
+        <div className="social-media">
+          <a href="" className="facebook"></a>
+          <a href="" className="instagram"></a>
+          <a href="" className="twitter"></a>
+        </div>
+      </section>
+      <section className="options">
+        <div className="options-container">
+          <div className="options-list">
+            <h2>Our products</h2>
+            <ul>
+              <ol>
+                <li>Support</li>
+                <li>Explore</li>
+                <li>Chat</li>
+                <li>Sales suite</li>
+              </ol>
+            </ul>
+          </div>
+          <div className="options-list">
+            <h2>Principal functions</h2>
+            <ul>
+              <ol>
+                <li>Customer support software</li>
+                <li>Ticket creation system</li>
+                <li>Chat</li>
+                <li>Security</li>
+              </ol>
+            </ul>
+          </div>
+          <div className="options-list">
+            <h2>Means</h2>
+            <ul>
+              <ol>
+                <li>Product support</li>
+                <li>Schoomze blog</li>
+                <li>Training</li>
+                <li>Services and partners</li>
+                <li>Customer Stories</li>
+              </ol>
+            </ul>
+          </div>
+          <div className="options-list">
+            <h2>Company</h2>
+            <ul>
+              <ol>
+                <li>About us</li>
+                <li>Events</li>
+                <li>Product Help</li>
+                <li>Legal matters</li>
+                <li>contact us</li>
+              </ol>
+            </ul>
+          </div>
+        </div>
+      </section>
       <footer className="footer">
         <div className="container">
           <p>
-            Condiciones de uso - Política de privacidad - Política de cookies ©
-            ChatCenter 2020
+            Condiciones de uso | Política de privacidad | Política de cookies |
+            © Schmooze 2020
           </p>
         </div>
       </footer>
+
       <style jsx>{`
+        * {
+          color: #202336;
+        }
         .footer p {
           font-size: 16px;
           text-align: center;
@@ -96,51 +235,195 @@ const HomePage = (): JSX.Element => {
           gap: 20px;
         }
         .list-features h3 {
-          font-size: 28px;
-          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          font-size: 24px;
+          margin-bottom: 40px;
         }
         .list-features ul {
           list-style: none;
         }
         .list-features li {
-          font-size: 21px;
-          margin-bottom: 20px;
+          font-size: 20px;
+          margin-bottom: 25px;
         }
-        .features h2 {
+        .features h2,
+        .clients h2 {
           grid-column: 1 / 3;
           font-size: 28px;
           text-align: center;
+          margin-bottom: 40px;
         }
         .features {
-          padding: 100px 30px;
+          padding: 50px 30px;
         }
         .container {
+          display: contents;
+          object-fit: cover;
           width: 100%;
           max-width: 1200px;
           margin: auto;
         }
-        .main {
+        .main,
+        .suscription {
           padding: 100px 30px;
           background-color: #f2f2f2;
         }
-        .main .container {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
+        .main-button,
+        .experiences-button {
+          background-color: #80cbc4;
+          border-radius: 5px;
+          font-size: 18px;
+          margin-top: 20px;
+          padding: 10px 20px;
+          text-decoration: none;
+          cursor: pointer;
+          outline: none;
+        }
+        .main-button:hover {
+          border: 1px solid rgba(250, 251, 255, 0.5);
+          border-radius: 5px;
+          text-transform: uppercase;
+          font-weight: 700;
+          color: #ffffff;
+          box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 6px,
+            rgba(0, 0, 0, 0.1) 1px 1px 2px,
+            rgba(255, 255, 255, 0.4) -4px -4px 10px 1px;
+          cursor: pointer;
+          outline: none;
+          transition: all 0.3s ease 0s;
+          background: #439889;
         }
         .description {
           width: 50%;
           font-size: 28px;
+          text-align: center;
+          margin: auto;
         }
         .description h1 {
           margin-top: 0;
-          margin-bottom: 30px;
+          margin-bottom: 40px;
         }
         .description p {
-          font-size: 28px;
+          font-size: 24px;
+          margin-bottom: 40px;
         }
         .description + img {
           width: 40%;
+        }
+        .experiences {
+          display: flex;
+          width: 100%;
+          max-width: 1200px;
+          margin: auto;
+          margin-bottom: 20px;
+          padding: 100px 30px;
+          justify-content: center;
+        }
+        .experiences-container h1 {
+          width: 80%;
+        }
+        .img_1 {
+          position: relative;
+          bottom: 30px;
+          right: 80px;
+          filter: drop-shadow(0px 0px 10px #439889);
+        }
+        .clients-images {
+          display: contents;
+          object-fit: contain;
+        }
+        .clients-1,
+        .clients-2 {
+          display: flex;
+          justify-content: space-around;
+        }
+        .evernote,
+        .globant,
+        .trivago,
+        .uber,
+        .nubank {
+          object-fit: contain;
+          margin-left: 20px;
+        }
+        .clients-url {
+          padding: 50px 30px;
+          text-align: center;
+          margin-top: 40px;
+        }
+        .suscription-container {
+          display: flex;
+          justify-content: center;
+        }
+        .suscription-title h2 {
+          color: #fa3e3e;
+          padding-right: 20px;
+        }
+        .suscription-search {
+          display: flex;
+        }
+        .suscription-button {
+          width: 25px;
+          background-color: #439889;
+          background-image: url(./img/Shipping.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          outline: none;
+          cursor: pointer;
+          padding: 5px 5px;
+        }
+        .input {
+          display: flex;
+          background: #80cbc4;
+          width: 250px;
+          height: 35px;
+          text-align: center;
+          outline: none;
+        }
+        .social-media {
+          display: flex;
+          width: 100%;
+          max-width: 1200px;
+          margin: auto;
+          margin-bottom: 20px;
+          padding: 20px 20px;
+          justify-content: center;
+        }
+        .facebook {
+          display: inline-block;
+          background-image: url(./img/facebook.svg);
+          width: 40px;
+          height: 40px;
+          margin: 0 5px;
+          background-size: 40px 40px;
+        }
+        .instagram {
+          display: inline-block;
+          background-image: url(./img/instagram.svg);
+          width: 40px;
+          height: 40px;
+          margin: 0 5px;
+          background-size: 40px 40px;
+        }
+        .twitter {
+          display: inline-block;
+          background-image: url(./img/twitter.svg);
+          width: 40px;
+          height: 40px;
+          margin: 0 5px;
+          background-size: 40px 40px;
+        }
+        .options-container {
+          display: flex;
+          justify-content: space-around;
+          padding: 100px 30px;
+        }
+        .options-list ul,
+        ol {
+          list-style: none;
+        }
+        .options-list h2 {
+          margin-bottom: 10px;
         }
         .header {
           background-color: #00695c;
@@ -153,10 +436,10 @@ const HomePage = (): JSX.Element => {
         }
         .logo {
           display: flex;
+          height: 50px;
+          width: 200px;
           justify-content: center;
           align-items: center;
-          color: white;
-          text-decoration: none;
         }
         .sing-up-button {
           background-color: #80cbc4;
@@ -164,8 +447,13 @@ const HomePage = (): JSX.Element => {
           padding: 10px 20px;
           margin-right: 30px;
           text-decoration: none;
-          color: black;
+          color: #202336;
         }
+        .sing-up-button:hover {
+          background-color: #ffffff;
+          transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
         .login-button {
           border: solid 2px #80cbc4;
           border-radius: 10px;
