@@ -12,5 +12,6 @@ storiesOf('molecules / Buttons', module).add('ChatButton', () => (
     username="Darrell Steward"
     message="Amet minim mollit non deserunt..."
     handleClick={() => alert('clicked')}
+    state="1"
   />
 ));

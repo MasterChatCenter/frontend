@@ -4,6 +4,7 @@ import loadConversations from './loadConversations';
 import { Action } from 'root/types';
 
 const defaultState: any = {
+  /*
   '123456': {
     senderId: '123456',
     username: 'Francisco',
@@ -15,7 +16,7 @@ const defaultState: any = {
     username: 'Gustavo',
     text: 'Como puedo tener mas datos',
     messages: [],
-  },
+  },*/
 };
 
 const conversationsReducer = (

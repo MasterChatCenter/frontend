@@ -5,10 +5,10 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: 60px;
   padding: 0 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  background-color: ${(props) => props.theme.primary};
+  background-color: #fff;
   cursor: pointer;
 `;
 
