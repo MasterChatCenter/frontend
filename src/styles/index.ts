@@ -10,7 +10,7 @@ export const theme = {
   booleanGreen: '#42B72A',
   booleanRed: '#FA3E3E',
   background: '#FFF',
-  text: '#000',
+  text: '#202336',
 };
 
 export const themeDark = {
