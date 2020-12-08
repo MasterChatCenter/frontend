@@ -1,3 +1,4 @@
+import axios from 'axios';
 import config from 'root/config';
 import { mutation } from './';
 
@@ -21,11 +22,10 @@ const create = async (data: Message): Promise<any> => {
 };
 
 const getConversations = async (id: string | number): Promise<any> => {
-  const res: any = await fetch(
+  const res: any = await axios(
     `${config.localApi}/conversations?user_id=${id}`
   );
-  const data = await res.json();
-  const conversations = data.data.conversations;
+  const conversations = res.data.body.conversations;
 
   return conversations;
 };

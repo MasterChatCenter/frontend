@@ -21,15 +21,9 @@ const Agent: FC<props> = ({ data, id }) => {
   });
 
   const onSave = (data: any) => {
-    const { name, lastname, image, username, role_id } = data;
+    const { name, lastname, image, username, role } = data;
 
-    if (
-      name === '' ||
-      lastname === '' ||
-      username === '' ||
-      !image ||
-      !role_id
-    ) {
+    if (name === '' || lastname === '' || username === '' || !image || !role) {
       setModal(true);
       setAlert({
         title: 'Error',

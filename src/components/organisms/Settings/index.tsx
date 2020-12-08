@@ -21,7 +21,7 @@ const Settings: FC = () => {
     name: user.name,
     lastname: user.lastname,
     username: user.username,
-    role_id: user.role.id,
+    role: user.role,
   };
 
   const company = {
@@ -60,7 +60,7 @@ const Settings: FC = () => {
   return (
     <Container>
       <AgentForm onSave={handleSaveAgent} data={data} />
-      {user.role.name.toLowerCase() == 'admin' ? (
+      {user.role === 'admin' ? (
         <CompanyForm onSave={handleSaveCompany} data={company} />
       ) : null}
       <Modal isModalOpen={modal} closeModal={() => setModal(false)}>

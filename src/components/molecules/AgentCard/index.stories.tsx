@@ -10,7 +10,7 @@ storiesOf('atoms / Cards', module).add('AgentCard', () => (
     name="name"
     lastname="lastname"
     username="username"
-    roleId="1"
+    role="admin"
     handleDelete={() => alert('Handle Delete')}
   />
 ));

@@ -1,5 +1,5 @@
+import axios from 'axios';
 import config from 'root/config';
-import { mutation } from '.';
 
 type Register = {
   username: string;
@@ -7,14 +7,20 @@ type Register = {
   confirmPassword: string;
 };
 const register = async (data: Register): Promise<void> => {
-  const res: any = await mutation(`${config.localApi}/users`, 'POST', {
-    ...data,
-    role_id: 1,
+  const res = await axios({
+    url: `${config.localApi}/users`,
+    method: 'POST',
+    data: {
+      ...data,
+      role: 'admin',
+    },
   });
-  if (res.error) {
+  const { error, body } = res.data;
+
+  if (error) {
     throw 'Error al crear usuario';
   }
-  return res;
+  return body;
 };
 
 type Login = {
@@ -22,26 +28,32 @@ type Login = {
   password: string;
 };
 const login = async (data: Login): Promise<void> => {
-  const res: any = await mutation(`${config.localApi}/login`, 'POST', data);
-  if (res.error) {
-    throw new Error('Error al crear usuario');
+  const res = await axios({
+    url: `${config.localApi}/login`,
+    method: 'POST',
+    data,
+  });
+
+  const { error, body } = res.data;
+
+  if (error) {
+    throw new Error('Error al iniciar session');
   }
-  return res.data;
+  return body;
 };
 
 const getUser = async (id: string | number): Promise<any> => {
-  const req = await fetch(`${config.localApi}/users/${id}`);
-  const res = await req.json();
-  const data = res.data.user;
+  const res = await axios(`${config.localApi}/users/${id}`);
+  const { body } = res.data;
 
   return {
-    id: data.id,
-    username: data.username,
-    name: data.name,
-    lastname: data.lastname,
-    image: data.image,
-    company: data.company,
-    role: data.role,
+    id: body.id,
+    username: body.username,
+    name: body.name,
+    lastname: body.lastname,
+    image: body.image,
+    company: body.company,
+    role: body.role,
   };
 };
 
@@ -55,34 +67,31 @@ type UpdateUser = {
   accessToken: string;
 };
 const updateUser = async (data: UpdateUser, userId: string): Promise<void> => {
-  /*const req = await fetch(
-    `/api/getfacebookdata?token=${data.accessToken}&id=${data.facebookId}`
-  );
-  const fb = await req.json();*/
   const dataCompany = {
     name: data.company,
     logo: data.image,
-    facebookId: data.facebookId,
-    tokenFacebook: data.accessToken,
-    category: data.category,
+    facebook_id: data.facebookId,
+    token_facebook: data.accessToken,
   };
-  const company = await mutation(
-    `${config.localApi}/companies`,
-    'POST',
-    dataCompany
-  );
+  const resCompany = await axios({
+    url: `${config.localApi}/companies`,
+    method: 'POST',
+    data: dataCompany,
+  });
+  const { body: company } = resCompany.data;
+
   const dataUser = {
     name: data.name,
-    lastname: data.lastname,
+    last_name: data.lastname,
     image: data.image,
-    company_id: (company as any).data.company.id,
+    company_id: (company as any).id,
   };
-  const updatedUser = await mutation(
-    `${config.localApi}/users/${userId}`,
-    'PATCH',
-    dataUser
-  );
-  return updatedUser;
+  const resUser = await axios({
+    url: `${config.localApi}/users/${userId}`,
+    method: 'PATCH',
+    data: dataUser,
+  });
+  return resUser.data;
 };
 
 export default {

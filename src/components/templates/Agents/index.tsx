@@ -60,7 +60,7 @@ const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
       </Header>
       <ListTable
         data={data}
-        render={({ id, image, name, lastname, username, roleId }: any) => (
+        render={({ id, image, name, lastname, username, role }: any) => (
           <AgentCard
             key={id}
             uuid={id}
@@ -68,7 +68,7 @@ const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
             name={name}
             lastname={lastname}
             username={username}
-            roleId={roleId}
+            role={role}
             handleDelete={() => openModal(id)}
           />
         )}

@@ -1,41 +1,41 @@
 import config from 'root/config';
+import axios from 'axios';
 import { mutation } from './';
 
 const getAll = async (id: string): Promise<void> => {
-  const res: any = await mutation(`${config.localApi}/users/filter`, 'POST', {
-    company_id: id,
-  });
-  const data = res.data.users.map(
-    ({ id, name, lastname, username, image, role_id }: any) => ({
+  const res: any = await axios(`${config.localApi}/users?company_id=${id}`);
+  const { body } = res.data;
+  const data = body.users.map(
+    ({ id, name, last_name, username, image, role }: any) => ({
       id,
       name,
-      lastname,
+      lastname: last_name,
       username,
       image,
-      roleId: role_id,
+      role,
     })
   );
   return data;
 };
 
 const getOne = async (id: string): Promise<any> => {
-  const req = await fetch(`${config.localApi}/users/${id}`);
-  const res = await req.json();
-  const data = res.data.user;
+  const res = await axios(`${config.localApi}/users/${id}`);
+
+  const data = res.data.body;
 
   return {
     name: data.name,
     lastname: data.lastname,
     image: data.image,
     username: data.username,
-    role_id: data.role.id,
+    role: data.role,
   };
 };
 
 type Agent = {
   user_id?: string;
   name: string;
-  lastname: string;
+  last_name: string;
   username: string;
   role_id: string;
   password: string;
