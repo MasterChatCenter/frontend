@@ -14,7 +14,10 @@ const LoadedChat: FC<props> = ({ conversation }): JSX.Element => {
         <H1>No has seleccionado ningun Chat</H1>
       ) : (
         <>
-          <PanelChat username={conversation.username} />
+          <PanelChat
+            username={conversation.username}
+            conversationId={conversation.id}
+          />
           <Conversation
             messages={conversation.messages}
             senderId={conversation.senderId}

@@ -20,12 +20,12 @@ const Conversation: FC<props> = ({ messages, senderId, conversationId }) => {
     const data = {
       messageData: {
         text: message,
-        sendDate: '02-Sep-2020',
-        senderId: senderId,
+        username: user.name,
+        is_agent: true,
         conversation_id: conversationId,
       },
       senderId: senderId,
-      tokenFacebook: user.company.tokenFacebook,
+      tokenFacebook: user.company.token_facebook,
     };
 
     dispatch(sendMessageAction(data, `${user.name} ${user.lastname}`));
@@ -35,12 +35,13 @@ const Conversation: FC<props> = ({ messages, senderId, conversationId }) => {
     <CSSConversation>
       <List
         data={messages}
-        render={({ username, text, type }: any, idx: number) => (
+        render={({ username, text, isAgent, createdAt }: any, idx: number) => (
           <CSSMessage key={idx}>
             <Message
-              type={type ? type : 'recipient'}
               username={username}
               text={text}
+              isAgent={isAgent}
+              createdAt={new Date(createdAt)}
             />
           </CSSMessage>
         )}

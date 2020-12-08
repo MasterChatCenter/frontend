@@ -35,13 +35,13 @@ const ChatList: FC<props> = ({ allConversations, selectConversation }) => {
       </CSSWrapperSearch>
       <List
         data={conversations}
-        render={({ username, text, id, stateId }: any) => (
+        render={({ username, text, id, state }: any) => (
           <ChatButton
             key={id}
             image="/default-profile.jpg"
             username={username}
             message={text}
-            state={stateId}
+            state={state}
             handleClick={() => handleClick(id)}
           />
         )}
