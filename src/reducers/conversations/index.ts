@@ -1,6 +1,7 @@
-import { ADD_MESSAGE, LOAD_CONVERSATIONS } from 'root/actions';
+import { ADD_MESSAGE, LOAD_CONVERSATIONS, CLOSE_TICKET } from 'root/actions';
 import addMessage from './addMessage';
 import loadConversations from './loadConversations';
+import closeTicket from './closeTicket';
 import { Action } from 'root/types';
 
 const defaultState: any = {
@@ -29,6 +30,8 @@ const conversationsReducer = (
       return addMessage(state, payload);
     case LOAD_CONVERSATIONS:
       return loadConversations(payload);
+    case CLOSE_TICKET:
+      return closeTicket(state, payload);
     default:
       return state;
   }

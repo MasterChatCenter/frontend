@@ -1,17 +1,17 @@
 const loadConversations = (payload: any) => {
   const newState: any = {};
-  payload.forEach(({ customer, messages, id, state_id }: any) => {
+  payload.forEach(({ customer, messages, id, state }: any) => {
     newState[id] = {
-      senderId: customer.senderId,
-      username: customer.email,
-      text: '',
-      stateId: state_id,
       id,
+      state,
+      username: customer.name,
+      text: messages[messages.length - 1].text,
+      senderId: customer.sender_id,
       messages: messages.map((ms: any) => ({
-        senderId: ms.senderId,
         username: customer.name,
         text: ms.text,
-        type: ms.senderId,
+        isAgent: ms.is_agent,
+        createdAt: ms.createdAt,
       })),
     };
   });

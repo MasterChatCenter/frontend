@@ -14,7 +14,9 @@ export {
   ADD_MESSAGE,
   SEND_MESSAGE,
   LOAD_CONVERSATIONS,
+  CLOSE_TICKET,
   addMessageAction,
   sendMessageAction,
   loadConversationsAction,
+  closeTicketAction,
 } from './conversations';
