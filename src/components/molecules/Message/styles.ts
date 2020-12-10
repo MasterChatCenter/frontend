@@ -3,12 +3,12 @@ import styled, { StyledComponent } from 'styled-components';
 export const CSSWrapper: StyledComponent<
   'div',
   any,
-  { typeMessage: any },
+  { isAgent: any },
   never
 > = styled.div`
   display: flex;
   flex-direction: ${(props: any) =>
-    props.typeMessage === 'sender' ? 'row-reverse' : 'row'};
+    props.isAgent === true ? 'row-reverse' : 'row'};
   justify-content: space-between;
   width: 100%;
 

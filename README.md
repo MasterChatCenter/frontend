@@ -6,7 +6,7 @@ Applications of customer service
 
 Install dependencies
 ```bash
-npm insatll
+npm install
 ```
 
 Run storybook

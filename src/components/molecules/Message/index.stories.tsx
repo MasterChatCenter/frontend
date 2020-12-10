@@ -5,8 +5,18 @@ import Message from '.';
 
 storiesOf('molecules / Message', module)
   .add('Sender', () => (
-    <Message type="sender" username="USERNAE" text="TEXTO 1" />
+    <Message
+      isAgent={true}
+      username="USERNAE"
+      text="TEXTO 1"
+      createdAt={new Date()}
+    />
   ))
   .add('Recipient', () => (
-    <Message type="recipient" username="USERNAE" text="TEXTO 1" />
+    <Message
+      isAgent={false}
+      username="USERNAE"
+      text="TEXTO 1"
+      createdAt={new Date()}
+    />
   ));

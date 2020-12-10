@@ -17,13 +17,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     context.res.writeHead(302, { Location: '/login' }).end();
   } else if (
     user &&
-    (user as any).role.name.toLowerCase() === 'admin' &&
+    (user as any).role.toLowerCase() === 'admin' &&
     (user as any).company !== null
   ) {
     context.res.writeHead(302, { Location: '/agents' }).end();
   } else if (
     user &&
-    (user as any).role.name.toLowerCase() === 'agent' &&
+    (user as any).role.toLowerCase() === 'agent' &&
     (user as any).company !== null
   ) {
     context.res.writeHead(302, { Location: '/conversations' }).end();

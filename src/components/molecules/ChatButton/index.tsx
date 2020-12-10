@@ -32,7 +32,7 @@ const ChatButton: FC<props> = ({
           <p>{message}</p>
         </div>
       </CSSDivider>
-      {state === 1 ? <CSSStatusGreen /> : <CSSStatusRed />}
+      {state === 'active' ? <CSSStatusGreen /> : <CSSStatusRed />}
     </CSSContainer>
   </CardBorder>
 );

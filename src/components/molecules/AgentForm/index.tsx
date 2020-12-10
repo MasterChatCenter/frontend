@@ -18,7 +18,7 @@ const fields = [
     type: 'text',
     label: 'Apellidos',
     placeholder: 'Escribe los apellidos',
-    name: 'lastname',
+    name: 'last_name',
   },
   {
     type: 'email',
@@ -71,12 +71,12 @@ const AgentForm: FC<props> = ({ data, onSave }) => {
           />
         ))}
         <InputSelect
-          name="role_id"
+          name="role"
           handleChange={handleChange}
-          value={form.role_id}
+          value={form.role}
           options={[
-            { value: '2', label: 'Agente' },
-            { value: '1', label: 'Administrador' },
+            { value: 'agent', label: 'Agente' },
+            { value: 'admin', label: 'Administrador' },
           ]}
         />
         <ButtonLarge type="submit">Guardar</ButtonLarge>

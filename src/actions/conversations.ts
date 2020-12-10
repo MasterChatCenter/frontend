@@ -43,3 +43,14 @@ export const loadConversationsAction = (
       .catch();
   };
 };
+
+export const CLOSE_TICKET = 'CLOSE_TICKET';
+export const closeTicketAction = (id: number | string) => {
+  return (dispatch: any) => {
+    MessagesService.close(id)
+      .then(() => {
+        dispatch({ type: CLOSE_TICKET, payload: id });
+      })
+      .catch();
+  };
+};

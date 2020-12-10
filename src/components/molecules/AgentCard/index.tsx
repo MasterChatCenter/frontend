@@ -10,7 +10,7 @@ type props = {
   name: string;
   lastname: string;
   username: string;
-  roleId: string | number;
+  role: string;
   handleDelete: any;
 };
 
@@ -20,7 +20,7 @@ const AgentCard: FC<props> = ({
   name,
   lastname,
   username,
-  roleId,
+  role,
   handleDelete,
 }) => {
   return (
@@ -35,8 +35,8 @@ const AgentCard: FC<props> = ({
         </CSSUser>
       </td>
       <td>
-        {roleId === 1 ? (
-          <CSSLabel role="">Admin</CSSLabel>
+        {role === 'admin' ? (
+          <CSSLabel role={role}>Admin</CSSLabel>
         ) : (
           <CSSLabel>Agente</CSSLabel>
         )}

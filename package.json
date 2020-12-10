@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8080",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
@@ -36,6 +36,7 @@
   "author": "Carlos Navia, Juan Herrera, Gustavo Hidalgo",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.0",
     "fb": "^2.0.0",
     "next": "^10.0.1",
     "next-cookies": "^2.0.3",

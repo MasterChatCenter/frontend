@@ -28,9 +28,9 @@ const NewAgentPage = (): JSX.Element => {
   const data = {
     image: '/default-profile.jpg',
     name: '',
-    lastname: '',
+    last_name: '',
     username: '',
-    role_id: '2',
+    role: 'agent',
     password: '123456',
   };
 
