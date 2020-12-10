@@ -25,17 +25,46 @@ export const AvatarWraper = styled.figure`
 `;
 
 export const Logo = styled.a`
+height:100%;
   display: flex;
   align-items: center;
-  color: #fff;
-
-  p {
-    margin-left: 10px;
-    font-size: 20px;
+  color: #00695C;
+  font-size: 38px;
+  span{
+   position:relative;
+   font-size:50px;
+   top:3px;
   }
 
   svg {
-    font-size: 30px;
+    font-size: 36px;
+  }
+`;
+
+export const ToogleOn = styled.div`
+  height:100%;
+  display: flex;
+  align-items: center;
+  color: #00695C;
+  font-size: 18px;
+  span{
+    margin-right:8px;
+  }
+  svg {
+    font-size: 34px;
+  }
+`;
+export const ToogleOff = styled.div`
+  height:100%;
+  display: flex;
+  align-items: center;
+  color: grey;
+  font-size: 18px;
+  span{
+    margin-right:8px;
+  }
+  svg {
+    font-size: 34px;
   }
 `;
 
