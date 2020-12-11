@@ -4,21 +4,7 @@ import loadConversations from './loadConversations';
 import closeTicket from './closeTicket';
 import { Action } from 'root/types';
 
-const defaultState: any = {
-  /*
-  '123456': {
-    senderId: '123456',
-    username: 'Francisco',
-    text: 'Hola Como estas?',
-    messages: [],
-  },
-  '654321': {
-    senderId: '654321',
-    username: 'Gustavo',
-    text: 'Como puedo tener mas datos',
-    messages: [],
-  },*/
-};
+const defaultState: any = {};
 
 const conversationsReducer = (
   state: any = defaultState,

@@ -3,11 +3,12 @@ import { Action } from 'redux';
 import { MessagesService } from 'root/services';
 
 type AddMessage = {
-  pageId: string;
-  senderId: string;
-  text: string;
+  conversation_id: string;
   username: string;
-  type: string;
+  text: string;
+  is_agent: string;
+  createdAt: string;
+  senderId: string;
 };
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const addMessageAction = (payload: AddMessage): any => ({
