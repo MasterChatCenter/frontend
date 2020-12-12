@@ -46,8 +46,22 @@ const close = async (id: string | number): Promise<any> => {
   return true;
 };
 
+const toogleUser = async (id: string | number, value: boolean): Promise<any> => {
+  await axios.patch(
+    `${config.localApi}/users/${id}`,
+    { "active": value }
+  );
+  return true;
+};
+const getActiveUser = async (id: string): Promise<any> => {
+  const user: any = await axios.get(`${config.localApi}/users/${id}`,);
+  return user.data.body.active;
+};
+
 export default {
   getConversations,
   create,
   close,
+  toogleUser,
+  getActiveUser
 };
