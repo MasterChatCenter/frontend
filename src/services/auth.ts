@@ -50,10 +50,11 @@ const getUser = async (id: string | number): Promise<any> => {
     id: body.id,
     username: body.username,
     name: body.name,
-    lastname: body.lastname,
+    last_name: body.last_name,
     image: body.image,
     company: body.company,
     role: body.role,
+    active: body.active,
   };
 };
 

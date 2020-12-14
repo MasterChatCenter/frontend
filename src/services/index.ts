@@ -2,6 +2,7 @@ export { default as AgentsService } from './agents';
 export { default as AuthService } from './auth';
 export { default as MessagesService } from './messages';
 export { default as CompaniesService } from './companies';
+export { default as CustomersService } from './customers';
 
 export const mutation = (
   url: string,

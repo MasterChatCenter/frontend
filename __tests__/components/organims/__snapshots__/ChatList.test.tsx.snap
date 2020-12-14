@@ -63,7 +63,7 @@ exports[`organisms / ChatList matches snapshot 1`] = `
           >
             <img
               alt="username"
-              class="styles__AvatarUserStyle-y86xw5-0 bQhvet"
+              class="styles__AvatarUserStyle-y86xw5-0 WzEl"
               src="/default-profile.jpg"
             />
             <div>
@@ -93,7 +93,7 @@ exports[`organisms / ChatList matches snapshot 1`] = `
           >
             <img
               alt="username"
-              class="styles__AvatarUserStyle-y86xw5-0 bQhvet"
+              class="styles__AvatarUserStyle-y86xw5-0 WzEl"
               src="/default-profile.jpg"
             />
             <div>

@@ -1,27 +1,32 @@
 type AddMessage = {
-  pageId: string;
-  senderId: string;
-  text: string;
+  conversation_id: string;
   username: string;
-  type: string;
+  text: string;
+  is_agent: string;
+  createdAt: string;
+  senderId: string;
+  customerId: string;
 };
 const addMessage = (state: any, payload: AddMessage): any => {
   const handleState = { ...state };
   const message = {
-    senderId: payload.senderId,
     username: payload.username,
     text: payload.text,
-    type: payload.type,
+    is_agent: payload.is_agent,
+    createdAt: payload.createdAt,
   };
 
-  if (handleState[payload.senderId]) {
-    handleState[payload.senderId].text = payload.text;
-    handleState[payload.senderId].messages.push(message);
+  if (handleState[payload.conversation_id]) {
+    handleState[payload.conversation_id].text = payload.text;
+    handleState[payload.conversation_id].messages.push(message);
   } else {
-    handleState[payload.senderId] = {
-      senderId: payload.senderId,
+    handleState[payload.conversation_id] = {
+      id: payload.conversation_id,
+      state: 'active',
       username: payload.username,
       text: payload.text,
+      senderId: payload.senderId,
+      customerId: payload.customerId,
       messages: [message],
     };
   }

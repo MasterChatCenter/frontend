@@ -3,10 +3,11 @@ type Login = {
   id: string;
   username: string;
   name: string;
-  lastname: string;
+  last_name: string;
   image: string;
   company: any;
   role: any;
+  active: boolean;
 };
 const login = (payload: Login): any => {
   document.cookie = `user=${JSON.stringify(payload)}`;

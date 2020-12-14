@@ -1,10 +1,27 @@
 import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateUsernameCustomer } from 'root/actions';
 import { InputEdit } from '@/atoms';
 import { CSSCostumer, Note, Title, Tiket, Container } from './styles';
 
-const Costumer: FC = () => {
-  const handleSave = (value: string) => {
-    alert(value);
+type props = {
+  conversationId: string;
+  customerId: string;
+  username: string;
+};
+
+const Costumer: FC<props> = ({ conversationId, customerId, username }) => {
+  const dispatch = useDispatch();
+  const handleSave = (
+    value: string,
+    field: string,
+    setValue: any,
+    setEditable: any
+  ) => {
+    if (field && setValue)
+      //
+      dispatch(updateUsernameCustomer(conversationId, customerId, value));
+    setEditable(false);
   };
 
   return (
@@ -16,7 +33,7 @@ const Costumer: FC = () => {
           label="Nombre"
           name="username"
           placeholder="Escribe un nombre"
-          value="Larry"
+          value={username}
           onSave={handleSave}
         />
       </Container>
