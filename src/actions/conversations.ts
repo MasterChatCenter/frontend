@@ -19,14 +19,13 @@ export const addMessageAction = (payload: AddMessage): any => ({
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const sendMessageAction = (
   data: any,
-  username: string
+  username: string,
+  conversation_id: string | number
 ): ThunkAction<void, any, unknown, Action<string>> => {
   return (dispatch: any) => {
     MessagesService.create(data)
       .then((data) => {
-        dispatch(
-          addMessageAction({ ...data, username, pageId: '', type: 'sender' })
-        );
+        dispatch(addMessageAction({ ...data, username, conversation_id }));
       })
       .catch();
   };
