@@ -17,8 +17,10 @@ export {
   SEND_MESSAGE,
   LOAD_CONVERSATIONS,
   CLOSE_TICKET,
+  UPDATE_USERNAME_CUSTOMER,
   addMessageAction,
   sendMessageAction,
   loadConversationsAction,
   closeTicketAction,
+  updateUsernameCustomer,
 } from './conversations';

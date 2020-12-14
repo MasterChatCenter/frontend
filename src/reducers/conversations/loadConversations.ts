@@ -1,4 +1,4 @@
-const loadConversations = (payload: any) => {
+const loadConversations = (payload: any): any => {
   const newState: any = {};
   payload.forEach(({ customer, messages, id, state }: any) => {
     newState[id] = {

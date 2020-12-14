@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
-import { MessagesService } from 'root/services';
+import { MessagesService, CustomersService } from 'root/services';
 
 type AddMessage = {
   conversation_id: string;
@@ -53,5 +53,21 @@ export const closeTicketAction = (id: number | string) => {
         dispatch({ type: CLOSE_TICKET, payload: id });
       })
       .catch();
+  };
+};
+
+export const UPDATE_USERNAME_CUSTOMER = 'UPDATE_USERNAME_CUSTOMER';
+export const updateUsernameCustomer = (
+  conversationId: string,
+  customerId: string,
+  name: string
+): ThunkAction<void, any, unknown, Action<string>> => {
+  return (dispatch) => {
+    CustomersService.update({ name }, customerId).then(() =>
+      dispatch({
+        type: UPDATE_USERNAME_CUSTOMER,
+        payload: { conversationId, name },
+      })
+    );
   };
 };
