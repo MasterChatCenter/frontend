@@ -2,9 +2,13 @@ import React, { FC } from 'react';
 import { InputEdit } from '@/atoms';
 import { CSSCostumer, Note, Title, Tiket, Container } from './styles';
 
-const Costumer: FC = () => {
+type props = {
+  customerId: string;
+};
+
+const Costumer: FC<props> = ({ customerId }) => {
   const handleSave = (value: string) => {
-    alert(value);
+    alert(`${value} ${customerId}`);
   };
 
   return (

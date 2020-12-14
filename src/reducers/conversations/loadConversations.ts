@@ -7,6 +7,7 @@ const loadConversations = (payload: any) => {
       username: customer.name,
       text: messages[messages.length - 1].text,
       senderId: customer.sender_id,
+      customerId: customer.id,
       messages: messages.map((ms: any) => ({
         username: customer.name,
         text: ms.text,

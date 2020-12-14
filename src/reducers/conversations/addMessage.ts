@@ -5,6 +5,7 @@ type AddMessage = {
   is_agent: string;
   createdAt: string;
   senderId: string;
+  customerId: string;
 };
 const addMessage = (state: any, payload: AddMessage): any => {
   const handleState = { ...state };
@@ -25,6 +26,7 @@ const addMessage = (state: any, payload: AddMessage): any => {
       username: payload.username,
       text: payload.text,
       senderId: payload.senderId,
+      customerId: payload.customerId,
       messages: [message],
     };
   }

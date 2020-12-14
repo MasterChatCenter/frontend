@@ -4,5 +4,5 @@ import { storiesOf } from '@storybook/react';
 import Conversation from '.';
 
 storiesOf('organisms / Conversacion', module).add('List', () => (
-  <Conversation />
+  <Conversation customerId="1" />
 ));

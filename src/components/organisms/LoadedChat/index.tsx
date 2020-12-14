@@ -23,7 +23,7 @@ const LoadedChat: FC<props> = ({ conversation }): JSX.Element => {
             senderId={conversation.senderId}
             conversationId={conversation.id}
           />
-          <Costumer />
+          <Costumer customerId={conversation.customerId} />
         </>
       )}
     </Container>

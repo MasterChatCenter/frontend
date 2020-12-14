@@ -3,7 +3,7 @@ type Login = {
   id: string;
   username: string;
   name: string;
-  lastname: string;
+  last_name: string;
   image: string;
   company: any;
   role: any;
