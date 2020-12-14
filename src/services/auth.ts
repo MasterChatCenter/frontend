@@ -54,6 +54,7 @@ const getUser = async (id: string | number): Promise<any> => {
     image: body.image,
     company: body.company,
     role: body.role,
+    active: body.active,
   };
 };
 

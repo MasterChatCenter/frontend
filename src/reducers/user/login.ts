@@ -7,6 +7,7 @@ type Login = {
   image: string;
   company: any;
   role: any;
+  active: boolean;
 };
 const login = (payload: Login): any => {
   document.cookie = `user=${JSON.stringify(payload)}`;
