@@ -19,6 +19,7 @@ export const CSSPanelChat = styled.div`
 
   button {
     border: 0px;
+    margin-top: 0;
     background-color: white;
     outline: none;
     cursor: pointer;
@@ -28,7 +29,7 @@ export const CSSPanelChat = styled.div`
   }
 
   button:last-child {
-    margin-left: 10px;
+    // margin-left: 10px;
   }
 `;
 

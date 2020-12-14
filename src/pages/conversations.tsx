@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import { Layout, Conversations } from '@/templates';
 import { addMessageAction, loadConversationsAction } from 'root/actions';
+import config from 'root/config';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
@@ -26,7 +27,7 @@ const ConversationsPage = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(loadConversationsAction(user.id));
-    socket = io('ws://localhost:3000');
+    socket = io(`${config.socketUrl}`);
     socket.emit('join', { token: user.token }, (error: any) => {
       if (error) {
         return false;

@@ -1,13 +1,17 @@
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { Conversation, Costumer } from '@/organisms';
 import { PanelChat } from '@/molecules';
 import { Container, H1 } from './styles';
 
 type props = {
-  conversation: any;
+  conversationId: any;
 };
 
-const LoadedChat: FC<props> = ({ conversation }): JSX.Element => {
+const LoadedChat: FC<props> = ({ conversationId }): JSX.Element => {
+  const conversation = useSelector(
+    (store: any) => store.conversations[conversationId]
+  );
   return (
     <Container>
       {!conversation ? (
