@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import { FaRegStickyNote } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Modal } from '@/molecules';
 import { CardShadow, ButtonLarge, ButtonLink } from '@/atoms';
@@ -24,7 +23,6 @@ const PanelChat: FC<props> = ({ username, conversationId }) => {
   };
 
   const handleCloseTicket = () => {
-    alert('Cerrar ticket');
     dispatch(closeTicketAction(conversationId));
   };
 
@@ -32,10 +30,12 @@ const PanelChat: FC<props> = ({ username, conversationId }) => {
     <CSSPanelChat>
       <p>{username}</p>
       <figure>
-        <button onClick={() => setModal(true)}>
-          <FaRegStickyNote />
-        </button>
-        <button onClick={handleCloseTicket}>Cerrar ticket</button>
+        {
+          //<button onClick={() => setModal(true)}>
+          //<FaRegStickyNote />
+          //</button>
+        }
+        <ButtonLarge handleClick={handleCloseTicket}>Cerrar ticket</ButtonLarge>
       </figure>
       <Modal isModalOpen={modal} closeModal={() => setModal(false)}>
         <CardShadow>

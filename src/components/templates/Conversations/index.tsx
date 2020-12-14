@@ -5,10 +5,10 @@ import { Grid } from 'root/styles';
 
 const Conversations = (): JSX.Element => {
   const conversations = useSelector((store: any) => store.conversations);
-  const [currentConveration, setCurrentConveration] = useState(false);
+  const [currentConveration, setCurrentConveration] = useState(false as any);
 
   const handleConversation = (senderId: string) => {
-    setCurrentConveration(conversations[senderId]);
+    setCurrentConveration(senderId);
   };
 
   return (
@@ -17,7 +17,7 @@ const Conversations = (): JSX.Element => {
         allConversations={Object.values(conversations)}
         selectConversation={handleConversation}
       />
-      <LoadedChat conversation={currentConveration} />
+      <LoadedChat conversationId={currentConveration} />
     </Grid>
   );
 };
