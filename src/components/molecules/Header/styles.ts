@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
 
 export const AvatarWraper = styled.figure`
   position: relative;
-  display:flex;
+  display: flex;
   cursor: pointer;
 
   div {
@@ -28,37 +28,37 @@ export const AvatarWraper = styled.figure`
 
 export const AvatarCard = styled.span`
   cursor: pointer;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  margin:0 16px;
   display: flex;
-  font-size:20px;
-  color:#00695C;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 16px;
+  display: flex;
+  font-size: 20px;
+  color: #00695c;
 `;
 
 export const RoleCard = styled.span`
-  color:grey;
+  color: grey;
 `;
 
 export const Separator = styled.span`
-  height:45px;
-  width:3px;
-  border-radius:1px;
-  background-color:#E5F0EE;
+  height: 45px;
+  width: 3px;
+  border-radius: 1px;
+  background-color: #e5f0ee;
 `;
 
 export const Logo = styled.a`
-height:100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  color: #00695C;
+  color: #00695c;
   font-size: 38px;
   cursor: pointer;
-  span{
-   position:relative;
-   font-size:50px;
-   top:3px;
+  span {
+    position: relative;
+    font-size: 50px;
+    top: 3px;
   }
   svg {
     font-size: 36px;
@@ -66,20 +66,20 @@ height:100%;
 `;
 
 export const Button = styled.div`
-  margin:16px;
-  height:100%;
+  margin: 16px;
+  height: 100%;
   cursor: pointer;
   margin-left: auto;
 `;
 
 export const ToogleOn = styled.div`
-  display:flex;
-  align-items:center;
-  height:100%;
-  color: #00695C;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #00695c;
   font-size: 18px;
-  span{
-    margin-right:8px;
+  span {
+    margin-right: 8px;
   }
   svg {
     font-size: 34px;
@@ -87,16 +87,16 @@ export const ToogleOn = styled.div`
 `;
 
 export const ToogleOff = styled.div`
-  display:flex;
-  align-items:center;
-  height:100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
   color: grey;
   font-size: 18px;
-  & :hover{
-    color:#439889;
+  & :hover {
+    color: #439889;
   }
-  span{
-    margin-right:8px;
+  span {
+    margin-right: 8px;
   }
   svg {
     font-size: 34px;
@@ -105,7 +105,7 @@ export const ToogleOff = styled.div`
 
 export const Menu = styled.div`
   position: absolute;
-  top:55px;
+  top: 55px;
   right: 0;
   width: 100px;
   border-radius: 10px;

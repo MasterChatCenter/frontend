@@ -9,7 +9,7 @@ const getAll = async (id: string): Promise<void> => {
     ({ id, name, last_name, username, image, role }: any) => ({
       id,
       name,
-      lastname: last_name,
+      last_name: last_name,
       username,
       image,
       role,
@@ -25,7 +25,7 @@ const getOne = async (id: string): Promise<any> => {
 
   return {
     name: data.name,
-    lastname: data.lastname,
+    last_name: data.last_name,
     image: data.image,
     username: data.username,
     role: data.role,

@@ -16,7 +16,18 @@
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm run test"
   },
-  
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "npm run lint",
+      "npm run format"
+    ]
+  },
   "keywords": [
     "customer",
     "service",
@@ -27,7 +38,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.0",
-    "fb": "^2.0.0",
     "next": "^10.0.1",
     "next-cookies": "^2.0.3",
     "react": "^16.13.1",
@@ -39,7 +49,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "socket.io-client": "^2.3.0",
+    "socket.io-client": "^3.0.4",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

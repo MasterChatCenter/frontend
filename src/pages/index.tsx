@@ -11,21 +11,21 @@ const HomePage = (): JSX.Element => {
             </a>
           </Link>
           <div className="header_nav">
-              <ol>
-                <li>
-                  <a href="">Solutions</a>
-                </li>
-                <li>
-                  <a href="">Pricing</a>
-                </li>
-                <li>
-                  <a href="">Services</a>
-                </li>
-                <li>
-                  <a href="">Products</a>
-                </li>
-              </ol>
-            </div>
+            <ol>
+              <li>
+                <a href="">Solutions</a>
+              </li>
+              <li>
+                <a href="">Pricing</a>
+              </li>
+              <li>
+                <a href="">Services</a>
+              </li>
+              <li>
+                <a href="">Products</a>
+              </li>
+            </ol>
+          </div>
           <nav>
             <Link href="register">
               <a className="sing-up-button">Sign up</a>
@@ -89,7 +89,8 @@ const HomePage = (): JSX.Element => {
           <img
             className="img_1"
             src="./img/clients1.jpg"
-            width="300px" height="400px"
+            width="300px"
+            height="400px"
             alt="women"
           />
         </figure>
@@ -99,16 +100,46 @@ const HomePage = (): JSX.Element => {
         <h2>Learn from the best: our clients</h2>
         <div className="clients-1">
           <figure className="clients-images">
-            <img className="evernote" src="./img/evernote.png" width="300px" alt="image-evernote"/>
-            <img className="globant" src="./img/globant.png" width="300px" alt="image-globant"/>
-            <img className="trivago" src="./img/trivago.png" width="300px" alt="image-trivago"/>
+            <img
+              className="evernote"
+              src="./img/evernote.png"
+              width="300px"
+              alt="image-evernote"
+            />
+            <img
+              className="globant"
+              src="./img/globant.png"
+              width="300px"
+              alt="image-globant"
+            />
+            <img
+              className="trivago"
+              src="./img/trivago.png"
+              width="300px"
+              alt="image-trivago"
+            />
           </figure>
         </div>
         <div className="clients-2">
           <figure className="clients-images">
-            <img className="platzi"src="./img/platzi.png"width="300px"alt="image-platzi"/>
-            <img className="nubank"src="./img/nubank.png"width="300px"alt="image-nubank"/>
-            <img className="uber"src="./img/uber.png"width="300px"alt="image-uber"/>
+            <img
+              className="platzi"
+              src="./img/platzi.png"
+              width="300px"
+              alt="image-platzi"
+            />
+            <img
+              className="nubank"
+              src="./img/nubank.png"
+              width="300px"
+              alt="image-nubank"
+            />
+            <img
+              className="uber"
+              src="./img/uber.png"
+              width="300px"
+              alt="image-uber"
+            />
           </figure>
         </div>
         <div className="clients-url">
@@ -250,7 +281,7 @@ const HomePage = (): JSX.Element => {
         }
         .main,
         .suscription {
-          display:flex;
+          display: flex;
           align-items: center;
           justify-content: center;
           padding: 100px 30px;
@@ -302,7 +333,7 @@ const HomePage = (): JSX.Element => {
           display: flex;
           width: 100%;
           padding: 100px 100px;
-          background-color:  #f2f2f2;
+          background-color: #f2f2f2;
           margin: auto;
           margin-bottom: 20px;
         }
@@ -313,7 +344,7 @@ const HomePage = (): JSX.Element => {
           position: relative;
           bottom: 30px;
           right: 80px;
-          filter: drop-shadow(0px 0px 5px );
+          filter: drop-shadow(0px 0px 5px);
         }
         .clients {
           padding: 50px 100px;
@@ -425,7 +456,7 @@ const HomePage = (): JSX.Element => {
           margin-left: 150px;
         }
         .header_nav ol {
-          display:flex;
+          display: flex;
         }
         .header_nav a {
           padding-right: 40px;

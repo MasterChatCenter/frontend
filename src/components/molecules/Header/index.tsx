@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { FaRocketchat } from 'react-icons/fa';
 import { FaToggleOn } from 'react-icons/fa';
 import { FaToggleOff } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { ButtonLink, AvatarUser } from '@/atoms';
-import { logoutAction } from 'root/actions';
+import { logoutAction, activeUserAction } from 'root/actions';
 import { MessagesService } from '../../../services/index';
 
 import {
@@ -18,7 +18,7 @@ import {
   Button,
   ToogleOn,
   ToogleOff,
-  Separator
+  Separator,
 } from './styles';
 
 type HeaderProps = {
@@ -29,21 +29,19 @@ type HeaderProps = {
 const Header = ({ avatarUrl, name }: HeaderProps): JSX.Element => {
   const dispatch = useDispatch();
   const user = useSelector((store: any) => store.user);
-  console.log(user)
-  let [toogle, setToogle] = useState(false);
-
-  useEffect(async () => {
-    let status = await MessagesService.getActiveUser(user.id);
-    setToogle(status);
-  }, []);
 
   const logout = () => {
     dispatch(logoutAction());
   };
 
-  const handleToogle = async (value) => {
-    MessagesService.toogleUser(user.id, value);
-    setToogle(value);
+  const handleToogle = (): any => {
+    MessagesService.toogleUser(user.id, !user.active)
+      .then(() => {
+        dispatch(activeUserAction(!user.active));
+      })
+      .catch((err: any) => {
+        alert(`Hay un error, ${err.message}`);
+      });
   };
 
   return (
@@ -58,33 +56,28 @@ const Header = ({ avatarUrl, name }: HeaderProps): JSX.Element => {
         </Logo>
       </Link>
       <Button>
-        {
-        user.role ==='agent' && (
-        toogle ? (
-          <ToogleOn onClick={() => handleToogle(false)}>
-            <span>
-              <FaToggleOn />
-            </span>
-            Online
-          </ToogleOn>
-        ) : (
-          <ToogleOff onClick={() => handleToogle(true)}>
-            <span>
-              <FaToggleOff />
-            </span>
-            Offline
-          </ToogleOff>
-        )
-        )
-        }
+        {user.role === 'agent' &&
+          (user.active ? (
+            <ToogleOn onClick={handleToogle}>
+              <span>
+                <FaToggleOn />
+              </span>
+              Online
+            </ToogleOn>
+          ) : (
+            <ToogleOff onClick={handleToogle}>
+              <span>
+                <FaToggleOff />
+              </span>
+              Offline
+            </ToogleOff>
+          ))}
       </Button>
       <Separator></Separator>
       <AvatarWraper>
         <AvatarCard>
-          {user.name} 
-          <RoleCard>
-            {user.role}
-          </RoleCard>
+          {user.name}
+          <RoleCard>{user.role}</RoleCard>
         </AvatarCard>
         <AvatarUser avatarurl={avatarUrl} name={name} />
         <Menu>

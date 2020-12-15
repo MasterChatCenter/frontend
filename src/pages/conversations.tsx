@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import { Layout, Conversations } from '@/templates';
 import { addMessageAction, loadConversationsAction } from 'root/actions';
+import config from 'root/config';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { user } = cookies(context);
@@ -26,13 +27,8 @@ const ConversationsPage = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(loadConversationsAction(user.id));
-    socket = io('http://localhost:5000/');
-    socket.emit('client', `${user.token}`, (error: any) => {
-      if (error) {
-        return false;
-      }
-    });
-    socket.emit('join', { username: 'test1@mail.com' }, (error: any) => {
+    socket = io(`${config.socketUrl}`);
+    socket.emit('join', { token: user.token }, (error: any) => {
       if (error) {
         return false;
       }
@@ -40,8 +36,12 @@ const ConversationsPage = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    socket.on('join', () => {
+      //
+    });
+
     socket.on('answer', (message: any) => {
-      dispatch(addMessageAction({ ...message, type: 'recipient' }));
+      dispatch(addMessageAction(message.data));
     });
   }, []);
 

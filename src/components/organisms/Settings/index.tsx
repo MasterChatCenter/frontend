@@ -19,7 +19,7 @@ const Settings: FC = () => {
   const data = {
     image: user.image,
     name: user.name,
-    lastname: user.lastname,
+    last_name: user.last_name,
     username: user.username,
     role: user.role,
   };

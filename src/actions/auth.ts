@@ -52,3 +52,9 @@ export const updateCompanyAction = (payload: Company): any => ({
   type: UPDATE_COMPANY,
   payload,
 });
+
+export const ACTIVE_USER = 'ACTIVE_USER';
+export const activeUserAction = (payload: boolean): any => ({
+  type: ACTIVE_USER,
+  payload,
+});

@@ -16,7 +16,7 @@ const Conversation: FC<props> = ({ messages, senderId, conversationId }) => {
   const dispatch = useDispatch();
 
   const onSend = (message: string) => {
-    alert(message);
+    // alert(message);
     const data = {
       messageData: {
         text: message,
@@ -28,7 +28,9 @@ const Conversation: FC<props> = ({ messages, senderId, conversationId }) => {
       tokenFacebook: user.company.token_facebook,
     };
 
-    dispatch(sendMessageAction(data, `${user.name} ${user.lastname}`));
+    dispatch(
+      sendMessageAction(data, `${user.name} ${user.last_name}`, conversationId)
+    );
   };
 
   return (

@@ -39,9 +39,9 @@ const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
 
   const handleChange = (event: any) => {
     const finded = agents.filter(
-      ({ name, lastname }: any) =>
+      ({ name, last_name }: any) =>
         name.indexOf(event.target.value) > -1 ||
-        lastname.indexOf(event.target.value) > -1
+        last_name.indexOf(event.target.value) > -1
     );
     setData(finded);
   };
@@ -60,13 +60,13 @@ const Agents: FC<props> = ({ agents, setLoaded }): JSX.Element => {
       </Header>
       <ListTable
         data={data}
-        render={({ id, image, name, lastname, username, role }: any) => (
+        render={({ id, image, name, last_name, username, role }: any) => (
           <AgentCard
             key={id}
             uuid={id}
             avatar={image}
             name={name}
-            lastname={lastname}
+            lastname={last_name}
             username={username}
             role={role}
             handleDelete={() => openModal(id)}
