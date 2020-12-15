@@ -10,6 +10,22 @@ const HomePage = (): JSX.Element => {
               <img src="./img/logo.jpeg" alt="chat-center" />
             </a>
           </Link>
+          <div className="header_nav">
+              <ol>
+                <li>
+                  <a href="">Solutions</a>
+                </li>
+                <li>
+                  <a href="">Pricing</a>
+                </li>
+                <li>
+                  <a href="">Services</a>
+                </li>
+                <li>
+                  <a href="">Products</a>
+                </li>
+              </ol>
+            </div>
           <nav>
             <Link href="register">
               <a className="sing-up-button">Sign up</a>
@@ -73,7 +89,7 @@ const HomePage = (): JSX.Element => {
           <img
             className="img_1"
             src="./img/clients1.jpg"
-            width="300px"
+            width="300px" height="400px"
             alt="women"
           />
         </figure>
@@ -83,46 +99,16 @@ const HomePage = (): JSX.Element => {
         <h2>Learn from the best: our clients</h2>
         <div className="clients-1">
           <figure className="clients-images">
-            <img
-              className="evernote"
-              src="./img/evernote.png"
-              width="300px"
-              alt="image-evernote"
-            />
-            <img
-              className="globant"
-              src="./img/globant.png"
-              width="300px"
-              alt="image-globant"
-            />
-            <img
-              className="trivago"
-              src="./img/trivago.png"
-              width="300px"
-              alt="image-trivago"
-            />
+            <img className="evernote" src="./img/evernote.png" width="300px" alt="image-evernote"/>
+            <img className="globant" src="./img/globant.png" width="300px" alt="image-globant"/>
+            <img className="trivago" src="./img/trivago.png" width="300px" alt="image-trivago"/>
           </figure>
         </div>
         <div className="clients-2">
           <figure className="clients-images">
-            <img
-              className="nubank"
-              src="./img/nubank.png"
-              width="300px"
-              alt="image-nubank"
-            />
-            <img
-              className="platzi"
-              src="./img/platzi.png"
-              width="300px"
-              alt="image-platzi"
-            />
-            <img
-              className="uber"
-              src="./img/uber.png"
-              width="300px"
-              alt="image-uber"
-            />
+            <img className="platzi"src="./img/platzi.png"width="300px"alt="image-platzi"/>
+            <img className="nubank"src="./img/nubank.png"width="300px"alt="image-nubank"/>
+            <img className="uber"src="./img/uber.png"width="300px"alt="image-uber"/>
           </figure>
         </div>
         <div className="clients-url">
@@ -235,8 +221,6 @@ const HomePage = (): JSX.Element => {
           gap: 20px;
         }
         .list-features h3 {
-          display: flex;
-          justify-content: center;
           font-size: 24px;
           margin-bottom: 40px;
         }
@@ -255,7 +239,7 @@ const HomePage = (): JSX.Element => {
           margin-bottom: 40px;
         }
         .features {
-          padding: 50px 30px;
+          padding: 50px 100px;
         }
         .container {
           display: contents;
@@ -266,6 +250,9 @@ const HomePage = (): JSX.Element => {
         }
         .main,
         .suscription {
+          display:flex;
+          align-items: center;
+          justify-content: center;
           padding: 100px 30px;
           background-color: #f2f2f2;
         }
@@ -314,11 +301,10 @@ const HomePage = (): JSX.Element => {
         .experiences {
           display: flex;
           width: 100%;
-          max-width: 1200px;
+          padding: 100px 100px;
+          background-color:  #f2f2f2;
           margin: auto;
           margin-bottom: 20px;
-          padding: 100px 30px;
-          justify-content: center;
         }
         .experiences-container h1 {
           width: 80%;
@@ -327,7 +313,10 @@ const HomePage = (): JSX.Element => {
           position: relative;
           bottom: 30px;
           right: 80px;
-          filter: drop-shadow(0px 0px 10px #439889);
+          filter: drop-shadow(0px 0px 5px );
+        }
+        .clients {
+          padding: 50px 100px;
         }
         .clients-images {
           display: contents;
@@ -361,9 +350,11 @@ const HomePage = (): JSX.Element => {
         }
         .suscription-search {
           display: flex;
+          margin-right: 100px;
         }
         .suscription-button {
           width: 25px;
+          height: 35px;
           background-color: #439889;
           background-image: url(./img/Shipping.png);
           background-size: contain;
@@ -382,11 +373,6 @@ const HomePage = (): JSX.Element => {
         }
         .social-media {
           display: flex;
-          width: 100%;
-          max-width: 1200px;
-          margin: auto;
-          margin-bottom: 20px;
-          padding: 20px 20px;
           justify-content: center;
         }
         .facebook {
@@ -394,7 +380,6 @@ const HomePage = (): JSX.Element => {
           background-image: url(./img/facebook.svg);
           width: 40px;
           height: 40px;
-          margin: 0 5px;
           background-size: 40px 40px;
         }
         .instagram {
@@ -402,7 +387,7 @@ const HomePage = (): JSX.Element => {
           background-image: url(./img/instagram.svg);
           width: 40px;
           height: 40px;
-          margin: 0 5px;
+          margin: 0 20px;
           background-size: 40px 40px;
         }
         .twitter {
@@ -410,7 +395,6 @@ const HomePage = (): JSX.Element => {
           background-image: url(./img/twitter.svg);
           width: 40px;
           height: 40px;
-          margin: 0 5px;
           background-size: 40px 40px;
         }
         .options-container {
@@ -418,12 +402,15 @@ const HomePage = (): JSX.Element => {
           justify-content: space-around;
           padding: 100px 30px;
         }
+        .options-list li {
+          margin-bottom: 15px;
+        }
         .options-list ul,
         ol {
           list-style: none;
         }
         .options-list h2 {
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
         .header {
           background-color: #00695c;
@@ -433,6 +420,18 @@ const HomePage = (): JSX.Element => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+        }
+        .header_nav {
+          margin-left: 150px;
+        }
+        .header_nav ol {
+          display:flex;
+        }
+        .header_nav a {
+          padding-right: 40px;
+          text-decoration: none;
+          color: #ffffff;
+          font-size: 18px;
         }
         .logo {
           display: flex;

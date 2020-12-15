@@ -16,17 +16,7 @@
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm run test"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.@(ts|tsx)": [
-      "npm run lint",
-      "npm run format"
-    ]
-  },
+  
   "keywords": [
     "customer",
     "service",
