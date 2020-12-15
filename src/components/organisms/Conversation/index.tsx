@@ -16,7 +16,7 @@ const Conversation: FC<props> = ({ messages, senderId, conversationId }) => {
   const dispatch = useDispatch();
 
   const onSend = (message: string) => {
-    alert(message);
+    // alert(message);
     const data = {
       messageData: {
         text: message,
