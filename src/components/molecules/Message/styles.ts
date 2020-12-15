@@ -13,10 +13,8 @@ export const CSSWrapper: StyledComponent<
   width: 100%;
 
   div {
-    margin-right: ${(props: any) =>
-      props.typeMessage === 'sender' ? '30px' : '0px'};
-    margin-left: ${(props: any) =>
-      props.typeMessage === 'sender' ? '0px' : '30px'};
+    margin-right: ${(props: any) => (props.isAgent === true ? '30px' : '0px')};
+    margin-left: ${(props: any) => (props.isAgent === true ? '0px' : '30px')};
   }
 `;
 

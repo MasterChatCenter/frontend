@@ -12,7 +12,7 @@ const addMessage = (state: any, payload: AddMessage): any => {
   const message = {
     username: payload.username,
     text: payload.text,
-    is_agent: payload.is_agent,
+    isAgent: payload.is_agent,
     createdAt: payload.createdAt,
   };
 

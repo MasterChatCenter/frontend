@@ -21,7 +21,7 @@ const create = async (data: Message): Promise<any> => {
   return {
     username: message.username,
     text: message.text,
-    isAgent: message.isAgent,
+    is_agent: message.is_agent,
     createdAt: message.createdAt,
   };
 };
